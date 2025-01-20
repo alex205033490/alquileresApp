@@ -1,0 +1,105 @@
+﻿
+
+/* Estilo del botón de selección */
+.table .select-button {
+    text-align: center;
+}
+
+
+
+/*  GRIDVIEW TABLA PRODUCTOS      */
+
+/* Hacer que el div sea responsivo */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Habilitar desplazamiento horizontal */
+   
+}
+
+/* Si quieres que la tabla se vea bien en pantallas pequeñas */
+.table {
+    width: 100%;
+    table-layout: auto; /* Para evitar que se distorsione el tamaño de las celdas */
+    border-collapse: collapse; /* Opcional, pero mejora la visualización de las celdas */
+}
+
+    .table th, .table td {
+        padding: 6px;
+        text-align: left;
+    }
+
+        .table td:hover {
+            background-color: #ffe6cc; /* Fondo suave anaranjado claro cuando el mouse pasa sobre una celda */
+        }
+    .table th {
+        background-color: #ff8c00; /* Color de fondo naranja para los encabezados */
+        color: orange; /* Texto blanco */
+        font-size: 12px; /* Un tamaño de fuente ligeramente mayor para los encabezados */
+    }
+
+    .table tr:nth-child(odd) {
+        background-color: white; /* Fondo blanco para filas impares */
+    }
+
+    .table tr:hover ,.table tr:nth-child(even):hover {
+        background-color: #ffe6cc; /* Fondo suave anaranjado claro cuando el mouse pasa sobre una celda */
+    }
+
+
+    .table tr:nth-child(even) {
+        background-color: #f2f2f2; /* Fondo gris suave para filas pares */
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f2f2f2; /* Fondo gris suave para filas pares */
+    }
+
+
+.table {
+    width: 100%;
+    table-layout: auto; /* Ajusta automáticamente el tamaño de las celdas */
+    border-collapse: collapse; /* Mejor visualización de las celdas */
+    background-color: #f8f9fa; /* Fondo suave (gris claro) */
+    color: #333; /* Color del texto (oscuro) */
+}
+
+    /* Estilo para las celdas */
+.table td {
+        padding: 6px; /* Reducir el padding */
+        font-size: 9px; /* Reducir el tamaño de las letras */
+        text-align: left;
+    }
+
+.pedido-form {
+    padding: 20px; /* Espaciado interno para evitar que el contenido quede pegado al borde */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    border: 1px solid #ccc; /* Borde alrededor del formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    background: #ff89002e; 
+}
+.form_datosProducto {
+    BACKGROUND: #fe730066;
+    padding: 0.5rem;
+}
+
+#dd_tipoSolicitud{
+    background-color:white;
+}
+
+#gv_listaProductosPedido td:nth-child(1) {
+    padding: 3px; /* Cambia el padding solo de la primera columna */
+}
+
+.contenedor_btnAdd{
+    text-align: center;
+}
+
+.container_btnInsertPedido {
+    display: flex; /* Aplica Flexbox al contenedor */
+    justify-content: space-between; /* Separa los elementos (botones) de extremo a extremo */
+    align-items: center; /* Alinea los botones verticalmente (opcional) */
+    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+}
+
+
+

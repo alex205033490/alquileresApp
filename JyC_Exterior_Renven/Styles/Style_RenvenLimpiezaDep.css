@@ -1,0 +1,99 @@
+﻿/* NAVBAR*/
+.container-navbar {
+    background-color: #15457ced;
+}
+
+.container-navbarul {
+    padding-left: 10px;
+}
+
+.navbar-nav .nav-link {
+    color: white; /* Texto blanco por defecto */
+    font-size: 16px; /* Ajustar el tamaño de la fuente */
+    padding: 10px 15px; /* Añadir espaciado alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    transition: background-color 0.3s, color 0.3s; /* Transición para efectos hover */
+}
+
+
+/* Cambio de color del link al pasar el ratón o en estado activo */
+
+
+.container-navItem {
+    border-bottom: 2px solid #ffffff;
+}
+/*  END */
+.form-limpiezaDep {
+    padding: 8px; /* Espaciado interno para evitar que el contenido quede pegado al borde */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    border: 1px solid #ccc; /* Borde alrededor del formulario */
+    background: #00326b66;
+}
+
+/*  TITULO DEL FORMULARIO */
+.title_principal h1 {
+    font-family: 'Arial', sans-serif; /* Tipo de letra simple y moderna */
+    font-size: 2em; /* Tamaño de la fuente */
+    color: #000000; /* Color oscuro para el texto */
+    text-align: center; /* Alineación centrada */
+    padding: 20px 0; /* Espaciado arriba y abajo del título */
+    position: relative; /* Necesario para posicionar las líneas */
+}
+
+/* Mejorar el espacio alrededor del título */
+.title_principal {
+    margin: 15px 0;     border: 2px solid #023384;
+}
+
+.p_nombre{
+    font-size: 0.9rem;
+}
+
+
+/*  GV INSUMOS REPOSICION   */
+.listItemsRepo {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-color: #16204c40;
+}
+
+.gv_items th {
+    color: #ffffff !important;
+    padding: 5px 10px !important;
+    text-align: center !important;
+    font-weight: bold;
+    background-color: #27407dc9 !important;
+}
+.gv_items td {
+    background-color: #2f528454 !important;
+    color: #ffffff;
+    padding: 6px 7px !important;
+    border: 10px solid #f8f9fa;
+}
+
+.gv_items input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #051642;
+    background-color: #f1f1f1c4;
+}
+
+.gv_items input[type="text"]:focus {
+    border-color: #0066cc; /* Cambiar a azul claro cuando el campo está enfocado */
+    background-color: #ffffff; /* Fondo blanco cuando se enfoca el campo */
+}
+
+/*  GV DEPARTAMENTOS    */
+.gv_dpto{
+    overflow-x: scroll;
+    width:100%;
+    background-color: white;
+    font-size : 10px;
+}
+
+/*  Cantidad  */
+

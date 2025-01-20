@@ -1,0 +1,44 @@
+﻿body {
+}
+
+
+.Centrar
+{       
+    margin: 0 auto;            
+    width:900px;
+    height:auto;
+    }
+
+.titulo
+{        
+    height:40px;
+    margin-top: 20px;
+    }
+
+
+.GE1
+{    
+    height: auto;      
+    width:890px;
+    margin: 0 auto;
+    text-align: left;   
+  }
+    
+    .GE2
+{    
+    float: left;
+    overflow:auto; 
+    height: 300px;      
+    width:890px;
+    text-align: left;       
+    }
+    
+.GE3
+{
+     
+     width: 800px;
+     text-align: left;
+     height: 40px;     
+         
+    }    
+    

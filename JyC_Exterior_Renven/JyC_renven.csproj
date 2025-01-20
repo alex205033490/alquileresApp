@@ -1,0 +1,898 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C521EF43-A5B1-4A0E-BE5C-0BF10AF38F36}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JyC_Exterior</RootNamespace>
+    <AssemblyName>JyC_Exterior</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Target Name="GatherAllFilesToPublish">
+    <Message Importance="high" Text="GatherAllFilesToPublish target ejecutado correctamente." />
+  </Target>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="HtmlAgilityPack, Version=1.11.71.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.71\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.15.0.44798, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.15.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.15.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.6.5\Assemblies\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="Images\naxsnax.png" />
+    <Content Include="img\menuLimpiezaDpto.png" />
+    <Content Include="img\naxsnax2.png" />
+    <Content Include="img\pedido.png" />
+    <Content Include="img\pedido2.png" />
+    <Content Include="img\portfolio\pedido.png" />
+    <Content Include="img\portfolio\pedido2.png" />
+    <Content Include="img\portfolio\ventas.png" />
+    <Content Include="img\renvenLogo.png" />
+    <Content Include="img\venta.png" />
+    <Content Include="img\ventas.png" />
+    <Content Include="js\jsPedido.js" />
+    <Content Include="NegoPlantilla\Footer_Plantillanew.ascx" />
+    <Content Include="NegoPlantilla\Header_planillanew.ascx" />
+    <Content Include="NegoPlantilla\MenuPlantillaPrincipal.ascx" />
+    <Content Include="NegoPlantilla\Sidebar_Plantillanew.ascx" />
+    <Content Include="Presentacion\FCorpal_SolicitudPedido.aspx" />
+    <Content Include="css\util.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="fonts\JosefinSans\OFL.txt" />
+    <Content Include="fonts\source-sans-pro\OFL.txt" />
+    <Content Include="fonts\ubuntu\UFL.txt" />
+    <Content Include="Images\background.gif" />
+    <Content Include="Images\cabecera1.jpg" />
+    <Content Include="Images\cabecera1_1.jpg" />
+    <Content Include="Images\carpetaAbierta.jpg" />
+    <Content Include="Images\carpetacerrada.jpg" />
+    <Content Include="Images\Cheque\bisa.JPG" />
+    <Content Include="Images\Cheque\cheque1.JPG" />
+    <Content Include="Images\Cheque\chequeBNB.JPG" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\Folder.png" />
+    <Content Include="Images\fondo.png" />
+    <Content Include="Images\FondoMenu.jpg" />
+    <Content Include="Images\FondoMenu2.jpg" />
+    <Content Include="Images\Good-mark.png" />
+    <Content Include="Images\highlight.gif" />
+    <Content Include="Images\icono_JyC.ico" />
+    <Content Include="Images\image_logo\elevamerica.jpg" />
+    <Content Include="Images\image_logo\elevamerica_voucher.jpg" />
+    <Content Include="Images\image_logo\imvent.jpg" />
+    <Content Include="Images\image_logo\interlogi.jpg" />
+    <Content Include="Images\image_logo\interlogi_voucher.jpg" />
+    <Content Include="Images\image_logo\interlogy.jpg" />
+    <Content Include="Images\image_logo\jyc.jpg" />
+    <Content Include="Images\image_logo\jyc_otro.jpg" />
+    <Content Include="Images\image_logo\jyc_voucher.jpg" />
+    <Content Include="Images\image_logo\melevar.jpg" />
+    <Content Include="Images\image_logo\melevar_voucher.jpg" />
+    <Content Include="Images\image_logo\prueba.jpg" />
+    <Content Include="Images\jyc_1.jpg" />
+    <Content Include="Images\jyc_2.jpg" />
+    <Content Include="Images\jyc_icono.ico" />
+    <Content Include="Images\JYC_logo.jpg" />
+    <Content Include="Images\JYC_logo.PNG" />
+    <Content Include="Images\JYC_logo_antiguo.jpg" />
+    <Content Include="Images\JYC_logo_antiguo.PNG" />
+    <Content Include="Images\login-box-backg.png" />
+    <Content Include="Images\login-btn.png" />
+    <Content Include="Images\pie.jpg" />
+    <Content Include="Images\select.png" />
+    <Content Include="Images\Text.png" />
+    <Content Include="img\cabin_1.png" />
+    <Content Include="img\CallCenter.png" />
+    <Content Include="img\Comercial.png" />
+    <Content Include="img\construccion.jpg" />
+    <Content Include="img\email.png" />
+    <Content Include="img\EmailOk.jpg" />
+    <Content Include="img\encuesta.png" />
+    <Content Include="img\Encuesta1.png" />
+    <Content Include="img\Encuesta_R-220.png" />
+    <Content Include="img\Encuesta_R220.jpg" />
+    <Content Include="img\icono_contactenos.png" />
+    <Content Include="img\icono_JyC.ico" />
+    <Content Include="img\images.png" />
+    <Content Include="img\interlogi_voucher.jpg" />
+    <Content Include="img\JYC.png" />
+    <Content Include="img\JYC1.png" />
+    <Content Include="img\JYC_logo.jpg" />
+    <Content Include="img\JYC_logo_4.jpg" />
+    <Content Include="img\mantenimiento.png" />
+    <Content Include="img\naxsnax.jpg" />
+    <Content Include="img\naxsnax.png" />
+    <Content Include="img\portfolio\cabin.png" />
+    <Content Include="img\portfolio\cabin_1.png" />
+    <Content Include="img\portfolio\cake.png" />
+    <Content Include="img\portfolio\cake_1.png" />
+    <Content Include="img\portfolio\circus.png" />
+    <Content Include="img\portfolio\circus_1.png" />
+    <Content Include="img\portfolio\game.png" />
+    <Content Include="img\portfolio\game_1.png" />
+    <Content Include="img\portfolio\safe.png" />
+    <Content Include="img\portfolio\safe_2.png" />
+    <Content Include="img\portfolio\submarine.png" />
+    <Content Include="img\portfolio\submarine_1.png" />
+    <Content Include="img\profile.png" />
+    <Content Include="img\profile1.png" />
+    <Content Include="img\profile_1.png" />
+    <Content Include="img\Proyecto.jpg" />
+    <Content Include="img\Proyecto.png" />
+    <Content Include="img\rh.png" />
+    <Content Include="jquery\bootstrap\css\bootstrap.css" />
+    <Content Include="jquery\bootstrap\css\bootstrap.min.css" />
+    <Content Include="jquery\bootstrap\js\bootstrap.js" />
+    <Content Include="jquery\bootstrap\js\bootstrap.min.js" />
+    <Content Include="jquery\css\freelancer.css" />
+    <Content Include="jquery\css\freelancer.min.css" />
+    <Content Include="jquery\font-awesome\css\font-awesome.css" />
+    <Content Include="jquery\font-awesome\css\font-awesome.min.css" />
+    <Content Include="jquery\jquery\jquery.js" />
+    <Content Include="jquery\jquery\jquery.min.js" />
+    <Content Include="jquery\js\contact_me.js" />
+    <Content Include="jquery\js\freelancer.js" />
+    <Content Include="jquery\js\freelancer.min.js" />
+    <Content Include="jquery\js\jqBootstrapValidation.js" />
+    <Content Include="js\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap.bundle.min.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js_QRLector\html5-qrcode.min.js" />
+    <Content Include="js_QRLector\jquery-1.9.1.min.js" />
+    <Content Include="js_QRLector\jsqrcode-combined.min.js" />
+    <Content Include="js_QRLector\main.js" />
+    <Content Include="Presentacion\FA_Login.aspx" />
+    <Content Include="Presentacion\FA_MenuPorArea.aspx" />
+    <Content Include="Presentacion\FR_ModLimpiezaDep.aspx" />
+    <Content Include="Styles\login-box.css" />
+    <Content Include="Styles\MenuPlantilla.css" />
+    <Content Include="Styles\Style_MenuArea.css" />
+    <Content Include="Styles\payment.css" />
+    <Content Include="Styles\Styles_GEncargadoPago.css" />
+    <Content Include="Styles\Styles_GestionarResp.css" />
+    <Content Include="Styles\Styles_GPagoSeguimiento.css" />
+    <Content Include="Styles\Styles_GPagoSeguimiento2.css" />
+    <Content Include="Styles\Styles_Main.css" />
+    <Content Include="Styles\Styles_MenuH.css" />
+    <Content Include="Styles\styles_MenuV.css" />
+    <Content Include="Styles\StyleUpon.css" />
+    <Content Include="Styles\Style_adicionarRepuesto.css" />
+    <Content Include="Styles\Style_AgendaNegociacion.css" />
+    <Content Include="Styles\Style_AgendaTelefonica.css" />
+    <Content Include="Styles\Style_AsignarTareas.css" />
+    <Content Include="Styles\Style_Autocompletar.css" />
+    <Content Include="Styles\Style_CallCenter.css" />
+    <Content Include="Styles\Style_CallCenterEstadisticaNormal.css" />
+    <Content Include="Styles\Style_CallCenterEstadisticaTecnico.css" />
+    <Content Include="Styles\Style_CallCenter_Rin.css" />
+    <Content Include="Styles\Style_callRCC.css" />
+    <Content Include="Styles\Style_CargaCuadrosXXX.css" />
+    <Content Include="Styles\Style_CargaFechaExpedicion.css" />
+    <Content Include="Styles\Style_CargarDocumentos.css" />
+    <Content Include="Styles\Style_chequeBisa.css" />
+    <Content Include="Styles\Style_chequeBNB.css" />
+    <Content Include="Styles\Style_CodigosDeEquipos.css" />
+    <Content Include="Styles\Style_ConciliacionBancaria.css" />
+    <Content Include="Styles\Style_ConsultaRutas.css" />
+    <Content Include="Styles\Style_consultaRutasporDatos.css" />
+    <Content Include="Styles\Style_Consultas.css" />
+    <Content Include="Styles\Style_ConsultasCallCenter.css" />
+    <Content Include="Styles\Style_ControlPedido.css" />
+    <Content Include="Styles\Style_CostosPolizasImportacion.css" />
+    <Content Include="Styles\Style_CotiEra.css" />
+    <Content Include="Styles\Style_cotiRcc.css" />
+    <Content Include="Styles\Style_cronogramaRutaVisitaMantenimiento.css" />
+    <Content Include="Styles\Style_CronogramaTecnico.css" />
+    <Content Include="Styles\Style_detallePedidoConSalida.css" />
+    <Content Include="Styles\Style_EdificioDeudor.css" />
+    <Content Include="Styles\Style_EstadisticaParqueAscensores.css" />
+    <Content Include="Styles\Style_EstadoSeguimientoGeneral.css" />
+    <Content Include="Styles\Style_facturacion.css" />
+    <Content Include="Styles\Style_fechaContratos.css" />
+    <Content Include="Styles\Style_GActividades.css" />
+    <Content Include="Styles\Style_GActualizacion.css" />
+    <Content Include="Styles\Style_GcotizacionRepuesto.css" />
+    <Content Include="Styles\Style_GEdificio.css" />
+    <Content Include="Styles\Style_GEncargadoPago.css" />
+    <Content Include="Styles\Style_GEstadisticaInstalacion.css" />
+    <Content Include="Styles\Style_GEstadoEquipo.css" />
+    <Content Include="Styles\Style_GestionArchivosSGI.css" />
+    <Content Include="Styles\Style_GestionarEstadoInstalacion.css" />
+    <Content Include="Styles\Style_GestionarEstadoMantenimiento.css" />
+    <Content Include="Styles\Style_GestionarProyEncargadoPago.css" />
+    <Content Include="Styles\Style_GestionSeguimientoInstalacion.css" />
+    <Content Include="Styles\Style_Gformulario.css" />
+    <Content Include="Styles\Style_GPermisos.css" />
+    <Content Include="Styles\Style_GProyecto.css" />
+    <Content Include="Styles\Style_GSeguimiento.css" />
+    <Content Include="Styles\Style_GTipoPago.css" />
+    <Content Include="Styles\Style_ImportacionJYCIA.css" />
+    <Content Include="Styles\Style_MenuIzquierdo.css" />
+    <Content Include="Styles\Style_MonitoreoGestionProyecto.css" />
+    <Content Include="Styles\Style_movimientoCheques.css" />
+    <Content Include="Styles\Style_PlanPago.css" />
+    <Content Include="Styles\Style_PolizaBoletaLetra.css" />
+    <Content Include="Styles\Style_ReciboPago.css" />
+    <Content Include="Styles\Style_RenvenLimpiezaDep.css" />
+    <Content Include="Styles\Style_ReporteCobranza2.css" />
+    <Content Include="Styles\Style_ReporteCotizacionRepuesto.css" />
+    <Content Include="Styles\Style_RutaBoletaMantenimiento.css" />
+    <Content Include="Styles\Style_RutasMantenimiento.css" />
+    <Content Include="Styles\Style_saldosCuentasGeneral.css" />
+    <Content Include="Styles\Style_SeguimientosMorosos.css" />
+    <Content Include="Styles\Style_ViewCuadroXXX.css" />
+    <Content Include="Styles\Style_ViewEstadoMantenimiento.css" />
+    <Content Include="Styles\Style_ViewSeguimientoMantenimientoXXX.css" />
+    <Content Include="Styles\Style_VistaResponsableProyecto.css" />
+    <Content Include="Styles\Style_VistaSeguimientoInstalacion.css" />
+    <Content Include="Styles\Style_Welcome.css" />
+    <Content Include="vendor\animate\animate.css" />
+    <Content Include="vendor\animsition\css\animsition.css" />
+    <Content Include="vendor\animsition\css\animsition.min.css" />
+    <Content Include="vendor\animsition\js\animsition.js" />
+    <Content Include="vendor\animsition\js\animsition.min.js" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\bootstrap\js\popper.js" />
+    <Content Include="vendor\bootstrap\js\popper.min.js" />
+    <Content Include="vendor\bootstrap\js\tooltip.js" />
+    <Content Include="vendor\countdowntime\countdowntime.js" />
+    <Content Include="vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="vendor\daterangepicker\moment.js" />
+    <Content Include="vendor\daterangepicker\moment.min.js" />
+    <Content Include="vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="vendor\select2\select2.css" />
+    <Content Include="vendor\select2\select2.js" />
+    <Content Include="vendor\select2\select2.min.css" />
+    <Content Include="vendor\select2\select2.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiRest\DBApi.cs" />
+    <Compile Include="Datos\DActualizacion.cs" />
+    <Compile Include="Datos\DA_ActividadesPersonal.cs" />
+    <Compile Include="Datos\DA_AgendaNegociacion.cs" />
+    <Compile Include="Datos\DA_AgendaProyecto.cs" />
+    <Compile Include="Datos\DA_AgendaTelefonica.cs" />
+    <Compile Include="Datos\DA_banco.cs" />
+    <Compile Include="Datos\DA_Cargo.cs" />
+    <Compile Include="Datos\DA_CostosPolizaImportacion.cs" />
+    <Compile Include="Datos\DA_CronogramaTecnico.cs" />
+    <Compile Include="Datos\DA_CronogramaVisitaRutaManteminieto.cs" />
+    <Compile Include="Datos\DA_CuadrosXXX.cs" />
+    <Compile Include="Datos\DA_DetallePermiso.cs" />
+    <Compile Include="Datos\DA_DetalleSeguimiento.cs" />
+    <Compile Include="Datos\DA_DetalleTecnicoAsignado.cs" />
+    <Compile Include="Datos\DA_Detalle_TecnicoEvento.cs" />
+    <Compile Include="Datos\DA_EncuestaMantenimiento.cs" />
+    <Compile Include="Datos\DA_Equipo.cs" />
+    <Compile Include="Datos\DA_EstadoMantenimiento.cs" />
+    <Compile Include="Datos\DA_Evento.cs" />
+    <Compile Include="Datos\DA_facturacion.cs" />
+    <Compile Include="Datos\DA_fechaContrato.cs" />
+    <Compile Include="Datos\DA_FechaEstadoEquipo.cs" />
+    <Compile Include="Datos\DA_FechaEstadoMan.cs" />
+    <Compile Include="Datos\DA_FechaExpedicion.cs" />
+    <Compile Include="Datos\DA_Formularios.cs" />
+    <Compile Include="Datos\DA_Historial.cs" />
+    <Compile Include="Datos\DA_limpiezaDep.cs" />
+    <Compile Include="Datos\DA_Marca.cs" />
+    <Compile Include="Datos\DA_movimientoCheques.cs" />
+    <Compile Include="Datos\DA_Prioridad.cs" />
+    <Compile Include="Datos\DA_Propietario.cs" />
+    <Compile Include="Datos\DA_R155_InspeccionySeguimientoObra.cs" />
+    <Compile Include="Datos\DA_r220.cs" />
+    <Compile Include="Datos\DA_R243.cs" />
+    <Compile Include="Datos\DA_R244.cs" />
+    <Compile Include="Datos\DA_ReciboPago.cs" />
+    <Compile Include="Datos\DA_Repuesto.cs" />
+    <Compile Include="Datos\DA_Responsable.cs" />
+    <Compile Include="Datos\DA_RutaCobrador.cs" />
+    <Compile Include="Datos\DA_RutaMantenimiento.cs" />
+    <Compile Include="Datos\DA_Seguimiento.cs" />
+    <Compile Include="Datos\DA_SeguimientoInstalacion.cs" />
+    <Compile Include="Datos\DA_SolicitudPedido.cs" />
+    <Compile Include="Datos\DA_tareasTecnicos.cs" />
+    <Compile Include="Datos\DA_TipoEquipo.cs" />
+    <Compile Include="Datos\DA_TipoEvento.cs" />
+    <Compile Include="Datos\DA_TipoPago.cs" />
+    <Compile Include="Datos\DA_VisitaRCC.cs" />
+    <Compile Include="Datos\DA_Zona.cs" />
+    <Compile Include="Datos\DCargaCuadroXXXa.cs" />
+    <Compile Include="Datos\DCargaFechaExpedicion.cs" />
+    <Compile Include="Datos\DCorpal_Pedido.cs" />
+    <Compile Include="Datos\DEncargadoPago.cs" />
+    <Compile Include="Datos\DEquipo.cs" />
+    <Compile Include="Datos\DEstadisticaInstalacion.cs" />
+    <Compile Include="Datos\DEstadisticaParqueAscensores.cs" />
+    <Compile Include="Datos\DEstadoEquipo.cs" />
+    <Compile Include="Datos\DFechaExpedicion.cs" />
+    <Compile Include="Datos\DMeses.cs" />
+    <Compile Include="Datos\DProyecto.cs" />
+    <Compile Include="Datos\DTipoPago.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DS_devolucionRepuesto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_devolucionRepuesto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\ConexionMySql.cs" />
+    <Compile Include="Negocio\ImpresorRecibo.cs" />
+    <Compile Include="Negocio\NActualizacion.cs" />
+    <Compile Include="Negocio\NA_ActividadesPersonal.cs" />
+    <Compile Include="Negocio\NA_AgendaNegociacion.cs" />
+    <Compile Include="Negocio\NA_AgendaProyectos.cs" />
+    <Compile Include="Negocio\NA_AgendaTelefonica.cs" />
+    <Compile Include="Negocio\NA_banco.cs" />
+    <Compile Include="Negocio\NA_Cargo.cs" />
+    <Compile Include="Negocio\NA_CostosPolizaImportacion.cs" />
+    <Compile Include="Negocio\NA_CronogramaTecnico.cs" />
+    <Compile Include="Negocio\NA_CronogramaVisitaRutaMantenimiento.cs" />
+    <Compile Include="Negocio\NA_CuadrosXXX.cs" />
+    <Compile Include="Negocio\NA_DetalleEventoTecnico.cs" />
+    <Compile Include="Negocio\NA_DetallePermiso.cs" />
+    <Compile Include="Negocio\NA_DetalleSeguimiento.cs" />
+    <Compile Include="Negocio\NA_DetalleTecnicoAsignado.cs" />
+    <Compile Include="Negocio\NA_EncuestaMantenimiento.cs" />
+    <Compile Include="Negocio\NA_EnvioCorreo.cs" />
+    <Compile Include="Negocio\NA_Equipo.cs" />
+    <Compile Include="Negocio\NA_EstadoMantenimiento.cs" />
+    <Compile Include="Negocio\NA_Evento.cs" />
+    <Compile Include="Negocio\NA_Facturacion.cs" />
+    <Compile Include="Negocio\NA_fechaContrato.cs" />
+    <Compile Include="Negocio\NA_FechaEstadoEquipo.cs" />
+    <Compile Include="Negocio\NA_FechaEstadoMan.cs" />
+    <Compile Include="Negocio\NA_FechaExpedicion.cs" />
+    <Compile Include="Negocio\NA_Formularios.cs" />
+    <Compile Include="Negocio\NA_Historial.cs" />
+    <Compile Include="Negocio\NA_limpiezaDep.cs" />
+    <Compile Include="Negocio\NA_Marca.cs" />
+    <Compile Include="Negocio\NA_movimientoCheques.cs" />
+    <Compile Include="Negocio\NA_Prioridad.cs" />
+    <Compile Include="Negocio\NA_Propietario.cs" />
+    <Compile Include="Negocio\NA_PruebaAPI.cs" />
+    <Compile Include="Negocio\NA_R155_InspeccionySeguimientoObra.cs" />
+    <Compile Include="Negocio\NA_r220.cs" />
+    <Compile Include="Negocio\NA_R243.cs" />
+    <Compile Include="Negocio\NA_R244.cs" />
+    <Compile Include="Negocio\NA_ReciboPago.cs" />
+    <Compile Include="Negocio\NA_Reportes_Download.cs" />
+    <Compile Include="Negocio\NA_Repuesto.cs" />
+    <Compile Include="Negocio\NA_Responsables.cs" />
+    <Compile Include="Negocio\NA_RutaMantenimiento.cs" />
+    <Compile Include="Negocio\NA_Seguimiento.cs" />
+    <Compile Include="Negocio\NA_SeguimientoInstalacion.cs" />
+    <Compile Include="Negocio\NA_SolicitudPedido.cs" />
+    <Compile Include="Negocio\NA_tareasTecnico.cs" />
+    <Compile Include="Negocio\NA_TipoEquipo.cs" />
+    <Compile Include="Negocio\NA_TipoEvento.cs" />
+    <Compile Include="Negocio\NA_TipoPago.cs" />
+    <Compile Include="Negocio\NA_VariablesGlobales.cs" />
+    <Compile Include="Negocio\NA_VisitaRCC.cs" />
+    <Compile Include="Negocio\NA_Zona.cs" />
+    <Compile Include="Negocio\NCargaCuadroXXX.cs" />
+    <Compile Include="Negocio\NCargaFechaExpedicion.cs" />
+    <Compile Include="Negocio\NCorpal_Pedido.cs" />
+    <Compile Include="Negocio\NEncargadoPago.cs" />
+    <Compile Include="Negocio\NEquipo.cs" />
+    <Compile Include="Negocio\NEstadisticaInstalacion.cs" />
+    <Compile Include="Negocio\NEstadisticaParqueAscensores.cs" />
+    <Compile Include="Negocio\NEstadoEquipo.cs" />
+    <Compile Include="Negocio\NFechaExpedicion.cs" />
+    <Compile Include="Negocio\NMeses.cs" />
+    <Compile Include="Negocio\NProyecto.cs" />
+    <Compile Include="Negocio\NTipoPago.cs" />
+    <Compile Include="Negocio\N_numLetra.cs" />
+    <Compile Include="NegoPlantilla\Footer_Plantillanew.ascx.cs">
+      <DependentUpon>Footer_Plantillanew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NegoPlantilla\Footer_Plantillanew.ascx.designer.cs">
+      <DependentUpon>Footer_Plantillanew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="NegoPlantilla\Header_planillanew.ascx.cs">
+      <DependentUpon>Header_planillanew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NegoPlantilla\Header_planillanew.ascx.designer.cs">
+      <DependentUpon>Header_planillanew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="NegoPlantilla\MenuPlantillaPrincipal.ascx.cs">
+      <DependentUpon>MenuPlantillaPrincipal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NegoPlantilla\MenuPlantillaPrincipal.ascx.designer.cs">
+      <DependentUpon>MenuPlantillaPrincipal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="NegoPlantilla\Sidebar_Plantillanew.ascx.cs">
+      <DependentUpon>Sidebar_Plantillanew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NegoPlantilla\Sidebar_Plantillanew.ascx.designer.cs">
+      <DependentUpon>Sidebar_Plantillanew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FA_Login.aspx.cs">
+      <DependentUpon>FA_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FA_Login.aspx.designer.cs">
+      <DependentUpon>FA_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FA_MenuPorArea.aspx.cs">
+      <DependentUpon>FA_MenuPorArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FA_MenuPorArea.aspx.designer.cs">
+      <DependentUpon>FA_MenuPorArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FCorpal_SolicitudPedido.aspx.cs">
+      <DependentUpon>FCorpal_SolicitudPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FCorpal_SolicitudPedido.aspx.designer.cs">
+      <DependentUpon>FCorpal_SolicitudPedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.cs">
+      <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.designer.cs">
+      <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site_Master.Master.cs">
+      <DependentUpon>Site_Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site_Master.Master.designer.cs">
+      <DependentUpon>Site_Master.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Datos\App_LocalResources\" />
+    <Folder Include="Images\images\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationInsights.config" />
+    <None Include="css\.DS_Store" />
+    <None Include="css\bootstrap-grid.css.map" />
+    <None Include="css\bootstrap-grid.min.css.map" />
+    <None Include="css\bootstrap-reboot.css.map" />
+    <None Include="css\bootstrap-reboot.min.css.map" />
+    <None Include="css\bootstrap.css.map" />
+    <None Include="css\bootstrap.min.css.map" />
+    <None Include="DS_devolucionRepuesto.xsc">
+      <DependentUpon>DS_devolucionRepuesto.xsd</DependentUpon>
+    </None>
+    <None Include="DS_devolucionRepuesto.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_devolucionRepuesto.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DS_devolucionRepuesto.xss">
+      <DependentUpon>DS_devolucionRepuesto.xsd</DependentUpon>
+    </None>
+    <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <None Include="fonts\font-awesome-4.7.0\less\animated.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\core.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\icons.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\larger.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\list.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\path.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="fonts\font-awesome-4.7.0\less\variables.less" />
+    <None Include="fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <None Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <None Include="fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <None Include="fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="fonts\JosefinSans\JosefinSans-Bold.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-BoldItalic.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-Italic.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-Light.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-LightItalic.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-Regular.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-SemiBold.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-SemiBoldItalic.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-Thin.ttf" />
+    <None Include="fonts\JosefinSans\JosefinSans-ThinItalic.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-Black.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-BlackItalic.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-Bold.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-BoldItalic.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-ExtraLight.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-ExtraLightItalic.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-Italic.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-Light.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-LightItalic.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-Regular.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-SemiBold.ttf" />
+    <None Include="fonts\source-sans-pro\SourceSansPro-SemiBoldItalic.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-Bold.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-BoldItalic.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-Italic.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-Light.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-LightItalic.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-Medium.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-MediumItalic.ttf" />
+    <None Include="fonts\ubuntu\Ubuntu-Regular.ttf" />
+    <None Include="img\imagenes_Opciones - CallCenter.psd" />
+    <None Include="img\imagenes_Opciones - Copy.psd" />
+    <None Include="img\imagenes_Opciones.psd" />
+    <Content Include="img\imagenes_Opciones_Actividades.psd" />
+    <None Include="img\imagenes_Opciones_Comercial.psd" />
+    <None Include="img\imagenes_Opciones_Encuesta.psd" />
+    <None Include="img\imagenes_Opciones_Mantenimiento.psd" />
+    <None Include="img\imagenes_Opciones_Proyecto.psd" />
+    <None Include="img\jyc_logo.psd" />
+    <None Include="jquery\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="jquery\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="jquery\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="jquery\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="jquery\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="jquery\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="jquery\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="jquery\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="jquery\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="jquery\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="jquery\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="jquery\font-awesome\less\animated.less" />
+    <None Include="jquery\font-awesome\less\bordered-pulled.less" />
+    <None Include="jquery\font-awesome\less\core.less" />
+    <None Include="jquery\font-awesome\less\fixed-width.less" />
+    <None Include="jquery\font-awesome\less\font-awesome.less" />
+    <None Include="jquery\font-awesome\less\icons.less" />
+    <None Include="jquery\font-awesome\less\larger.less" />
+    <None Include="jquery\font-awesome\less\list.less" />
+    <None Include="jquery\font-awesome\less\mixins.less" />
+    <None Include="jquery\font-awesome\less\path.less" />
+    <None Include="jquery\font-awesome\less\rotated-flipped.less" />
+    <None Include="jquery\font-awesome\less\screen-reader.less" />
+    <None Include="jquery\font-awesome\less\stacked.less" />
+    <None Include="jquery\font-awesome\less\variables.less" />
+    <None Include="jquery\font-awesome\scss\font-awesome.scss" />
+    <None Include="jquery\font-awesome\scss\_animated.scss" />
+    <None Include="jquery\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="jquery\font-awesome\scss\_core.scss" />
+    <None Include="jquery\font-awesome\scss\_fixed-width.scss" />
+    <None Include="jquery\font-awesome\scss\_icons.scss" />
+    <None Include="jquery\font-awesome\scss\_larger.scss" />
+    <None Include="jquery\font-awesome\scss\_list.scss" />
+    <None Include="jquery\font-awesome\scss\_mixins.scss" />
+    <None Include="jquery\font-awesome\scss\_path.scss" />
+    <None Include="jquery\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="jquery\font-awesome\scss\_screen-reader.scss" />
+    <None Include="jquery\font-awesome\scss\_stacked.scss" />
+    <None Include="jquery\font-awesome\scss\_variables.scss" />
+    <None Include="js\bootstrap.bundle.js.map" />
+    <None Include="js\bootstrap.bundle.min.js.map" />
+    <None Include="js\bootstrap.js.map" />
+    <None Include="js\bootstrap.min.js.map" />
+    <None Include="packages.config" />
+    <Content Include="Site_Master.Master" />
+    <None Include="Properties\PublishProfiles\alex.pubxml" />
+    <None Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="vendor\bootstrap\css\bootstrap.css.map" />
+    <None Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\Recibo_RutaCobrador_Paraguay.rdlc" />
+    <EmbeddedResource Include="Reportes\Recibo_RutaCobrador.rdlc" />
+    <EmbeddedResource Include="Reportes\Emergencia_callcenter.rdlc" />
+    <EmbeddedResource Include="Reportes\r155_inspeccionyseguimientoInstalacion.rdlc" />
+    <EmbeddedResource Include="Reportes\R615_boletaDevolucionRepuestoalCliente.rdlc" />
+    <EmbeddedResource Include="Reportes\RutaMantenimientoTecnico1.rdlc" />
+    <EmbeddedResource Include="Reportes\RutaMantenimientoTecnico.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Target Name="GatherAllFilesToPublish">
+    <Message Importance="high" Text="GatherAllFilesToPublish target ejecutado correctamente." />
+  </Target>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" /> -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54469</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54469/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:54469/" workingDir="" />
+          </servers>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v17.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.7.1\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

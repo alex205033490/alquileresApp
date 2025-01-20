@@ -1,0 +1,31 @@
+﻿/*      GV DETALLE PEDIDOS*/
+.gvDetallePedidos, {
+    max-width: 500px;
+    color:black;
+}
+.gvDetallePedidos, .gv_detalleproductosVentas tr {
+    font-size: small;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.gvDetallePedidos, .gv_detalleproductosVentas td {
+    font-size: small;
+}
+
+.Centrar {
+    margin: 0 auto;
+    width: auto;
+}
+
+.detalleVentas, .gv_detalleproductosVentas {
+    width: auto;
+    height: 300px;
+    overflow: auto;
+}
+
+
+/*      NAVBAR      */
+
+
+
+
+

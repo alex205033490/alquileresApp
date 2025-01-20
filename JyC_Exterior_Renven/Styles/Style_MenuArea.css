@@ -1,0 +1,71 @@
+﻿
+
+.name{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:36px;
+    color:white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out
+}
+
+.name:hover{
+    transform: scale(1.1);
+}
+
+/* st */
+.pTitulo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.spTitulo {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #333; /* Color oscuro para el subtítulo */
+    border-bottom: 3px solid black; /* Línea verde */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* HEADER */
+header .container123 {
+    background-color: #15457cc9;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.intro-text {
+    margin-top: 20px;
+}
+
+.img-principal {
+    display: block;
+    max-width: 35%;
+    height: auto;
+}
+
+.tittle-Principal {
+    display: block;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 4em;
+    color: black;
+}
+/* END HEADER*/
+
+
+/* MENU */
+
+
+.container_menu {
+    padding: 35px 0;
+    background-color: #001e41bf;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.img-services{
+    max-width:100%;
+}

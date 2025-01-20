@@ -1,0 +1,25 @@
+﻿.container-navbar {
+    background-color: #15457ced;
+}
+
+.container-navbarul{
+    padding-left:10px;
+
+}
+
+.navbar-nav .nav-link {
+    color: white; /* Texto blanco por defecto */
+    font-size: 16px; /* Ajustar el tamaño de la fuente */
+    padding: 10px 15px; /* Añadir espaciado alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    transition: background-color 0.3s, color 0.3s; /* Transición para efectos hover */
+}
+
+
+    /* Cambio de color del link al pasar el ratón o en estado activo */
+
+
+.container-navItem {
+    border-bottom: 2px solid #ffffff;
+}

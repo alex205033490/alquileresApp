@@ -1,0 +1,16 @@
+﻿body {
+}
+
+.Centrar
+{    
+  margin: 0 auto;            
+  width:auto;
+    }
+
+.detalleVentas
+{       
+     width: auto;          
+     height: 300px;     
+     overflow: auto;
+    }
+

@@ -1,0 +1,43 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MenuPlantillaPrincipal.ascx.cs" Inherits="JyC_Exterior.NegocioPlantilla.MenuPlantillaPrincipal" %>
+<%-- Incluir archivo CSS en el Head --%>
+<asp:PlaceHolder ID="headPlaceholder" runat="server"></asp:PlaceHolder>
+
+<nav class="navbar navbar-dark container-navbar" aria-label="First navbar example">
+    <div class="container-fluid">
+      
+        <div class="d-flex align-items-center justify-content-between">
+          <a href="../Presentacion/FA_MenuPorArea.aspx" class="logo d-flex align-items-center">
+            <img src="../img/renvenLogo.png" style="width:40px; height:auto;" alt="">
+              
+          </a>
+        </div><!-- End Logo -->
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        
+      <div class="collapse navbar-collapse" id="navbarsExample01">
+        <ul class="navbar-nav me-auto container-ul">
+
+        <li class="nav-item container-navItem">
+          <a class="nav-link" href="./FA_MenuPorArea.aspx">Menú Principal</a>
+        </li>
+
+        <li class="nav-item container-navItem">
+            <a class="nav-link active" aria-current="page" href="./FR_ModLimpiezaDep.aspx">Limpieza de departamentos</a>
+        </li>
+
+        <li class="nav-item container-navItem">
+          <a class="nav-link" href="#">Registro de activos</a>
+        </li>
+
+        <li class="nav-item container-navItem">
+          <a class="nav-link" href="FA_Login.aspx">Salir</a>
+        </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
