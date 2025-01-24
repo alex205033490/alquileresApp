@@ -393,6 +393,7 @@ namespace JyC_Exterior.Presentacion
         {
             limpiarCamposActivo();
             limpiarFormularioRegistro();
+            MostrarActivos();
         }
     }
 }

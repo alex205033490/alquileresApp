@@ -24,8 +24,6 @@
      <!-- Header -->
     <header>
         <div class="container123">
-            <div class="row">
-                <div class="col-lg-12">
                 <a href="#portfolio">
                  <!--  imagen del logo  -->
                     <img class="img-principal" src="../img/renvenLogo.png" alt=""/> </a>  
@@ -33,46 +31,30 @@
                         <span class="tittle-Principal">RENVEN</span>                        
                         
                     </div>
-                </div>
-            </div>
+           
         </div>
     </header>
 
     <!-- Portfolio Grid Section -->
        <div class="container_menu">
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p class="pTitulo">
-                        <span class="spTitulo">
-                            Servicios
-                        </span>
-                    </p>
-                    <br />
-                </div>
-            </div>
-
-            <div class="row">               
+            <div class="row_menu">               
                 
-                <div class="col-6 portfolio-item">
+                <div class="col-5 portfolio-itemMenu" style="background-color: #9a9ea57a;">
                     <a href="./FR_ModLimpiezaDep.aspx" class="portfolio-link" data-toggle="modal">
-                        <img src="../img/logoLimpieza22.png" class="img-services" alt=""/>
+                        <img src="../img/logoLimpieza2.png" class="img-servicesMenu" alt=""/>
                     </a>
-                    <h6>Servicio de limpieza</h6>
+                    <p class="title_menu">Servicio de limpieza</p>
                 </div>
 
-                <div class="col-6 portfolio-item">
+                <div class="col-5 portfolio-itemMenu" style="background-color:#9a9ea57a;">
                     <a href="./FR_ActivosDpto.aspx" class="portfolio-link" data-toggle="modal">
-                        <img src="../img/logoMueble.png" class="img-services" alt=""/>
+                        <img src="../img/logoMueble.png" class="img-servicesMenu" alt=""/>
                     </a>
-                    <h6>Administración de activos</h6>
+                    <p class="title_menu">Administración de activos</p>
                 </div>
 
 
             </div>
-        </div>
-   
            </div>
   
    

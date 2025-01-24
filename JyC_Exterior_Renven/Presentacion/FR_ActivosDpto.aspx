@@ -36,7 +36,7 @@
                     <div class="form_datosDpto mb-3">
                         <h3>Datos del Departamento</h3>
 
-                        <div class="item_Edificio col-12">
+                        <div class="item_Edificio col-12 mb-1">
                             <p class="p_nombre mb-1">Edificio:</p>
 
                             <asp:TextBox ID="txt_edificio" runat="server" CssClass="form-control" Style="font-size: 0.8rem;" AutoComplete="off" OnTextChanged="txt_edificio_TextChanged" AutoPostBack="true" placeholder="Ingrese el nombre de un edificio"></asp:TextBox>
@@ -81,7 +81,7 @@
 
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:Button ID="btnEliminar" runat="server" Text="Quitar" CommandName="Eliminar" CommandArgument='<%# Eval("codigo") %>' CssClass="btn btn-danger btn-sm" />
+                                                <asp:Button ID="btnEliminar" runat="server" style="font-size:12px;" Text="Quitar" CommandName="Eliminar" CommandArgument='<%# Eval("codigo") %>' CssClass="btn btn-danger btn-sm" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
@@ -99,7 +99,7 @@
 
 
                                 <div class="item_nombre col-8">
-                                    <p class="p_nombre mb-1">Item:</p>
+                                    <p class="mb-1">Item:</p>
                                     <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" placeholder="Busque y seleccione un item" OnTextChanged="txt_activo_TextChanged"></asp:TextBox>
                                     <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
                                         TargetControlID="txt_activo"
@@ -113,16 +113,18 @@
                                 </div>
 
                                 <div class="item_cantidad col-4">
-                                    <p class="p_cantidad mb-1">Cantidad</p>
+                                    <p class="p_nombre mb-1">Cantidad</p>
                                     <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
                                 </div>
                             </div>
                                         </asp:Panel>
-                            <div class="container_BTNs mt-2">
-                                <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
-                                <asp:Button ID="btn_limpiar" runat="server" CssClass="btn btn-danger" Text="Limpiar Formulario" OnClick="btn_limpiar_Click" />
-                                <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR" CssClass="btn btn-success" OnClick="btn_registrarForm_Click" />
+                            <div class="container_BTNs mt-2 mb-3">
+                                <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark col-5 " style="font-size:15px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
+                                <asp:Button ID="btn_limpiar" runat="server" CssClass="btn btn-danger col-5 " style="font-size:15px;" Text="Limpiar Formulario" OnClick="btn_limpiar_Click" />
                             </div>
+                        <div class="col-12">
+                                <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
+                        </div>
 
 
 

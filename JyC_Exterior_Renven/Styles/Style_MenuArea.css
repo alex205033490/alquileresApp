@@ -30,9 +30,8 @@
 
 /* HEADER */
 header .container123 {
-    background-color: #15457cc9;
+    background-color: #00000085; /* bc header */
     padding-top: 30px;
-    padding-bottom: 30px;
 }
 
 .intro-text {
@@ -47,7 +46,7 @@ header .container123 {
 
 .tittle-Principal {
     display: block;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: cursive;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 4em;
@@ -60,12 +59,48 @@ header .container123 {
 
 
 .container_menu {
-    padding: 35px 0;
-    background-color: #001e41bf;
-    padding-left:10px;
-    padding-right:10px;
+    padding: 85px 0;
+    background-color: #00000085; /* color menu*/
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .img-services{
     max-width:80%;
+}
+
+.row_menu {
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    flex-wrap: wrap; /* Asegura que se acomoden en varias filas si es necesario */
+    gap: 25px; /* Espacio entre las columnas */
+}
+
+.portfolio-itemMenu {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Para evitar que las imágenes se desborden */
+    width: 45%; /* Ocupa el 45% del espacio disponible */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto hover */
+}
+
+.portfolio-itemMenu:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.img-servicesMenu {
+    width: 100%; /* Que la imagen ocupe todo el ancho del contenedor */
+    height: auto;
+    max-height: 200px; /* Limita la altura para que no se desborde */
+    object-fit: contain; /* Asegura que la imagen mantenga la proporción */
+    border-bottom: 1px solid #eeeeee; /* Separación visual entre la imagen y el título */
+}
+
+.title_menu {
+    font-size: 16px;
+    color: #333;
+    margin: 15px 0;
+    font-weight: 600;
 }

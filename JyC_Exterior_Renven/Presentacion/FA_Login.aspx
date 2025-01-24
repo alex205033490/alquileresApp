@@ -17,7 +17,7 @@
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form id="form1" runat="server" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+				<form id="form1" runat="server" style="background-color:#1a48914a;" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
 					<span class="login100-form-title">
 						Inicio de sesión 
                         
@@ -38,7 +38,7 @@
                     <br />
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">						
-                        <asp:DropDownList class="input100"  ID="dd_loginDpto" runat="server" >
+                        <asp:DropDownList class="input100" style="background-color:#2b71f73d;" ID="dd_loginDpto" runat="server" >
                               <asp:ListItem>Prueba</asp:ListItem>                              
                               <asp:ListItem>Renven</asp:ListItem>                              
                             </asp:DropDownList>

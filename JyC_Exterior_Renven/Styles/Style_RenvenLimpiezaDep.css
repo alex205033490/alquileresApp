@@ -44,7 +44,8 @@
 
 /* Mejorar el espacio alrededor del título */
 .title_principal {
-    margin: 15px 0;     border: 2px solid #023384;
+    margin: 15px 0;     
+    
 }
 
 .p_nombre{
@@ -134,4 +135,8 @@
 .container_BTNs{
     display: flex;
     justify-content : space-between;
+}
+
+.btn_font3 {
+    font-size:15px;
 }
