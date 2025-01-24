@@ -57,9 +57,16 @@
                 
                 <div class="col-6 portfolio-item">
                     <a href="./FR_ModLimpiezaDep.aspx" class="portfolio-link" data-toggle="modal">
-                        <img src="../img/logoLimpieza2.png" class="img-services" alt=""/>
+                        <img src="../img/logoLimpieza22.png" class="img-services" alt=""/>
                     </a>
                     <h6>Servicio de limpieza</h6>
+                </div>
+
+                <div class="col-6 portfolio-item">
+                    <a href="./FR_ActivosDpto.aspx" class="portfolio-link" data-toggle="modal">
+                        <img src="../img/logoMueble.png" class="img-services" alt=""/>
+                    </a>
+                    <h6>Administración de activos</h6>
                 </div>
 
 

@@ -337,6 +337,7 @@
     <Content Include="js_QRLector\main.js" />
     <Content Include="Presentacion\FA_Login.aspx" />
     <Content Include="Presentacion\FA_MenuPorArea.aspx" />
+    <Content Include="Presentacion\FR_ActivosDpto.aspx" />
     <Content Include="Presentacion\FR_ModLimpiezaDep.aspx" />
     <Content Include="Styles\login-box.css" />
     <Content Include="Styles\MenuPlantilla.css" />
@@ -464,6 +465,7 @@
     <Compile Include="ApiRest\DBApi.cs" />
     <Compile Include="Datos\DActualizacion.cs" />
     <Compile Include="Datos\DA_ActividadesPersonal.cs" />
+    <Compile Include="Datos\DA_ActivosDpto.cs" />
     <Compile Include="Datos\DA_AgendaNegociacion.cs" />
     <Compile Include="Datos\DA_AgendaProyecto.cs" />
     <Compile Include="Datos\DA_AgendaTelefonica.cs" />
@@ -539,6 +541,7 @@
     <Compile Include="Negocio\ImpresorRecibo.cs" />
     <Compile Include="Negocio\NActualizacion.cs" />
     <Compile Include="Negocio\NA_ActividadesPersonal.cs" />
+    <Compile Include="Negocio\NA_ActivosDpto.cs" />
     <Compile Include="Negocio\NA_AgendaNegociacion.cs" />
     <Compile Include="Negocio\NA_AgendaProyectos.cs" />
     <Compile Include="Negocio\NA_AgendaTelefonica.cs" />
@@ -650,6 +653,13 @@
     </Compile>
     <Compile Include="Presentacion\FCorpal_SolicitudPedido.aspx.designer.cs">
       <DependentUpon>FCorpal_SolicitudPedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FR_ActivosDpto.aspx.cs">
+      <DependentUpon>FR_ActivosDpto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FR_ActivosDpto.aspx.designer.cs">
+      <DependentUpon>FR_ActivosDpto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.cs">
       <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
