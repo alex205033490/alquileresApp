@@ -1,0 +1,112 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Users\\SISTEMA\\Documents\\GitHub\\alquileresApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C521EF43-A5B1-4A0E-BE5C-0BF10AF38F36}|JyC_Exterior_Renven\\JyC_renven.csproj|f:\\users\\sistema\\documents\\github\\alquileresapp\\jyc_exterior_renven\\presentacion\\fa_login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C521EF43-A5B1-4A0E-BE5C-0BF10AF38F36}|JyC_Exterior_Renven\\JyC_renven.csproj|solutionrelative:jyc_exterior_renven\\presentacion\\fa_login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C521EF43-A5B1-4A0E-BE5C-0BF10AF38F36}|JyC_Exterior_Renven\\JyC_renven.csproj|f:\\users\\sistema\\documents\\github\\alquileresapp\\jyc_exterior_renven\\presentacion\\fr_modlimpiezadep.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C521EF43-A5B1-4A0E-BE5C-0BF10AF38F36}|JyC_Exterior_Renven\\JyC_renven.csproj|solutionrelative:jyc_exterior_renven\\presentacion\\fr_modlimpiezadep.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FR_ModLimpiezaDep.aspx",
+              "DocumentMoniker": "F:\\Users\\SISTEMA\\Documents\\GitHub\\alquileresApp\\JyC_Exterior_Renven\\Presentacion\\FR_ModLimpiezaDep.aspx",
+              "RelativeDocumentMoniker": "JyC_Exterior_Renven\\Presentacion\\FR_ModLimpiezaDep.aspx",
+              "ToolTip": "F:\\Users\\SISTEMA\\Documents\\GitHub\\alquileresApp\\JyC_Exterior_Renven\\Presentacion\\FR_ModLimpiezaDep.aspx",
+              "RelativeToolTip": "JyC_Exterior_Renven\\Presentacion\\FR_ModLimpiezaDep.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-01-21T14:26:01.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FA_Login.aspx",
+              "DocumentMoniker": "F:\\Users\\SISTEMA\\Documents\\GitHub\\alquileresApp\\JyC_Exterior_Renven\\Presentacion\\FA_Login.aspx",
+              "RelativeDocumentMoniker": "JyC_Exterior_Renven\\Presentacion\\FA_Login.aspx",
+              "ToolTip": "F:\\Users\\SISTEMA\\Documents\\GitHub\\alquileresApp\\JyC_Exterior_Renven\\Presentacion\\FA_Login.aspx",
+              "RelativeToolTip": "JyC_Exterior_Renven\\Presentacion\\FA_Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-01-21T13:56:11.151Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
