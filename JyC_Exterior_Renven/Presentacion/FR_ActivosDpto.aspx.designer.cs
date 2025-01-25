@@ -60,15 +60,6 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.TextBox txt_Direccion;
 
         /// <summary>
-        /// Control dd_listAlmacen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dd_listAlmacen;
-
-        /// <summary>
         /// Control gv_activos.
         /// </summary>
         /// <remarks>
@@ -112,6 +103,15 @@ namespace JyC_Exterior.Presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_cantidadActivo;
+
+        /// <summary>
+        /// Control dd_listAlmacen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dd_listAlmacen;
 
         /// <summary>
         /// Control btn_addActivo.
