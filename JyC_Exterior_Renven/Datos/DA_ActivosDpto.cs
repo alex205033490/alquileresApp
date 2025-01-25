@@ -40,7 +40,19 @@ namespace JyC_Exterior.Datos
             return conexion.ejecutarMySql(consulta);
         }
 
+        internal DataSet get_listAlmacenes()
+        {
+            string consulta = "SELECT al.codigo, al.nombre from tbalq_almacen al";
+            return conexion.consultaMySql(consulta);
+        }
 
+        internal bool insert_detalleAlmacen(int codAlmacen, int codItem, int cantidad, int codres)
+        {
+            string consulta = "insert into tbalq_detallealmacen (codalmacen, coditem, fechagra, horagra, cantidad, codres) " +
+                " values (" + codAlmacen + ", " + codItem + ", current_date(), current_time(), " + cantidad + ", " + codres + "); ";
 
+            return conexion.ejecutarMySql(consulta);
+        }
     }
 }
+

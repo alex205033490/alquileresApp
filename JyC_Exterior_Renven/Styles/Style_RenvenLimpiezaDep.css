@@ -140,3 +140,13 @@
 .btn_font3 {
     font-size:15px;
 }
+
+.container_ddpto {
+    padding: 10px;
+    background-color: #126cd91f;
+}
+
+.container_listActivos{
+    height:300px;
+    border: 2px solid black;
+}

@@ -11,13 +11,7 @@ namespace JyC_Exterior.NegocioPlantilla
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Literal cssLink = new Literal();
-                cssLink.Text = "<link href= '../Styles/MenuPlantilla.css' rel='stylesheet' type='text/css' />";
-                Page.Header.Controls.Add(cssLink);
-
-            }
+            
 
         }
     }

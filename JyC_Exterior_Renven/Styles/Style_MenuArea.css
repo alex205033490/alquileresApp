@@ -30,7 +30,7 @@
 
 /* HEADER */
 header .container123 {
-    background-color: #00000085; /* bc header */
+    background-color: #aaaaaa85; /* bc header */
     padding-top: 30px;
 }
 
@@ -60,7 +60,7 @@ header .container123 {
 
 .container_menu {
     padding: 85px 0;
-    background-color: #00000085; /* color menu*/
+    background-color: #aaaaaa85; /* color menu*/
     padding-left: 10px;
     padding-right: 10px;
 }

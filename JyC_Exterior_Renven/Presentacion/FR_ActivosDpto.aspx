@@ -66,6 +66,12 @@
                                 <asp:TextBox ID="txt_Direccion" Style="font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <p class="p_nombre mb-1">Almacén:</p>
+                            <asp:dropdownlist ID="dd_listAlmacen" runat="server" style="font-size:0.7rem" CssClass="form-select">
+                            </asp:dropdownlist>
+
+                        </div>
 
                     </div>
 
@@ -126,9 +132,7 @@
                                 <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
                         </div>
 
-
-
-                            <div class="table-responsive list_dpto mt-1">
+                            <div class="table-responsive container_listActivos mt-1">
                                 <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                     <Columns>
                                         <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
@@ -137,8 +141,7 @@
                                     </Columns>
                                 </asp:GridView>
                             </div>
-
-
+                        <br />
                         </div>
                     </div>
         </ContentTemplate>

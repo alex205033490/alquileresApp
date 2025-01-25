@@ -20,8 +20,28 @@ namespace JyC_Exterior.Presentacion
             if (!IsPostBack)
             {
                 MostrarActivos();
+                cargarAlmacenes();
             }
         }
+        // dd mostrar almacenes
+        private void cargarAlmacenes()
+        {
+            NA_ActivosDpto negocio = new NA_ActivosDpto();
+            DataSet dsAlmacenes = negocio.get_listAlmacenes();
+
+            if (dsAlmacenes != null && dsAlmacenes.Tables.Count > 0)
+            {
+                dd_listAlmacen.DataSource = dsAlmacenes.Tables[0];
+                dd_listAlmacen.DataTextField = "nombre";
+                dd_listAlmacen.DataValueField = "codigo";
+                dd_listAlmacen.DataBind();
+
+                System.Web.UI.WebControls.ListItem li = new System.Web.UI.WebControls.ListItem("Seleccione un almacén", "0");
+                dd_listAlmacen.Items.Insert(0, li);
+            }
+
+        }
+
 
         // GET mostrar dpto
         protected void txt_edificio_TextChanged(object sender, EventArgs e)
@@ -243,10 +263,17 @@ namespace JyC_Exterior.Presentacion
         {
             try 
             {
+                
                 if (string.IsNullOrWhiteSpace(txt_codDepartamento.Text))
                 {
                     showaler("Seleccione un departamento válido");
                     return;
+                }
+
+                int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
+                if (dd_almacen <= 0)
+                {
+                    showaler("Seleccione un almacén válido");
                 }
 
                 List<ActivosDTO> listaActivos = obtenerListActivos();
@@ -267,9 +294,18 @@ namespace JyC_Exterior.Presentacion
 
                 if (InsertarActivosADpto(listaActivos, codDpto, codResponsable))
                 {
-                    showaler("El formulario se a registrado correctamente.");
+
+
+                    bool insertDetAlmacen = InsertarDetalleAlmacen(listaActivos, dd_almacen, codResponsable);
+                    if (!insertDetAlmacen)
+                    {
+                        showaler("error al insertar datos en detalle almacen");
+                        return;
+                    }
+                    showaler("El formulario se ha registrado correctamente.");
                     limpiarFormularioRegistro();
                     limpiarCamposActivo();
+
                 }
 
                 else
@@ -282,7 +318,30 @@ namespace JyC_Exterior.Presentacion
                 showaler($"Error: {ex.Message}");
             }
         }
+        private bool InsertarDetalleAlmacen(List<ActivosDTO> listActivos, int codAlmacen, int codres)
+        {
+            try
+            {
+                NA_ActivosDpto negocio = new NA_ActivosDpto();
+                foreach(var activo in listActivos)
+                {
+                    bool resultado = negocio.insertar_detalleAlmacen(codAlmacen, activo.codigo, activo.cantidad, codres);
 
+                    if (!resultado)
+                    {
+                        showaler($"Error da al insertar el activo con el codigo : {activo.codigo}");
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                showaler($"Error al insertar datos a DetalleAlmacen: {ex.Message}");
+                return false;
+            }
+
+        }
        
         private bool InsertarActivosADpto(List<ActivosDTO> listActivos, int codDpto, int codRes)
         {
@@ -348,6 +407,7 @@ namespace JyC_Exterior.Presentacion
             gv_activos.DataBind();
             Session.Remove("SactivosAdd");
 
+            dd_listAlmacen.SelectedValue = "0";
         }
 
 

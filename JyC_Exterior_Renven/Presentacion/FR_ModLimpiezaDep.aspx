@@ -26,93 +26,89 @@
     <div class="form-limpiezaDep">
         <div class="container-main">
             <div class="title_principal">
-                <h1 class="">Registro de visita y reposición de insumos</h1>
+                <h1 class="">Registro de visita para limpieza</h1>
             </div>
 
             <div class="form_datosDep">
                 <h3>Datos del Departamento</h3>
-                <div class="row">
+                <div class="row mb-2">
                     <div class="item_Edificio col-12">
                         <p class="p_nombre mb-1">Edificio:</p>
-                        <asp:TextBox ID="txt_edificio" runat="server" CssClass="form-control" AutoComplete="off" OnTextChanged="txt_edificio_TextChanged" AutoPostBack="true" placeholder="Ingrese el nombre de un edificio"></asp:TextBox>
-                        
+                        <asp:TextBox ID="txt_edificio" runat="server" Style="font-size: 12px" CssClass="form-control" AutoComplete="off" OnTextChanged="txt_edificio_TextChanged" AutoPostBack="true" placeholder="Ingrese el nombre de un edificio"></asp:TextBox>
+
                         <div class="table-responsive list_dpto mt-1">
                             <asp:GridView ID="gv_getDepartamentos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_getDepartamentos_SelectedIndexChanged">
-                             <Columns>
-                                <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar"  />
-                                <asp:BoundField datafield="codDep" HeaderText="Cod Dpto" HtmlEncode="false"/>
-                                <asp:BoundField datafield="Edificio" HeaderText="Edificio" HtmlEncode="false"/>
-                                <asp:BoundField datafield="nroInmueble" HeaderText="Nro Inmueble" HtmlEncode="false" />
-                                <asp:BoundField datafield="nroDormitorios" HeaderText="Nro Dormitorios" HtmlEncode="false"/>
-                                <asp:BoundField datafield="direccionDep" HeaderText="Dirección" HtmlEncode="false"/>
-                                <asp:BoundField datafield="tipoDep" HeaderText="Tipo Dpto" HtmlEncode="false"/>
-                                <asp:BoundField datafield="codSimec" HeaderText="Cod Simec" HtmlEncode="false"/>
-                             </Columns>
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
+                                    <asp:BoundField DataField="codDep" HeaderText="Codigo Dpto" HtmlEncode="false" />
+                                    <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false" />
+                                    <asp:BoundField DataField="nroInmueble" HeaderText="Numero Inmueble" HtmlEncode="false" />
+                                    <asp:BoundField DataField="nroDormitorios" HeaderText="Numero Dormitorios" HtmlEncode="false" />
+                                    <asp:BoundField DataField="direccionDep" HeaderText="Dirección" HtmlEncode="false" />
+                                    <asp:BoundField DataField="tipoDep" HeaderText="Tipo Dpto" HtmlEncode="false" />
+                                    <asp:BoundField DataField="codSimec" HeaderText="Codigo Simec" HtmlEncode="false" />
+                                </Columns>
                             </asp:GridView>
-                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="item_departamento col-5">
+                <div class="row mb-2 container_ddpto">
+                    <div class="item_departamento col-6">
                         <p class="p_nombre mb-1">Cod Departamento:</p>
                         <asp:TextBox ID="txt_codDepartamento" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                     </div>
-                    <div class="item_nroHabitaciones col-5">
+                    <div class="item_nroHabitaciones col-6 mb-2">
                         <p class="p_nombre mb-1">nro Habitaciones:</p>
                         <asp:TextBox ID="txt_nroHabitaciones" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
                     </div>
-                    
+
+
+                    <div class="item_direccion col-7 mb-1">
+                        <p class="p_nombre mb-1">Dirección:</p>
+                        <asp:TextBox ID="txt_Direccion" Style="font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+                    </div>
+                    <div class="item_depInmueble col-5">
+                        <p class="p_nombre mb-1">dpto Inmueble:</p>
+                        <asp:TextBox ID="txt_dptoInmueble" runat="server" style="font-size:13px;" CssClass="form-control" AutoComplete="off" ReadOnly="true"></asp:TextBox>
+
+                    </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="item_direccion col-8">
-                    <p class="p_nombre mb-1">Dirección:</p>
-                    <asp:TextBox ID="txt_Direccion" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="true"></asp:TextBox>
-    
-                </div>
-                <div class="item_depInmueble col-6">
-                    <p class="p_nombre mb-1">dpto Inmueble:</p>
-                    <asp:TextBox ID="txt_dptoInmueble" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="true"></asp:TextBox>
-    
-                </div>
-
-            </div>
-
-            <div class="row">
-                    <div class="item_tipoLimpieza col-6">
+                <div class="item_tipoLimpieza col-6">
                     <p class="p_nombre mb-1">Tipo de limpieza:</p>
-                    <asp:DropDownList ID="dd_tipoLimpieza" runat="server" CssClass="form-select">
-                        
+                    <asp:DropDownList ID="dd_tipoLimpieza" style="font-size:0.7rem;" runat="server" CssClass="form-select">
                     </asp:DropDownList>
-                
+
                 </div>
                 <div class="item_direccion col-6">
                     <p class="p_nombre mb-1">Observación:</p>
-                    <asp:TextBox ID="txt_observacion" runat="server" CssClass="form-control" AutoComplete="off"></asp:TextBox>
-                    
+                    <asp:TextBox ID="txt_observacion" Style="font-size: 0.6rem; height: 3.5rem;" ReadOnly="false" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+
+
                 </div>
-                
+
             </div>
 
             <div class="container_itemsRepo mt-4">
                 <div class="tittle_itemRepo">
-                    <h3> Insumos para el hogar</h3>
+                    <h3>Lista de Insumos</h3>
                 </div>
 
                 <div class="listItemsRepo">
-                    <asp:GridView id="gv_items" runat="server" AutoGenerateColumns="false" CssClass="gv_items table table-bordered">
+                    <asp:GridView ID="gv_items" runat="server" AutoGenerateColumns="false" CssClass="gv_items table table-bordered">
                         <Columns>
-                            <asp:BoundField datafield="codigo" HeaderText="CODIGO" HtmlEncode="false"/>
-                            <asp:BoundField datafield="nombre" HeaderText="INSUMO" HtmlEncode="false"/>
+                            <asp:BoundField DataField="codigo" HeaderText="CODIGO" HtmlEncode="false" />
+                            <asp:BoundField DataField="nombre" HeaderText="INSUMO" HtmlEncode="false" />
                             <asp:TemplateField HeaderText="CANTIDAD" ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                        <div class="col-12">
-                                            <asp:TextBox ID="txt_cantidadItem" type="number" runat="server" CssClass="form-control cantidad-textbox"
-                                             TextMode="SingleLine" MaxLength="3"></asp:TextBox>
-                                        </div>
-                                    <asp:RegularExpressionValidator id="rCantidad" runat="server" ControlToValidate="txt_cantidadItem"
+                                    <div class="col-12">
+                                        <asp:TextBox ID="txt_cantidadItem" type="number" runat="server" CssClass="form-control cantidad-textbox"
+                                            TextMode="SingleLine" MaxLength="3"></asp:TextBox>
+                                    </div>
+                                    <asp:RegularExpressionValidator ID="rCantidad" runat="server" ControlToValidate="txt_cantidadItem"
                                         ValidationExpression="^\d+$" ForeColor="White" ErrorMessage="Ingrese solo datos númericos">
                                     </asp:RegularExpressionValidator>
                                 </ItemTemplate>
