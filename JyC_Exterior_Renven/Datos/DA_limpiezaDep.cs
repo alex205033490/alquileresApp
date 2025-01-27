@@ -17,7 +17,7 @@ namespace JyC_Exterior.Datos
         internal DataSet get_listDepartamentoInmueble(string dep)
         {
             string consulta = " select eq.codigo as codDep, eq.dg_nombreinmueble as Edificio, eq.dg_numeroinmueble as nroInmueble," +
-                " eq.dg_nrodormitorios as nroDormitorios, eq.dg_direccion as direccionDep, eq.dg_tipoinmueble as tipoDep, " +
+                " eq.dg_nrodormitorios as nroDormitorios, eq.dg_direccion as direccionDep, eq.dg_departamentociudad as ciudad, " +
                 "eq.dg_codigovarsimec as codSimec from tb_equipo eq where eq.dg_nombreinmueble like '%" + dep + "%' ";
 
             DataSet lista = conexion.consultaMySql(consulta);

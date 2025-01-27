@@ -71,20 +71,53 @@ namespace JyC_Exterior.Presentacion
             GridViewRow row = gv_getDepartamentos.Rows[index];
 
             string codDpto = row.Cells[1].Text;
-            string edificio = row.Cells[2].Text;
-            string direccion = row.Cells[3].Text;
+            string nomEdificio = row.Cells[2].Text;
+            string denominacion = row.Cells[3].Text;
+            string direccion = row.Cells[4].Text;
+            string ciudad = row.Cells[5].Text;
+            string codSimec = row.Cells[6].Text;
+            string nroInmueble = row.Cells[7].Text;
+            string nroDormitorios = row.Cells[8].Text;
+            
+            if ((nroInmueble) == "&nbsp;")
+            {
+                nroInmueble = "";
+            }
+            if ((nroDormitorios) == "&nbsp;")
+            {
+                nroDormitorios = "";
+            }
+            if ((denominacion) == "&nbsp;")
+            {
+                denominacion = "";
+            }
+            if ((ciudad) == "&nbsp;")
+            {
+                ciudad = "";
+            }
+            if ((nroDormitorios) == "&nbsp;")
+            {
+                nroDormitorios = "";
+            }
 
-            txt_codDepartamento.Text = codDpto;
-            txt_edificio.Text = edificio;
+            Session["SADcoddpto"] = codDpto;
+            txt_edificio.Text = nomEdificio;
+            Session["SADnominmueble"] = nomEdificio;
+            txt_Habitacion.Text = denominacion;
             txt_Direccion.Text = direccion;
+            Session["SADciudad"] = ciudad;
+            Session["SADcodsimec"] = codSimec;
+            Session["SADnroinmueble"] = nroInmueble;
+            Session["SADnrodormitorios"] = nroDormitorios;
 
             gv_getDepartamentos.Visible = false;
+
 
         }
         // Limpiar campos Dpto
         private void limpiarCamposDpto()
         {
-            txt_codDepartamento.Text = "";
+            txt_Habitacion.Text = "";
             txt_edificio.Text = "";
             txt_Direccion.Text = "";
         }
@@ -263,12 +296,21 @@ namespace JyC_Exterior.Presentacion
         {
             try 
             {
-                
-                if (string.IsNullOrWhiteSpace(txt_codDepartamento.Text))
-                {
-                    showaler("Seleccione un departamento válido");
-                    return;
-                }
+                int codDpto = int.Parse(Session["SADcoddpto"].ToString());
+
+                string codSimec = Session["SADcodsimec"].ToString();
+
+                string nomInmueble = Session["SADnominmueble"].ToString();
+
+                string nroInmueble = Session["SADnroinmueble"].ToString();
+
+                int nroDormitorios = int.Parse(Session["SADnrodormitorios"].ToString());
+
+                string direccion = txt_Direccion.Text;
+
+                string ciudad = Session["SADciudad"].ToString();
+
+                string habitacion = txt_Habitacion.Text;
 
                 int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
                 if (dd_almacen <= 0)
@@ -290,16 +332,26 @@ namespace JyC_Exterior.Presentacion
                     return;
                 }
 
-                int codDpto = int.Parse(txt_codDepartamento.Text.Trim());
-
                 if (InsertarActivosADpto(listaActivos, codDpto, codResponsable))
                 {
 
 
-                    bool insertDetAlmacen = InsertarDetalleAlmacen(listaActivos, dd_almacen, codResponsable);
-                    if (!insertDetAlmacen)
+                    bool insertReciboIngresoActivoDpto = Insertar_ReciboIngresoActivoDpto(codDpto, codSimec, nomInmueble, nroInmueble,nroDormitorios, direccion, ciudad, codResponsable, habitacion );
+                    if (insertReciboIngresoActivoDpto)
                     {
-                        showaler("error al insertar datos en detalle almacen");
+                        int ultimoReciboIngreso = ObtenerUltimoReciboIngresoActivo(codResponsable);
+                        
+                        bool insertarDetalleReciboIngresoActivo = Insertar_detalleReciboIngresoActivoDpto(listaActivos, ultimoReciboIngreso, codResponsable, dd_almacen);
+
+                        if (!insertarDetalleReciboIngresoActivo)
+                        {
+                            showaler($"Error al insertar el detalleReciboIngreso con el codRecibo: {ultimoReciboIngreso}" );
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        showaler("Error al insertar en la tabla reciboIngresoActivoDpto.");
                         return;
                     }
                     showaler("El formulario se ha registrado correctamente.");
@@ -318,29 +370,64 @@ namespace JyC_Exterior.Presentacion
                 showaler($"Error: {ex.Message}");
             }
         }
-        private bool InsertarDetalleAlmacen(List<ActivosDTO> listActivos, int codAlmacen, int codres)
+        private bool Insertar_ReciboIngresoActivoDpto(int coddpto, string codSimec, string nomInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, int codres, string denominacion)
+        {
+            try
+            {
+                NA_ActivosDpto negocio = new NA_ActivosDpto();
+
+                bool resultado = negocio.post_reciboIngresoActivo(coddpto, codSimec, nomInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, codres, denominacion);
+
+                if (!resultado)
+                {
+                    showaler($"Error al crear el recibo del ingreso del departamento : {coddpto}");
+                    return false;
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                showaler($"Error al insertar datos a reciboIngresoActivos: {ex.Message}");
+                return false;
+            }
+
+        }
+        private bool Insertar_detalleReciboIngresoActivoDpto(List<ActivosDTO> listActivos, int codRecibo, int codRes , int codAlmacen )
         {
             try
             {
                 NA_ActivosDpto negocio = new NA_ActivosDpto();
                 foreach(var activo in listActivos)
                 {
-                    bool resultado = negocio.insertar_detalleAlmacen(codAlmacen, activo.codigo, activo.cantidad, codres);
+                    bool resultado = negocio.post_detalleReciboIngresoActivoDpto(codRecibo, activo.codigo, activo.cantidad, codRes, codAlmacen);
 
                     if (!resultado)
                     {
-                        showaler($"Error da al insertar el activo con el codigo : {activo.codigo}");
+                        showaler($"Error al insertar el activo con el codigo : {activo.codigo}");
                         return false;
                     }
                 }
                 return true;
+
             }
             catch(Exception ex)
             {
-                showaler($"Error al insertar datos a DetalleAlmacen: {ex.Message}");
+                showaler($"Error al insertar datos a DetalleReciboActivos: {ex.Message}");
                 return false;
             }
-
+        }
+        private int ObtenerUltimoReciboIngresoActivo(int codRes)
+        {
+            try
+            {
+                NA_ActivosDpto negocio = new NA_ActivosDpto();
+                return negocio.get_ultimoRegistroReciboIngresoActivo(codRes);
+            }
+            catch(Exception ex)
+            {
+                showaler($"Error al obtener el ultimo registro del recibo insertado. {ex.Message}");
+                return 0;
+            }
         }
        
         private bool InsertarActivosADpto(List<ActivosDTO> listActivos, int codDpto, int codRes)
@@ -395,11 +482,17 @@ namespace JyC_Exterior.Presentacion
         private void limpiarFormularioRegistro()
         {
             txt_edificio.Text = string.Empty;
+            Session.Remove("SADnominmueble");
+            Session.Remove("SADcoddpto");
+            Session.Remove("SADciudad");
+            Session.Remove("SADcodsimec");
+            Session.Remove("SADnroinmueble");
+            Session.Remove("SADnrodormitorios");
 
             gv_getDepartamentos.DataSource = null;
             gv_getDepartamentos.DataBind();
 
-            txt_codDepartamento.Text = string.Empty;
+            txt_Habitacion.Text = string.Empty;
 
             txt_Direccion.Text = string.Empty;
 
@@ -409,16 +502,6 @@ namespace JyC_Exterior.Presentacion
 
             dd_listAlmacen.SelectedValue = "0";
         }
-
-
-
-
-
-
-
-
-
-
 
         /*      OTROS    */
         private void showaler(string mensaje)

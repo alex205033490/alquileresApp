@@ -46,22 +46,28 @@
                                 <asp:GridView ID="gv_getDepartamentos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_getDepartamentos_SelectedIndexChanged">
                                     <Columns>
                                         <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
-                                        <asp:BoundField DataField="Codigo" HeaderText="Codigo Dpto" HtmlEncode="false" />
-                                        <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false" />
+                                        <asp:BoundField DataField="codigo" HeaderText="Codigo Dpto"/>
+                                        <asp:BoundField DataField="edificio" HeaderText="Edificio" HtmlEncode="false" />
+                                        <asp:BoundField DataField="denominacion" HeaderText="nro habitación" HtmlEncode="false" />
                                         <asp:BoundField DataField="direccion" HeaderText="Dirección" HtmlEncode="false" />
-                                    </Columns>
-                                </asp:GridView>
+                                        <asp:BoundField DataField="ciudad" HeaderText="Ciudad" HtmlEncode="false" />
+                                        <asp:BoundField DataField="codSimec" HeaderText="cod Simec" HtmlEncode="false" />
+                                        <asp:BoundField DataField="nroInmueble" HeaderText="nro Inmueble" HtmlEncode="false" />
+                                        <asp:BoundField DataField="nrohabitaciones" HeaderText="nro dormitorios" />
+
+                                        </Columns>
+                                    </asp:GridView>
 
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="item_departamento col-4">
-                                <p class="p_nombre mb-1">Codigo Dpto:</p>
-                                <asp:TextBox ID="txt_codDepartamento" runat="server" Style="background-color: #738aa436;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
+                            <div class="item_departamento col-5">
+                                <p class="p_nombre mb-1">Nro Habitación:</p>
+                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #738aa436; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                             </div>
 
-                            <div class="item_direccion col-8 fs-3">
+                            <div class="item_direccion col-7 fs-3">
                                 <p class="p_nombre mb-1">Dirección:</p>
                                 <asp:TextBox ID="txt_Direccion" Style="background-color: #738aa436; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
                             </div>

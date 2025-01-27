@@ -61,7 +61,7 @@ namespace JyC_Exterior.Presentacion
             string nroInmueble = row.Cells[3].Text;
             string nroDormitorios = row.Cells[4].Text;
             string direccionDep = row.Cells[5].Text;
-            string tipoDep = row.Cells[6].Text;
+            string ciudad = row.Cells[6].Text;
             string codSimec = row.Cells[7].Text;
 
             if(nroInmueble == "&nbsp;")
@@ -84,7 +84,7 @@ namespace JyC_Exterior.Presentacion
 
             txt_Direccion.Text = direccionDep;
 
-            txt_dptoInmueble.Text = tipoDep;
+            txt_Ciudad.Text = ciudad;
 
             Session["SLDcodSimec"] = codSimec;
 
@@ -127,23 +127,31 @@ namespace JyC_Exterior.Presentacion
                 return false;
             }
         }
+       
+        private void validarDatos()
+        {
+            if (string.IsNullOrEmpty(txt_edificio.Text)|| Session["SLDedificio"] == null)
+            {
+                showaler("Error: Busque y seleccione un edificio válido");
+                return;
+            }
+            if (Session["SLDcodSimec"] == null || Session["SLDnroInmueble"] == null)
+            {
+                showaler("Error: dato codigo Simec faltante");
+                return;
+            }
+            if (!int.TryParse(txt_codDepartamento.Text, out int codigo) || codigo <= 0)
+            {
+                showaler("Error: Codigo departamento inválido");
+                    return;
+            }
+
+
+        }
         private void guardarFormulario()
         {
             try
             {
-                if (string.IsNullOrEmpty(txt_edificio.Text) || Session["SLDedificio"] == null)
-                {
-                    showaler("Error: busque y seleccione un edificio válido.");
-                    return;
-                }
-
-                // Validar que los valores de Session no sean nulos
-                if (Session["SLDcodSimec"] == null || Session["SLDnroInmueble"] == null)
-                {
-                    showaler("Error: Datos del departamento faltantes.");
-                    return;
-                }
-
                 // Validar que los valores de los TextBox sean correctos
                 if (!int.TryParse(txt_codDepartamento.Text, out int codigo) || codigo <= 0)
                 {
@@ -170,13 +178,13 @@ namespace JyC_Exterior.Presentacion
                 string nroInmueble = Session["SLDnroInmueble"].ToString();
                 
                 string direccionInmueble = txt_Direccion.Text;
-                string dptoInmueble = txt_dptoInmueble.Text;
+                string ciudad = txt_Ciudad.Text;
                 string tipoLimpieza = dd_tipoLimpieza.SelectedItem.ToString();
                 int codtipolimpieza = int.Parse(dd_tipoLimpieza.SelectedValue.ToString());
                 int codRLimpieza = codRespLimpieza;
                 string observacion = txt_observacion.Text;
 
-                bool exito = RegistrarVisitadpto(codigo, codSimec, nomInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codtipolimpieza);
+                bool exito = RegistrarVisitadpto(codigo, codSimec, nomInmueble, nroInmueble, nroHabitaciones, direccionInmueble, ciudad, tipoLimpieza, codRLimpieza, observacion, codtipolimpieza);
 
                 NA_limpiezaDep nego_lDpto = new NA_limpiezaDep();
 
@@ -278,7 +286,7 @@ namespace JyC_Exterior.Presentacion
             txt_codDepartamento.Text = "";
             txt_nroHabitaciones.Text = "";
             txt_Direccion.Text = "";
-            txt_dptoInmueble.Text = "";
+            txt_Ciudad.Text = "";
             dd_tipoLimpieza.SelectedIndex = 0;
             txt_observacion.Text = "";
 

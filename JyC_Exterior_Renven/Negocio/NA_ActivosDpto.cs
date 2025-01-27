@@ -30,11 +30,32 @@ namespace JyC_Exterior.Negocio
         {
             return datosActivos.get_listAlmacenes();
         }
-
+        /*     - ERROR -
         internal bool insertar_detalleAlmacen(int codAlmacen, int codItem, int cantidad, int codres)
         {
             return datosActivos.insert_detalleAlmacen(codAlmacen, codItem, cantidad, codres);
         }
+        */
 
+        internal bool post_reciboIngresoActivo(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nrohabitaciones, string direccionInmueble, string dptoInmueble, int codres, string nroDenominacion)
+        {
+            return datosActivos.post_reciboIngresoActivoDpto(coddpto, codSimec, nombreInmueble, nroInmueble, nrohabitaciones, direccionInmueble, dptoInmueble, codres, nroDenominacion);
+        }
+
+        internal bool post_detalleReciboIngresoActivoDpto(int codRecibo, int codItem, int cantidad, int codRes, int codAlmacen)
+        {
+            return datosActivos.post_detalleReciboIngresoActivoDpto(codRecibo, codItem, cantidad, codRes, codAlmacen);
+        }
+
+        internal int get_ultimoRegistroReciboIngresoActivo(int codRes)
+        {
+            DataSet datos = datosActivos.get_ultimoRegistroReciboIngresoActivoDpto(codRes);
+            if (datos.Tables[0].Rows.Count > 0)
+            {
+                return int.Parse(datos.Tables[0].Rows[0][0].ToString());
+            }
+            else
+                return -1;
+        }
     }
 }

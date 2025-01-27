@@ -14,7 +14,9 @@ namespace JyC_Exterior.Datos
         internal DataSet get_listDpto(string dep)
         {
             string consulta = "SELECT eq.codigo, eq.dg_nombreinmueble as edificio, " +
-                " eq.dg_direccion as direccion FROM tb_equipo eq where eq.estado = 1 AND " +
+                " eq.dg_direccion as direccion, eq.dg_denominacion as denominacion, eq.dg_codigovarsimec as codSimec, " +
+                "eq.dg_numeroinmueble as nroInmueble, eq.dg_nrodormitorios as nrohabitaciones, " +
+                "eq.dg_departamentociudad as ciudad FROM tb_equipo eq where eq.estado = 1 AND " +
                 " eq.dg_nombreinmueble like '%" + dep + "%' ";
 
             DataSet lista = conexion.consultaMySql(consulta);
@@ -46,6 +48,7 @@ namespace JyC_Exterior.Datos
             return conexion.consultaMySql(consulta);
         }
 
+        /*         - ERROR -
         internal bool insert_detalleAlmacen(int codAlmacen, int codItem, int cantidad, int codres)
         {
             string consulta = "insert into tbalq_detallealmacen (codalmacen, coditem, fechagra, horagra, cantidad, codres) " +
@@ -53,6 +56,30 @@ namespace JyC_Exterior.Datos
 
             return conexion.ejecutarMySql(consulta);
         }
+        */
+        internal bool post_reciboIngresoActivoDpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nrohabitaciones, string direccionInmueble, string dptoInmueble, int codres, string nrodenominacion)
+        {
+            string consulta = "insert into tbalq_reciboingresoegresoactivodpto(fechagra, horagra, coddpto, codSimec, nombreInmueble, nroInmueble, nrohabitaciones, direccionInmueble, dptoInmueble, tiporecibo, codres, vaciadosimec, estado, nrodenominacioninmueble)" +
+                " values (current_date(), current_time(), " + coddpto + ", '" + codSimec + "', '" + nombreInmueble + "', '" + nroInmueble + "', " + nrohabitaciones + ", '" + direccionInmueble + "','" + dptoInmueble + "', 'ingreso', " + codres + ", 0, 1, '"+nrodenominacion+"')";
+
+            return conexion.ejecutarMySql(consulta);               
+        }
+
+        internal bool post_detalleReciboIngresoActivoDpto(int codRecibo, int codItem, int cantidad, int codRes, int codAlmacen)
+        {
+            string consulta = "insert into tbalq_detallereciboingresoegresoactivodpto " +
+                "(codrecibo, coditem, fechagra, horagra, cantidad, codres, codalmacen) " +
+                "values (" + codRecibo + ", " + codItem + ", current_date(), current_time(), " + cantidad + ", " + codRes + ", " + codAlmacen + ")";
+
+            return conexion.ejecutarMySql(consulta);
+        }
+
+        internal DataSet get_ultimoRegistroReciboIngresoActivoDpto(int codRes)
+        {
+            string consulta = "select max(codigo) from tbalq_reciboingresoegresoactivodpto re " +
+                " where re.codres = " + codRes + "; ";
+
+            return conexion.consultaMySql(consulta);
+        }
     }
 }
-

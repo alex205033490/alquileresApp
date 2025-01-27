@@ -26,7 +26,7 @@
     <div class="form-limpiezaDep">
         <div class="container-main">
             <div class="title_principal">
-                <h1 class="">Registro de visita para limpieza</h1>
+                <h1 class="">Registro de visita a departamento</h1>
             </div>
 
             <div class="form_datosDep">
@@ -45,7 +45,7 @@
                                     <asp:BoundField DataField="nroInmueble" HeaderText="Numero Inmueble" HtmlEncode="false" />
                                     <asp:BoundField DataField="nroDormitorios" HeaderText="Numero Dormitorios" HtmlEncode="false" />
                                     <asp:BoundField DataField="direccionDep" HeaderText="Dirección" HtmlEncode="false" />
-                                    <asp:BoundField DataField="tipoDep" HeaderText="Tipo Dpto" HtmlEncode="false" />
+                                    <asp:BoundField DataField="ciudad" HeaderText="Ciudad" HtmlEncode="false" />
                                     <asp:BoundField DataField="codSimec" HeaderText="Codigo Simec" HtmlEncode="false" />
                                 </Columns>
                             </asp:GridView>
@@ -56,21 +56,21 @@
                 <div class="row mb-2 container_ddpto">
                     <div class="item_departamento col-6">
                         <p class="p_nombre mb-1">Cod Departamento:</p>
-                        <asp:TextBox ID="txt_codDepartamento" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
+                        <asp:TextBox ID="txt_codDepartamento" style="background-color: #204d773b;" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                     </div>
                     <div class="item_nroHabitaciones col-6 mb-2">
-                        <p class="p_nombre mb-1">nro Habitaciones:</p>
-                        <asp:TextBox ID="txt_nroHabitaciones" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
+                        <p class="p_nombre mb-1">Nro Habitaciones:</p>
+                        <asp:TextBox ID="txt_nroHabitaciones" runat="server" style="background-color: #204d773b;" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
                     </div>
 
 
                     <div class="item_direccion col-7 mb-1">
                         <p class="p_nombre mb-1">Dirección:</p>
-                        <asp:TextBox ID="txt_Direccion" Style="font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+                        <asp:TextBox ID="txt_Direccion" Style="font-size: 0.6rem; height: 3.5rem; background-color: #204d773b;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
                     </div>
                     <div class="item_depInmueble col-5">
-                        <p class="p_nombre mb-1">dpto Inmueble:</p>
-                        <asp:TextBox ID="txt_dptoInmueble" runat="server" style="font-size:13px;" CssClass="form-control" AutoComplete="off" ReadOnly="true"></asp:TextBox>
+                        <p class="p_nombre mb-1">Ciudad:</p>
+                        <asp:TextBox ID="txt_Ciudad" runat="server" style="font-size:13px; background-color: #204d773b;" CssClass="form-control" AutoComplete="off" ReadOnly="true"></asp:TextBox>
 
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     <h3>Lista de Insumos</h3>
                 </div>
 
-                <div class="listItemsRepo">
+                <div class="listItemsRepo" >
                     <asp:GridView ID="gv_items" runat="server" AutoGenerateColumns="false" CssClass="gv_items table table-bordered">
                         <Columns>
                             <asp:BoundField DataField="codigo" HeaderText="CODIGO" HtmlEncode="false" />
@@ -105,12 +105,10 @@
                             <asp:TemplateField HeaderText="CANTIDAD" ItemStyle-Width="80px">
                                 <ItemTemplate>
                                     <div class="col-12">
-                                        <asp:TextBox ID="txt_cantidadItem" type="number" runat="server" CssClass="form-control cantidad-textbox"
+                                        <asp:TextBox ID="txt_cantidadItem" style="font-size:0.7rem;" type="number" runat="server" CssClass="form-control cantidad-textbox"
                                             TextMode="SingleLine" MaxLength="3"></asp:TextBox>
                                     </div>
-                                    <asp:RegularExpressionValidator ID="rCantidad" runat="server" ControlToValidate="txt_cantidadItem"
-                                        ValidationExpression="^\d+$" ForeColor="White" ErrorMessage="Ingrese solo datos númericos">
-                                    </asp:RegularExpressionValidator>
+                                    
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -123,6 +121,7 @@
                 <asp:Button ID="btn_registrarLimpdep" runat="server" Text="Registrar Reposición" CssClass="btn btn-success" OnClick="btn_registrarLimpdep_Click" />
 
             </div>
+            <br />
 
         </div>
     </div>

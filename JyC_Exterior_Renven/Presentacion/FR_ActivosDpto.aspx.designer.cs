@@ -42,13 +42,13 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.GridView gv_getDepartamentos;
 
         /// <summary>
-        /// Control txt_codDepartamento.
+        /// Control txt_Habitacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_codDepartamento;
+        protected global::System.Web.UI.WebControls.TextBox txt_Habitacion;
 
         /// <summary>
         /// Control txt_Direccion.
