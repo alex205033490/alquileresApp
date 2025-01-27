@@ -29,7 +29,7 @@
         </li>
 
         <li class="nav-item container-navItem">
-          <a class="nav-link" href="#">Registro de activos</a>
+          <a class="nav-link" href="./FR_ActivosDpto.aspx">Administración de activos</a>
         </li>
 
         <li class="nav-item container-navItem">

@@ -1,4 +1,5 @@
 ﻿/* NAVBAR*/
+
 .container-navbar {
     background-color: #15457ced;
 }
@@ -24,7 +25,7 @@
     border-bottom: 2px solid #ffffff;
 }
 /*  END */
-.form-limpiezaDep {
+.form-limpiezaDep, .form-activosDpto {
     padding: 8px; /* Espaciado interno para evitar que el contenido quede pegado al borde */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
     border: 1px solid #ccc; /* Borde alrededor del formulario */
@@ -43,7 +44,8 @@
 
 /* Mejorar el espacio alrededor del título */
 .title_principal {
-    margin: 15px 0;     border: 2px solid #023384;
+    margin: 15px 0;     
+    
 }
 
 .p_nombre{
@@ -87,6 +89,8 @@
     background-color: #ffffff; /* Fondo blanco cuando se enfoca el campo */
 }
 
+
+/*-----    Modulo Items Dpto    -----*/
 /*  GV DEPARTAMENTOS    */
 .gv_dpto{
     overflow-x: scroll;
@@ -95,5 +99,54 @@
     font-size : 10px;
 }
 
-/*  Cantidad  */
+/*  AutoComplete  */
+.CompletionList {
+    padding: 5px 0;
+    margin: 2px 0 0;
+    /*  position:absolute;  */
+    height: 150px;
+    width: 200px;
+    background-color: White;
+    cursor: pointer;
+    border: solid;
+    border-width: 1px;
+    font-size: x-small;
+    overflow: auto;
+}
+.CompletionlistItem {
+    font-size: x-small;
+}
 
+.CompletionListMighlightedItem {
+    background-color: black;
+    color: White;
+    /* color: Lime;
+           padding: 3px 20px;
+            text-decoration: none;           
+            background-repeat: repeat-x;
+            outline: 0;*/
+}
+
+.style1 {
+    height: 26px;
+}
+
+
+.container_BTNs{
+    display: flex;
+    justify-content : space-between;
+}
+
+.btn_font3 {
+    font-size:15px;
+}
+
+.container_ddpto {
+    padding: 10px;
+    background-color: #126cd91f;
+}
+
+.container_listActivos{
+    height:300px;
+    border: 2px solid black;
+}
