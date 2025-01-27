@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using jycboliviaASP.net.Negocio;
+using System.Configuration;
 
 namespace JyC_Exterior.Presentacion
 {
@@ -14,6 +15,13 @@ namespace JyC_Exterior.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Title = Session["BaseDatos"].ToString();
+            if (tienePermisoDeIngreso(18) == false)
+            {
+                string ruta = ConfigurationManager.AppSettings["NombreCarpetaContenedora"];
+                Response.Redirect(ruta + "/Presentacion/FA_Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 CargarDatos();
@@ -26,6 +34,17 @@ namespace JyC_Exterior.Presentacion
             int codRlimpieza = nResp.getCodUsuario(usu, pass);
             //lb_codrlimpieza.Text = nResp.get_responsable(codRlimpieza).Tables[0].Rows[0][0].ToString();
 
+        }
+
+        private bool tienePermisoDeIngreso(int permiso)
+        {
+            NA_Responsables Nresp = new NA_Responsables();
+            string usuarioAux = Session["NameUser"].ToString();
+            string passwordAux = Session["passworuser"].ToString();
+            int codUser = Nresp.getCodUsuario(usuarioAux, passwordAux);
+
+            NA_DetallePermiso npermiso = new NA_DetallePermiso();
+            return npermiso.tienePermisoResponsable(permiso, codUser);
         }
 
         // get mostrar departamentos 

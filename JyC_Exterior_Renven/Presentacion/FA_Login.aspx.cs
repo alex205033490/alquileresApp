@@ -23,12 +23,12 @@ namespace jycboliviaASP.net.Presentacion
            switch(BaseDatos){
                case "Prueba":                
                    Session["NombreBaseDatos"] = "db_renven_prueba";
-                    Session["BaseDatos"] = "renven Prueba";                    
+                    Session["BaseDatos"] = "Renven Prueba";                    
                     break;
             
                case "Renven":
                    Session["NombreBaseDatos"] = "db_renven";
-                   Session["BaseDatos"] = "renven";                   
+                   Session["BaseDatos"] = "Renven";                   
                    break;  
 
                default:
