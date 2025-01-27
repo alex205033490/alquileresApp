@@ -64,12 +64,10 @@ namespace JyC_Exterior.Presentacion
             {
                 gv_getDepartamentos.DataSource = null;
                 gv_getDepartamentos.DataBind();
-            }          
-
-
+            }
         }
 
-        // Seleccionar dpto
+        // SelectedGV Dpto
         protected void gv_getDepartamentos_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = gv_getDepartamentos.SelectedIndex;
@@ -77,12 +75,17 @@ namespace JyC_Exterior.Presentacion
 
             string codDep = row.Cells[1].Text;
             string edificio = row.Cells[2].Text;
-            string nroInmueble = row.Cells[3].Text;
-            string nroDormitorios = row.Cells[4].Text;
-            string direccionDep = row.Cells[5].Text;
-            string ciudad = row.Cells[6].Text;
-            string codSimec = row.Cells[7].Text;
+            string nroHabitacion = row.Cells[3].Text;
+            string direccionDep = row.Cells[4].Text;
+            string nroInmueble = row.Cells[5].Text;
+            string codSimec = row.Cells[6].Text;
+            string nroDormitorios = row.Cells[7].Text;
+            string ciudad = row.Cells[8].Text;
 
+            if(nroHabitacion == "&nbsp;")
+            {
+                nroHabitacion = "";
+            }
             if(nroInmueble == "&nbsp;")
             {
                 nroInmueble = "";
@@ -99,7 +102,9 @@ namespace JyC_Exterior.Presentacion
 
             Session["SLDnroInmueble"] = nroInmueble;
            
-            txt_nroHabitaciones.Text = nroDormitorios;
+            txt_nroHabitacion.Text = nroHabitacion;
+
+            Session["SLDnroDormitorios"] = nroDormitorios;
 
             txt_Direccion.Text = direccionDep;
 
@@ -108,11 +113,9 @@ namespace JyC_Exterior.Presentacion
             Session["SLDcodSimec"] = codSimec;
 
             gv_getDepartamentos.Visible = false;
-
-            
         }
 
-        // cargar itemsRepo en gv
+        // cargar Items al GV
         private void CargarDatos()
         {
             NA_limpiezaDep negocio = new NA_limpiezaDep();
@@ -127,18 +130,17 @@ namespace JyC_Exterior.Presentacion
             {
                 Response.Write("Error al cargar los datos: " + ex.Message);
             }
-
         }
 
 
         /*-----------  POST   LIMPIEZAdpto  ---------------*/
 
-        private bool RegistrarVisitadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza)
+        private bool RegistrarVisitadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza, string denominacion)
         {
             try
             {
                 NA_limpiezaDep negocio = new NA_limpiezaDep();
-                return negocio.insert_limpiezadpto(coddpto, codSimec, nombreInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codTipoLimpieza);
+                return negocio.insert_limpiezadpto(coddpto, codSimec, nombreInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codTipoLimpieza, denominacion);
             }
             catch (Exception ex)
             {
@@ -146,7 +148,7 @@ namespace JyC_Exterior.Presentacion
                 return false;
             }
         }
-       
+        
         private void validarDatos()
         {
             if (string.IsNullOrEmpty(txt_edificio.Text)|| Session["SLDedificio"] == null)
@@ -159,26 +161,29 @@ namespace JyC_Exterior.Presentacion
                 showaler("Error: Codigo departamento inválido");
                     return;
             }
-
-
         }
+
         private void guardarFormulario()
         {
             try
             {
-                // Validar que los valores de los TextBox sean correctos
-                if (!int.TryParse(txt_codDepartamento.Text, out int codigo) || codigo <= 0)
-                {
-                    showaler("Error: Código de departamento inválido.");
-                    return;
-                }
+                validarDatos();
 
-                if (!int.TryParse(txt_nroHabitaciones.Text, out int nroHabitaciones) || nroHabitaciones < 0)
-                {
-                    showaler("Error: Número de habitaciones inválido.");
-                    return;
-                }
+                int codigo = int.Parse(txt_codDepartamento.Text);
+
+                string codSimec = Session["SLDcodSimec"].ToString();
+
+                string nomInmueble = Session["SLDedificio"].ToString();
+
+                string nroInmueble = Session["SLDnroInmueble"].ToString();
+
+                int nro_dormitorios = int.Parse(Session["SLDnroDormitorios"].ToString());
+
+                string direccionInmueble = txt_Direccion.Text;
                 
+                string ciudad = txt_Ciudad.Text;
+
+                string tipoLimpieza = dd_tipoLimpieza.SelectedItem.ToString();
 
                 int codRespLimpieza = ObtenerCodigoResponsable();
                 if(codRespLimpieza == 0)
@@ -186,19 +191,15 @@ namespace JyC_Exterior.Presentacion
                     showaler("Error: No se pudo obtener el código del responsable de limpieza.");
                     return;
                 }
-                
-                string codSimec = Session["SLDcodSimec"].ToString();
-                string nomInmueble = Session["SLDedificio"].ToString();
-                string nroInmueble = Session["SLDnroInmueble"].ToString();
-                
-                string direccionInmueble = txt_Direccion.Text;
-                string ciudad = txt_Ciudad.Text;
-                string tipoLimpieza = dd_tipoLimpieza.SelectedItem.ToString();
-                int codtipolimpieza = int.Parse(dd_tipoLimpieza.SelectedValue.ToString());
                 int codRLimpieza = codRespLimpieza;
+
                 string observacion = txt_observacion.Text;
 
-                bool exito = RegistrarVisitadpto(codigo, codSimec, nomInmueble, nroInmueble, nroHabitaciones, direccionInmueble, ciudad, tipoLimpieza, codRLimpieza, observacion, codtipolimpieza);
+                int codtipolimpieza = int.Parse(dd_tipoLimpieza.SelectedValue.ToString());
+
+                string nro_habitacion = (txt_nroHabitacion.Text);
+
+                bool exito = RegistrarVisitadpto(codigo, codSimec, nomInmueble, nroInmueble, nro_dormitorios, direccionInmueble, ciudad, tipoLimpieza, codRLimpieza, observacion, codtipolimpieza, nro_habitacion);
 
                 NA_limpiezaDep nego_lDpto = new NA_limpiezaDep();
 
@@ -232,7 +233,7 @@ namespace JyC_Exterior.Presentacion
                 }
                 else
                 {
-                    showaler("No se pudo registrar la visita.");
+                    showaler("No se pudo registrar el formulario.");
                 }
             }
             catch (Exception ex)
@@ -298,7 +299,7 @@ namespace JyC_Exterior.Presentacion
             gv_getDepartamentos.DataSource = null;
             gv_getDepartamentos.DataBind();
             txt_codDepartamento.Text = "";
-            txt_nroHabitaciones.Text = "";
+            txt_nroHabitacion.Text = "";
             txt_Direccion.Text = "";
             txt_Ciudad.Text = "";
             dd_tipoLimpieza.SelectedIndex = 0;
@@ -307,6 +308,7 @@ namespace JyC_Exterior.Presentacion
             Session.Remove("SLDedificio");
             Session.Remove("SLDnroInmueble");
             Session.Remove("SLDcodSimec");
+            Session.Remove("SLDnroDormitorios");
         }
         private void limpiarCamposGvInsumos()
         {

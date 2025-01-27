@@ -42,11 +42,12 @@
                                     <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
                                     <asp:BoundField DataField="codDep" HeaderText="Codigo Dpto" HtmlEncode="false" />
                                     <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false" />
-                                    <asp:BoundField DataField="nroInmueble" HeaderText="Numero Inmueble" HtmlEncode="false" />
-                                    <asp:BoundField DataField="nroDormitorios" HeaderText="Numero Dormitorios" HtmlEncode="false" />
+                                    <asp:BoundField DataField="nro_habitacion" HeaderText="Nro Habitación" HtmlEncode="false" />
                                     <asp:BoundField DataField="direccionDep" HeaderText="Dirección" HtmlEncode="false" />
-                                    <asp:BoundField DataField="ciudad" HeaderText="Ciudad" HtmlEncode="false" />
+                                    <asp:BoundField DataField="nroInmueble" HeaderText="Numero Inmueble" HtmlEncode="false" />
                                     <asp:BoundField DataField="codSimec" HeaderText="Codigo Simec" HtmlEncode="false" />
+                                    <asp:BoundField DataField="nroDormitorios" HeaderText="Numero Dormitorios" HtmlEncode="false" />
+                                    <asp:BoundField DataField="ciudad" HeaderText="Ciudad" HtmlEncode="false" />
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -59,8 +60,8 @@
                         <asp:TextBox ID="txt_codDepartamento" style="background-color: #204d773b;" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                     </div>
                     <div class="item_nroHabitaciones col-6 mb-2">
-                        <p class="p_nombre mb-1">Nro Habitaciones:</p>
-                        <asp:TextBox ID="txt_nroHabitaciones" runat="server" style="background-color: #204d773b;" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
+                        <p class="p_nombre mb-1">Nro de Habitación:</p>
+                        <asp:TextBox ID="txt_nroHabitacion" runat="server" style="background-color: #204d773b;" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
                     </div>
 
 

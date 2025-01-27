@@ -21,9 +21,9 @@ namespace JyC_Exterior.Negocio
             return datosld.get_itemReposicionDep();
         }
 
-        internal bool insert_limpiezadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpiza)
+        internal bool insert_limpiezadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpiza, string denominacion)
         {
-            return datosld.insert_limpiezadpto(coddpto, codSimec, nombreInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codTipoLimpiza);
+            return datosld.insert_limpiezadpto(coddpto, codSimec, nombreInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codTipoLimpiza, denominacion);
         }
 
         internal bool insert_detLimpiezaDpto(int codRLimpieza, int codItem, int cantidad, int codRes)

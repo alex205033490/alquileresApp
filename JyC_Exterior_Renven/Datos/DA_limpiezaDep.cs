@@ -18,7 +18,7 @@ namespace JyC_Exterior.Datos
         {
             string consulta = " select eq.codigo as codDep, eq.dg_nombreinmueble as Edificio, eq.dg_numeroinmueble as nroInmueble," +
                 " eq.dg_nrodormitorios as nroDormitorios, eq.dg_direccion as direccionDep, eq.dg_departamentociudad as ciudad, " +
-                "eq.dg_codigovarsimec as codSimec from tb_equipo eq where eq.dg_nombreinmueble like '%" + dep + "%' ";
+                "eq.dg_codigovarsimec as codSimec, eq.dg_denominacion as nro_habitacion from tb_equipo eq where eq.estado=1 and eq.dg_nombreinmueble like '%" + dep + "%' ";
 
             DataSet lista = conexion.consultaMySql(consulta);
             return lista;
@@ -34,12 +34,12 @@ namespace JyC_Exterior.Datos
         }
 
 
-        internal bool insert_limpiezadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza)
+        internal bool insert_limpiezadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza, string denominacion)
         {
             string consulta = "INSERT INTO tbalq_limpiezadpto(fechagra, horagra, coddpto, codSimec, nombreInmueble, nroInmueble, nrohabitaciones, direccionInmueble, " +
-                " dptoInmueble, tipoLimpieza, codreslimpieza, observacion, vaciadosimec,estado,codtipolimpieza) values " +
+                " dptoInmueble, tipoLimpieza, codreslimpieza, observacion, vaciadosimec,estado,codtipolimpieza, nrodenominacioninmueble) values " +
                 " (current_date(), current_time(), "+ coddpto +" , '"+ codSimec +"', '"+ nombreInmueble + "' , '"+ nroInmueble +"' , "+ nroHabitaciones +" , '"+ direccionInmueble +"' ,'"+ dptoInmueble +"', " +
-                " '"+ tipoLimpieza +"', "+ codRLimpieza +",'"+ observacion +"', 0 ,1, "+ codTipoLimpieza +"  ); ";
+                " '"+ tipoLimpieza +"', "+ codRLimpieza +",'"+ observacion +"', 0 ,1, "+ codTipoLimpieza +", '"+denominacion+"'  ); ";
 
             return conexion.ejecutarMySql(consulta);
         }

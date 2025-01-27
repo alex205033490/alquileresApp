@@ -42,13 +42,13 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.TextBox txt_codDepartamento;
 
         /// <summary>
-        /// Control txt_nroHabitaciones.
+        /// Control txt_nroHabitacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nroHabitaciones;
+        protected global::System.Web.UI.WebControls.TextBox txt_nroHabitacion;
 
         /// <summary>
         /// Control txt_Direccion.
