@@ -154,11 +154,6 @@ namespace JyC_Exterior.Presentacion
                 showaler("Error: Busque y seleccione un edificio válido");
                 return;
             }
-            if (Session["SLDcodSimec"] == null || Session["SLDnroInmueble"] == null)
-            {
-                showaler("Error: dato codigo Simec faltante");
-                return;
-            }
             if (!int.TryParse(txt_codDepartamento.Text, out int codigo) || codigo <= 0)
             {
                 showaler("Error: Codigo departamento inválido");
