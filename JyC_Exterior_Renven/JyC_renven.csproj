@@ -234,9 +234,9 @@
     <Content Include="img\JYC1.png" />
     <Content Include="img\JYC_logo.jpg" />
     <Content Include="img\JYC_logo_4.jpg" />
-    <Content Include="img\logoLimpieza1.png" />
     <Content Include="img\logoLimpieza2.png" />
-    <Content Include="img\logoLimpieza22.png" />
+    <Content Include="img\logoMueble.png" />
+    <Content Include="img\logoMueble2.png" />
     <Content Include="img\mantenimiento.png" />
     <Content Include="img\naxsnax.jpg" />
     <Content Include="img\naxsnax.png" />
