@@ -237,6 +237,10 @@
     <Content Include="img\logoLimpieza2.png" />
     <Content Include="img\logoMueble.png" />
     <Content Include="img\logoMueble2.png" />
+    <Content Include="img\logoRenven.png" />
+    <Content Include="img\logoRenven1.png" />
+    <Content Include="img\logoRenven2.png" />
+    <Content Include="img\logoRenven3.png" />
     <Content Include="img\mantenimiento.png" />
     <Content Include="img\naxsnax.jpg" />
     <Content Include="img\naxsnax.png" />
@@ -261,7 +265,6 @@
     <Content Include="img\profile_1.png" />
     <Content Include="img\Proyecto.jpg" />
     <Content Include="img\Proyecto.png" />
-    <Content Include="img\renvenLogo.png" />
     <Content Include="img\rh.png" />
     <Content Include="img\venta.png" />
     <Content Include="js\jsLimpiezaDpto.js" />

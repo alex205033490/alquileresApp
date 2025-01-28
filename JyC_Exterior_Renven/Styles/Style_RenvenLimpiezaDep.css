@@ -29,7 +29,7 @@
     padding: 8px; /* Espaciado interno para evitar que el contenido quede pegado al borde */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
     border: 1px solid #ccc; /* Borde alrededor del formulario */
-    background: #00326b66;
+    background-color: #86624385;
 }
 
 /*  TITULO DEL FORMULARIO */

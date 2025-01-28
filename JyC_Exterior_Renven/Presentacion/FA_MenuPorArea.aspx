@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">  
     <title>Renven</title>
-    <link rel="Shortcut Icon" href="../img/renvenLogo.png"/> 
+    <link rel="Shortcut Icon" href="../img/renvenLogo3.png"/> 
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="../Styles/Style_MenuArea.css" rel="stylesheet" type="text/css" />
@@ -26,11 +26,7 @@
         <div class="container123">
                 <a href="#portfolio">
                  <!--  imagen del logo  -->
-                    <img class="img-principal" src="../img/renvenLogo.png" alt=""/> </a>  
-                    <div class="intro-text">
-                        <span class="tittle-Principal">RENVEN</span>                        
-                        
-                    </div>
+                    <img class="img-principal" src="../img/logoRenven.png" alt=""/> </a>  
            
         </div>
     </header>
