@@ -264,6 +264,7 @@
     <Content Include="img\renvenLogo.png" />
     <Content Include="img\rh.png" />
     <Content Include="img\venta.png" />
+    <Content Include="js\jsLimpiezaDpto.js" />
     <Content Include="js\jsPedido.js" />
     <Content Include="NegoPlantilla\Footer_Plantillanew.ascx" />
     <Content Include="NegoPlantilla\Header_planillanew.ascx" />

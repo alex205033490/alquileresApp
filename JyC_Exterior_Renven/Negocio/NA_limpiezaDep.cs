@@ -16,9 +16,9 @@ namespace JyC_Exterior.Negocio
             return datosld.get_listDepartamentoInmueble(dep);
         }
 
-        public DataSet get_mostrarItemRepo()
+        public DataSet get_mostrarItemRepo(int codigo)
         {
-            return datosld.get_itemReposicionDep();
+            return datosld.get_itemReposicionDep(codigo);
         }
 
         internal bool insert_limpiezadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpiza, string denominacion)
@@ -26,7 +26,7 @@ namespace JyC_Exterior.Negocio
             return datosld.insert_limpiezadpto(coddpto, codSimec, nombreInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codTipoLimpiza, denominacion);
         }
 
-        internal bool insert_detLimpiezaDpto(int codRLimpieza, int codItem, int cantidad, int codRes)
+        internal bool insert_detLimpiezaDpto(int codRLimpieza, int codItem, string cantidad, int codRes)
         {
             return datosld.insert_detLimpiezaDpto(codRLimpieza, codItem, cantidad, codRes);
         }
