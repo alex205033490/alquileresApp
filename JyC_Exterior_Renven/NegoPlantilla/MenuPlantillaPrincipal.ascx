@@ -2,12 +2,12 @@
 <%-- Incluir archivo CSS en el Head --%>
 <asp:PlaceHolder ID="headPlaceholder" runat="server"></asp:PlaceHolder>
 
-<nav class="navbar navbar-dark container-navbar" aria-label="First navbar example">
+<nav class="navbar navbar-dark container-navbar" style="background-color:#000000f2;" aria-label="First navbar example">
     <div class="container-fluid">
       
         <div class="d-flex align-items-center justify-content-between">
           <a href="../Presentacion/FA_MenuPorArea.aspx" class="logo d-flex align-items-center">
-            <img src="../img/renvenLogo.png" style="width:40px; height:auto;" alt="">
+            <img src="../img/logoRenven2.png" style="width:150px; height:auto;" alt="">
               
           </a>
         </div><!-- End Logo -->

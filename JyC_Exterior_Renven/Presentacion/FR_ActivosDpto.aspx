@@ -4,7 +4,7 @@
     <title>RENVEN</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="Shortcut Icon" href="../img/renvenLogo.png" />
+    <link rel="Shortcut Icon" href="../img/logoRenven3.png" />
     <link href="../img/renvenLogo.png" rel="icon">
     <link href="../img/renvenLogo.png" rel="apple-touch-icon">
 

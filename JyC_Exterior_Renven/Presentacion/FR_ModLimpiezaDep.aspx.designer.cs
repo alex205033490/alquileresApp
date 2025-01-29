@@ -87,6 +87,15 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.TextBox txt_observacion;
 
         /// <summary>
+        /// Control updatePanel_ListaItems.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel_ListaItems;
+
+        /// <summary>
         /// Control gv_items.
         /// </summary>
         /// <remarks>
@@ -103,5 +112,14 @@ namespace JyC_Exterior.Presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_registrarLimpdep;
+
+        /// <summary>
+        /// Control btn_volverAtras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_volverAtras;
     }
 }

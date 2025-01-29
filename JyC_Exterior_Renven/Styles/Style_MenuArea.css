@@ -30,8 +30,9 @@
 
 /* HEADER */
 header .container123 {
-    background-color: #aaaaaa85; /* bc header */
-    padding-top: 30px;
+    background-color: #000000; /* bc header */
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .intro-text {
@@ -40,7 +41,7 @@ header .container123 {
 
 .img-principal {
     display: block;
-    max-width: 35%;
+    max-width: 90%;
     height: auto;
 }
 
@@ -60,7 +61,7 @@ header .container123 {
 
 .container_menu {
     padding: 85px 0;
-    background-color: #aaaaaa85; /* color menu*/
+    background-color: #866243d1; /* color menu*/
     padding-left: 10px;
     padding-right: 10px;
 }

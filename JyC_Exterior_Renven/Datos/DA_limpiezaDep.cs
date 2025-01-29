@@ -24,10 +24,10 @@ namespace JyC_Exterior.Datos
             return lista;
         }
 
-        internal DataSet get_itemReposicionDep()
+        internal DataSet get_itemReposicionDep(int codigo)
         {
             string consulta = " Select it.codigo, nombre from tbalq_item it inner join tbalq_detallelistcategoria" +
-                " dlc on it.codigo = dlc.codItem where dlc.codCategoria = 2 AND it.estado = 1 AND dlc.estado = 1; ";
+                " dlc on it.codigo = dlc.codItem where dlc.codCategoria = "+codigo+"  AND it.estado = 1 AND dlc.estado = 1; ";
 
             DataSet lista = conexion.consultaMySql(consulta);
             return lista;
@@ -44,10 +44,10 @@ namespace JyC_Exterior.Datos
             return conexion.ejecutarMySql(consulta);
         }
 
-        internal bool insert_detLimpiezaDpto(int codRLimpieza, int codItem, int cantidad, int codRes)
+        internal bool insert_detLimpiezaDpto(int codRLimpieza, int codItem, string cantidad, int codRes)
         {
             string consulta = "INSERT INTO tbalq_detallelimpiezadpto (codrlimpieza, coditem, fechagra, horagra, cantidad, codres) " +
-                " VALUES ("+ codRLimpieza +", "+ codItem +", current_date(), current_time(), "+ cantidad +", "+ codRes +" )";
+                " VALUES ("+ codRLimpieza +", "+ codItem +", current_date(), current_time(), '"+ cantidad +"', "+ codRes +" )";
 
             return conexion.ejecutarMySql(consulta);
         }
@@ -61,7 +61,7 @@ namespace JyC_Exterior.Datos
 
         internal DataSet get_tiposLimpieza()
         {
-            string consulta = " select codigo, nombre from tbalq_tipolimpieza;";
+            string consulta = "select codigo, nombre from tbalq_tipolimpieza;";
 
             DataSet lista = conexion.consultaMySql(consulta);
             return lista;

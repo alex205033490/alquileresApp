@@ -4,9 +4,7 @@
     <title>RENVEN</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="Shortcut Icon" href="../img/renvenLogo.png" />
-    <link href="../img/renvenLogo.png" rel="icon">
-    <link href="../img/renvenLogo.png" rel="apple-touch-icon">
+    <link rel="Shortcut Icon" href="../img/logoRenven1.png" />
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link href="../Styles/Style_RenvenLimpiezaDep.css" rel="stylesheet" type="text/css" />
@@ -61,7 +59,7 @@
                     </div>
                     <div class="item_nroHabitaciones col-6 mb-2">
                         <p class="p_nombre mb-1">Nro de Habitación:</p>
-                        <asp:TextBox ID="txt_nroHabitacion" runat="server" style="background-color: #204d773b;" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
+                        <asp:TextBox ID="txt_nroHabitacion" runat="server" style="background-color: #204d773b; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
                     </div>
 
 
@@ -80,7 +78,8 @@
             <div class="row">
                 <div class="item_tipoLimpieza col-6">
                     <p class="p_nombre mb-1">Tipo de limpieza:</p>
-                    <asp:DropDownList ID="dd_tipoLimpieza" style="font-size:0.7rem;" runat="server" CssClass="form-select">
+                    <asp:DropDownList ID="dd_tipoLimpieza" Style="font-size: 0.7rem;" runat="server" CssClass="form-select" OnSelectedIndexChanged="dd_tipoLimpieza_SelectedIndexChanged" AutoPostBack="true">
+
                     </asp:DropDownList>
 
                 </div>
@@ -98,6 +97,12 @@
                     <h3>Lista de Insumos</h3>
                 </div>
 
+
+                <asp:UpdatePanel ID="updatePanel_ListaItems" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+
+                
+
                 <div class="listItemsRepo" >
                     <asp:GridView ID="gv_items" runat="server" AutoGenerateColumns="false" CssClass="gv_items table table-bordered">
                         <Columns>
@@ -106,8 +111,8 @@
                             <asp:TemplateField HeaderText="CANTIDAD" ItemStyle-Width="80px">
                                 <ItemTemplate>
                                     <div class="col-12">
-                                        <asp:TextBox ID="txt_cantidadItem" style="font-size:0.7rem;" type="number" runat="server" CssClass="form-control cantidad-textbox"
-                                            TextMode="SingleLine" MaxLength="3"></asp:TextBox>
+                                        <asp:TextBox ID="txt_cantidadItem" style="font-size:0.7rem;" runat="server" CssClass="form-control" autocomplete="off" TextMode="Number" step="0.01"></asp:TextBox>
+                                        
                                     </div>
                                     
                                 </ItemTemplate>
@@ -115,15 +120,21 @@
                         </Columns>
                     </asp:GridView>
                 </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="dd_tipoLimpieza" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                    </asp:UpdatePanel>
 
             </div>
 
-            <div class="container_btn">
-                <asp:Button ID="btn_registrarLimpdep" runat="server" Text="Registrar Reposición" CssClass="btn btn-success" OnClick="btn_registrarLimpdep_Click" />
-
+            <div class="container_btn container_BTNs">
+                <asp:Button ID="btn_registrarLimpdep" runat="server" Text="Registrar Reposición" CssClass="btn btn-success col-5" style="font-size:0.8rem;" OnClick="btn_registrarLimpdep_Click" />
+                <asp:button ID="btn_volverAtras" runat="server" Text="Volver Atras" CssClass="btn btn-danger col-5"/>
             </div>
             <br />
 
         </div>
     </div>
+        <script src="../js/jsPedido.js" type="text/javascript"></script>
 </asp:Content>

@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using jycboliviaASP.net.Negocio;
 using System.Configuration;
+using System.Globalization;
 
 namespace JyC_Exterior.Presentacion
 {
@@ -24,8 +25,8 @@ namespace JyC_Exterior.Presentacion
 
             if (!IsPostBack)
             {
-                CargarDatos();
                 cargarTiposLimpieza();
+                CargarDatos();
             }
             NA_Responsables nResp = new NA_Responsables();
             string usu = Session["NameUser"].ToString();
@@ -33,7 +34,6 @@ namespace JyC_Exterior.Presentacion
 
             int codRlimpieza = nResp.getCodUsuario(usu, pass);
             //lb_codrlimpieza.Text = nResp.get_responsable(codRlimpieza).Tables[0].Rows[0][0].ToString();
-
         }
 
         private bool tienePermisoDeIngreso(int permiso)
@@ -94,6 +94,10 @@ namespace JyC_Exterior.Presentacion
             {
                 nroDormitorios = "0";
             }
+            if (codSimec == "&nbsp;")
+            {
+                codSimec = "";
+            }
 
             txt_codDepartamento.Text = codDep;
 
@@ -121,26 +125,107 @@ namespace JyC_Exterior.Presentacion
             NA_limpiezaDep negocio = new NA_limpiezaDep();
             try
             {
-                DataSet ds = negocio.get_mostrarItemRepo();
+                int cat_item = 0;              
 
-                gv_items.DataSource = ds;
-                gv_items.DataBind();
+                if(dd_tipoLimpieza.SelectedIndex == 0)
+                {
+                    cat_item = 2;
+                }
+                else if (dd_tipoLimpieza.SelectedIndex == 1)
+                {
+                    cat_item = 3;
+                }
+                else
+                {
+                    showaler("El valor seleccionado no es un numero valido" );
+                }
+
+/*                int codigoTL;
+                if(int.TryParse(dd_tipoLimpieza.SelectedValue, out codigoTL))
+                {*/
+                    DataSet ds = negocio.get_mostrarItemRepo(cat_item);
+
+                    gv_items.DataSource = ds;
+                    gv_items.DataBind();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Response.Write("Error al cargar los datos: " + ex.Message);
             }
         }
 
 
-        /*-----------  POST   LIMPIEZAdpto  ---------------*/
+        /*-----------  POST visita a dpto  ---------------*/
+        // BTN registro formulario
+        protected void btn_registrarLimpdep_Click(object sender, EventArgs e)
+        {
+            //guardarFormulario();
+            guardarForm();
+            limpiarCamposDpto();
+            limpiarCamposGvInsumos();
+        }
 
-        private bool RegistrarVisitadpto(int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza, string denominacion)
+        /* Metodo guardar form*/
+        private void guardarForm()
+        {
+            try
+            {
+                validarDatos();
+                var datosFormulario = ObtenerDatosForm();
+                var exito = RegistrarVisitaDpto(datosFormulario);
+
+                if (exito)
+                {
+                    ProcesoInsumos();
+                    showaler("Se ha registrado la visita al departamento.");
+                }
+                else
+                {
+                    showaler("No se pudo registrar el formulario.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                showaler($"Ha ocurrido un error inesperado: {ex.Message}");
+            }
+        }
+
+
+        /* FUNCION obtener datos de formulario */
+        private (int codigo, string codSimec, string nomInmueble, string nroInmueble, int nro_dormitorios, string direccionInmueble, string ciudad, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza, string denominacion) ObtenerDatosForm()
+        {
+            int codigo = int.Parse(txt_codDepartamento.Text);
+            string codSimec = Session["SLDcodSimec"].ToString();
+            string nomInmueble = Session["SLDedificio"].ToString();
+            string nroInmueble = Session["SLDnroInmueble"].ToString();
+            int nro_Dormitorios = int.Parse(Session["SLDnroDormitorios"].ToString());
+            string direccionInmueble = txt_Direccion.Text;
+            string ciudad = txt_Ciudad.Text;
+            string tipoLimpieza = dd_tipoLimpieza.SelectedItem.ToString();
+
+
+            int codRLimpieza = ObtenerCodigoResponsable();
+            if (codRLimpieza == 0)
+            {
+                showaler("No se pudo obtener el código del responsable de limpieza.");
+            }
+
+            string observacion = txt_observacion.Text;
+            int codTipoLimpieza = int.Parse(dd_tipoLimpieza.SelectedValue.ToString());
+
+            string denominacion = txt_nroHabitacion.Text;
+
+            return (codigo, codSimec, nomInmueble, nroInmueble, nro_Dormitorios, direccionInmueble, ciudad, tipoLimpieza, codRLimpieza, observacion, codTipoLimpieza, denominacion);
+        }
+
+        /* FUNCION registrar visita a dpto */
+        private bool RegistrarVisitaDpto((int coddpto, string codSimec, string nombreInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, string tipoLimpieza, int codRLimpieza, string observacion, int codTipoLimpieza, string denominacion) datosFormulario)
         {
             try
             {
                 NA_limpiezaDep negocio = new NA_limpiezaDep();
-                return negocio.insert_limpiezadpto(coddpto, codSimec, nombreInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, tipoLimpieza, codRLimpieza, observacion, codTipoLimpieza, denominacion);
+                return negocio.insert_limpiezadpto(datosFormulario.coddpto, datosFormulario.codSimec, datosFormulario.nombreInmueble, datosFormulario.nroInmueble, datosFormulario.nroHabitaciones, datosFormulario.direccionInmueble, datosFormulario.dptoInmueble, datosFormulario.tipoLimpieza, datosFormulario.codRLimpieza, datosFormulario.observacion, datosFormulario.codTipoLimpieza, datosFormulario.denominacion);
             }
             catch (Exception ex)
             {
@@ -148,21 +233,71 @@ namespace JyC_Exterior.Presentacion
                 return false;
             }
         }
-        
-        private void validarDatos()
+
+        /* METODO Proceso insumos */
+        private void ProcesoInsumos()
         {
-            if (string.IsNullOrEmpty(txt_edificio.Text)|| Session["SLDedificio"] == null)
+            try
             {
-                showaler("Error: Busque y seleccione un edificio válido");
-                return;
-            }
-            if (!int.TryParse(txt_codDepartamento.Text, out int codigo) || codigo <= 0)
-            {
-                showaler("Error: Codigo departamento inválido");
+                int codRespLimpieza = ObtenerCodigoResponsable();
+                if (codRespLimpieza == 0)
+                {
+                    showaler("Error: No se pudo obtener el código del responsable de limpieza.");
                     return;
+                }
+                int codRLimpieza = codRespLimpieza;
+                int ultimaVisitaDptoID = ObtenerUltimaVisitaDpto(codRLimpieza);
+
+                foreach(GridViewRow row in gv_items.Rows)
+                {
+                    int codItem = Convert.ToInt32(row.Cells[0].Text);
+
+                    TextBox txtCantidad = (TextBox)row.FindControl("txt_cantidadItem");
+                    string cantidad = "0";
+
+                    if(string.IsNullOrEmpty(txtCantidad.Text) || !decimal.TryParse(txtCantidad.Text, out decimal cantidadValor))
+                    {
+                        cantidad = "0";
+                    }
+                    else
+                    {
+                        cantidad = txtCantidad.Text;
+                    }
+
+                    bool insertadoItems = InsertarInsumo(ultimaVisitaDptoID, codItem, cantidad);
+
+                    if (!insertadoItems)
+                    {
+                        showaler("Error al insertar el insumo con codigo = " + codItem);
+                        return;
+                    }
+                }
+                showaler("Se ha registrado la visita al departamento");
+            }
+            catch(Exception ex)
+            {
+                showaler($"Error al procesar insumos: {ex.Message}");
             }
         }
 
+        /* FUNCION insertar detLimpiezaDpto */
+        private bool InsertarInsumo(int ultimaVisitaDptoID, int codItem, string cantidad)
+        {
+            try
+            {
+                NA_limpiezaDep NEGOCIO = new NA_limpiezaDep();
+                return NEGOCIO.insert_detLimpiezaDpto(ultimaVisitaDptoID, codItem, cantidad, ObtenerCodigoResponsable());
+
+            }
+            catch(Exception ex)
+            {
+                showaler($"Error al insertar en detLimpieza el insumo con codigo: {codItem}: {ex.Message}");
+                return false;
+            }
+        }
+        
+        // METODO GUARDAR FORMULARIO error
+        /*
         private void guardarFormulario()
         {
             try
@@ -238,11 +373,12 @@ namespace JyC_Exterior.Presentacion
             }
             catch (Exception ex)
             {
-                showaler($"Error {ex.Message}");
+                showaler($"Ha ocurrido un error inesperado: {ex.Message}");
             }
         }
+        */
         
-        /*  Obtener codResponsable */
+        /* METODO  para Obtener codResponsable */
         private int ObtenerCodigoResponsable()
         {
             try
@@ -260,8 +396,7 @@ namespace JyC_Exterior.Presentacion
             }
         }
 
-
-        /*  Obtener ultimo registro visita dpto     */
+        /*  FUNCION Obtener ultimo registro de visita a dpto */
         private int ObtenerUltimaVisitaDpto(int codRespLimpieza)
         {
             try 
@@ -271,12 +406,12 @@ namespace JyC_Exterior.Presentacion
             }
             catch (Exception ex)
             {
-                showaler($"Error al obtener el ultimo registro de visita insertado. {ex.Message}");
+                showaler($"Error al obtener el ultimo registro de visita a dpto: {ex.Message}");
                 return 0;
             }
         }
 
-        /* Listar tipos de limpieza */
+        /* METODO cargar insumos de limpieza en GV */
         private void cargarTiposLimpieza()
         {
             NA_limpiezaDep negocio = new NA_limpiezaDep();
@@ -291,8 +426,7 @@ namespace JyC_Exterior.Presentacion
             }
         }
 
-
-        /*  Limpiar Campos  */
+        /* METODO limpiar campos dpto */
         private void limpiarCamposDpto()
         {
             txt_edificio.Text = "";
@@ -310,6 +444,23 @@ namespace JyC_Exterior.Presentacion
             Session.Remove("SLDcodSimec");
             Session.Remove("SLDnroDormitorios");
         }
+
+        /*  METODO validar datos del Dpto  */
+        private void validarDatos()
+        {
+            if (string.IsNullOrEmpty(txt_edificio.Text) || Session["SLDedificio"] == null)
+            {
+                showaler("Error: Busque y seleccione un edificio válido");
+                return;
+            }
+            if (!int.TryParse(txt_codDepartamento.Text, out int codigo) || codigo <= 0)
+            {
+                showaler("Error: Codigo departamento inválido");
+                return;
+            }
+        }
+
+        /* METODO limpiar campo GV insumos */
         private void limpiarCamposGvInsumos()
         {
             foreach(GridViewRow row in gv_items.Rows)
@@ -323,20 +474,16 @@ namespace JyC_Exterior.Presentacion
             }
         }
 
-
-
-        /*      OTROS    */
+        /*      showAlert    */
         private void showaler(string mensaje)
         {
             string script = $"alert('{mensaje.Replace("'", "\\'")}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", script, true);
         }
 
-        protected void btn_registrarLimpdep_Click(object sender, EventArgs e)
+        protected void dd_tipoLimpieza_SelectedIndexChanged(object sender, EventArgs e)
         {
-            guardarFormulario();
-            limpiarCamposDpto();
-            limpiarCamposGvInsumos();
+            CargarDatos();
         }
     }
 }

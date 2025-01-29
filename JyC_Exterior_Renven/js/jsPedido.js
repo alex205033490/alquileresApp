@@ -1,5 +1,7 @@
-﻿function convertDotComma(event) {
-    var input = event.target;
+﻿function convertirComaAPunto(event) {
+    let valor = event.target.value;
 
-    input.value = input.value.replace('.', ',');
+    valor = valor.replace(/,/g, '.');
+
+    event.target.value = valor;
 }
