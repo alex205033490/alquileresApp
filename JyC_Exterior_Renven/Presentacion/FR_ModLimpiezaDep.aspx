@@ -23,9 +23,7 @@
 
     <div class="form-limpiezaDep">
         <div class="container-main">
-            <div class="title_principal">
-                <h1 class="">Registro de visita a departamento</h1>
-            </div>
+           
 
             <div class="form_datosDep">
                 <h3>Datos del Departamento</h3>
@@ -79,7 +77,6 @@
                 <div class="item_tipoLimpieza col-6">
                     <p class="p_nombre mb-1">Tipo de limpieza:</p>
                     <asp:DropDownList ID="dd_tipoLimpieza" Style="font-size: 0.7rem;" runat="server" CssClass="form-select" OnSelectedIndexChanged="dd_tipoLimpieza_SelectedIndexChanged" AutoPostBack="true">
-
                     </asp:DropDownList>
 
                 </div>
@@ -100,9 +97,6 @@
 
                 <asp:UpdatePanel ID="updatePanel_ListaItems" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-
-                
-
                 <div class="listItemsRepo" >
                     <asp:GridView ID="gv_items" runat="server" AutoGenerateColumns="false" CssClass="gv_items table table-bordered">
                         <Columns>
