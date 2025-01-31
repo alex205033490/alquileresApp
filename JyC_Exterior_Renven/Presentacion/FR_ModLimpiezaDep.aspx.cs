@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using jycboliviaASP.net.Negocio;
 using System.Configuration;
 using System.Globalization;
+using jycboliviaASP.net.Presentacion;
 
 namespace JyC_Exterior.Presentacion
 {
@@ -484,6 +485,13 @@ namespace JyC_Exterior.Presentacion
         protected void dd_tipoLimpieza_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarDatos();
+        }
+
+        protected void btn_volverAtras_Click(object sender, EventArgs e)
+        {
+            limpiarCamposGvInsumos();
+            limpiarCamposDpto();
+            Response.Redirect("FA_MenuPorArea.aspx");
         }
     }
 }

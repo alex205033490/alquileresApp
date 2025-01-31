@@ -102,8 +102,8 @@
 
 
                         <asp:Panel ID="Panel_addItem" runat="server" DefaultButton="btn_addActivo">
-                            <div class="row">
-
+                            <div class="row mb-1">
+                                
 
                                 <div class="item_nombre col-8">
                                     <p class="mb-1">Item:</p>
@@ -124,19 +124,18 @@
                                     <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <p class="p_nombre mb-1">Almacén:</p>
-                                <asp:DropDownList ID="dd_listAlmacen" runat="server" Style="font-size: 0.7rem" CssClass="form-select">
-                                </asp:DropDownList>
+                            <div class="row mb-2 d-flex align-items-center">
+                                <div class="item_almacen col-6">
+                                    <p class="p_nombre mb-1">Almacén:</p>
+                                    <asp:DropDownList ID="dd_listAlmacen" runat="server" Style="font-size: 0.7rem" CssClass="form-select">
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="btn_addActivo col-6">
+                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 16px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
+                                </div>
                             </div>
                         </asp:Panel>
-                        <div class="container_BTNs mt-2 mb-3">
-                            <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark col-5 " Style="font-size: 15px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
-                            <asp:Button ID="btn_limpiar" runat="server" CssClass="btn btn-danger col-5 " Style="font-size: 15px;" Text="Limpiar Formulario" OnClick="btn_limpiar_Click" />
-                        </div>
-                        <div class="col-12">
-                            <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
-                        </div>
+
 
                         <div class="table-responsive container_listActivos mt-1">
                             <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
@@ -147,9 +146,16 @@
                                 </Columns>
                             </asp:GridView>
                         </div>
-                        <br />
+                        <div class="container_BTNs mt-2 mb-3">
+                            <asp:Button ID="btn_limpiar" runat="server" CssClass="btn btn-secondary col-5 " Style="font-size: 15px;" Text="Limpiar Formulario" OnClick="btn_limpiar_Click" />
+                            <asp:Button ID="btn_volverAtras" runat="server" CssClass="btn btn-danger col-5" Style="font-size: 15px;" Text="Volver Atras" OnClick="btn_volverAtras_Click" />
+                        </div>
+                        <div class="col-12">
+                            <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
+                        </div>
                     </div>
                 </div>
+                        <br />
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="btn_registrarForm" EventName="Click" />

@@ -130,7 +130,7 @@
 
             <div class="container_btn container_BTNs">
                 <asp:Button ID="btn_registrarLimpdep" runat="server" Text="Registrar Reposición" CssClass="btn btn-success col-5" style="font-size:0.8rem;" OnClick="btn_registrarLimpdep_Click" />
-                <asp:button ID="btn_volverAtras" runat="server" Text="Volver Atras" CssClass="btn btn-danger col-5"/>
+                <asp:Button ID="btn_volverAtras" runat="server" Text="Volver Atras" CssClass="btn btn-danger col-4" OnClick="btn_volverAtras_Click" />
             </div>
             <br />
 

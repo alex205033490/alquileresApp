@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
@@ -11,6 +12,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Documents;
+using System.Windows.Navigation;
 
 namespace JyC_Exterior.Presentacion
 {
@@ -62,7 +64,6 @@ namespace JyC_Exterior.Presentacion
 
         }
 
-
         // GET mostrar dpto
         protected void txt_edificio_TextChanged(object sender, EventArgs e)
         {
@@ -84,6 +85,7 @@ namespace JyC_Exterior.Presentacion
                 limpiarCamposDpto();
             }
         }
+        
         // Select dpto
         protected void gv_getDepartamentos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -134,9 +136,17 @@ namespace JyC_Exterior.Presentacion
 
 
         }
+        
         // Limpiar campos Dpto
         private void limpiarCamposDpto()
         {
+            Session.Remove("SADnominmueble");
+            Session.Remove("SADcoddpto");
+            Session.Remove("SADciudad");
+            Session.Remove("SADcodsimec");
+            Session.Remove("SADnroinmueble");
+            Session.Remove("SADnrodormitorios");
+
             txt_Habitacion.Text = "";
             txt_edificio.Text = "";
             txt_Direccion.Text = "";
@@ -204,7 +214,6 @@ namespace JyC_Exterior.Presentacion
             }
         }
 
-        
         //****************************  boton agregar activos al GV
         // Selecciona activo del GV
         protected void gv_listActivos_SelectedIndexChanged(object sender, EventArgs e)
@@ -265,7 +274,7 @@ namespace JyC_Exterior.Presentacion
             }
             catch (Exception ex)
             {
-                showaler($"Error Busque y seleccion un activo válido: {ex.Message}");
+                showaler($"Error busque y seleccione un activo válido: {ex.Message}");
                 return null;
             }
         }
@@ -274,6 +283,8 @@ namespace JyC_Exterior.Presentacion
             gv_activos.DataSource = activos;
             gv_activos.DataBind();
         }
+
+
         // BTN ADD al gridview gv_activos
         protected void btn_addActivo_Click(object sender, EventArgs e)
         {
@@ -311,61 +322,225 @@ namespace JyC_Exterior.Presentacion
 
         }
 
+
         /***************    GUARDAR REGISTROS    ***************/
+        // BTN registrar formulario
+        protected void btn_registrarForm_Click(object sender, EventArgs e)
+        {
+            guardarRegistro();
+        }
+        private void guardarRegistro2()
+        {
+            try
+            {
+                validarDatos();
+                var datosFormulario = ObtenerDatosForm();
+                var datosDetFormulario = ObtenerDatosDetForm();
+                var datosActivosDpto = obtenerDatosActivoD();
+
+                var exito = RegistrarReciboIngresoActivosDpto(datosFormulario);
+
+                if (exito)
+                {
+                    var detRecibo = RegistrarDetReciboIngresoActivoDpto(datosDetFormulario);
+                    if (detRecibo)
+                    {
+                        var addActivoDpto = RegistrarActivosDpto(datosActivosDpto);
+                        if (addActivoDpto)
+                        {
+                            showaler("Se ha registrado la visita al departamento.");
+                            limpiarFormularioRegistro();
+                            limpiarCamposActivo();
+
+                        }
+                        else
+                        {
+                            showaler("Ha ocurro un erro al registrar los activos al departamento.");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        showaler("No se pudo registrar el formulario registro de activos");
+                        return;
+                    }
+                }
+                else
+                {
+                    showaler("No se pudo registrar el formulario recibo de ingreso.");
+                    return;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                showaler($"Ha ocurrido un error inesperado: {ex.Message}");
+                return;
+            }
+
+        }
+        private (int codDpto, string codSimec, string nomInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, int codres, string denominacion) ObtenerDatosForm()
+        {
+            int codDpto = int.Parse(Session["SADcoddpto"].ToString());
+            string codSimec = Session["SADcodsimec"].ToString();
+            string nomInmueble = Session["SADnominmueble"].ToString();
+            string nroInmueble = Session["SADnroinmueble"].ToString();
+            int nroDormitorios = int.Parse(Session["SADnrodormitorios"].ToString());
+            string direccion = txt_Direccion.Text;
+            string ciudad = Session["SADciudad"].ToString();
+            string habitacion = txt_Habitacion.Text;
+
+            int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
+            if (dd_almacen <= 0)
+            {
+                showaler("Seleccione un almacén válido");
+            }
+            List<ActivosDTO> listActivos = obtenerListActivos();
+            if(listActivos == null || listActivos.Count == 0)
+            {
+                showaler("Error: agrega al menos 1 activo a su lista.");
+            }
+            int codResponsable = ObtenerCodigoResponsable();
+            if (codResponsable == 0)
+            {
+                showaler("No se pudo obtener el codigo del responsable.");
+            }
+
+            return (codDpto, codSimec, nomInmueble, nroInmueble, nroDormitorios, direccion, ciudad, codResponsable, habitacion);
+
+        }
+
+        private (List<ActivosDTO> listActivos, int codRecibo, int codRes, int codAlmacen) ObtenerDatosDetForm()
+        { 
+            NA_ActivosDpto negocio = new NA_ActivosDpto();
+
+            List<ActivosDTO> lista = obtenerListActivos();
+
+            int codResponsable = ObtenerCodigoResponsable();
+            if (codResponsable == 0)
+            {
+                showaler("Error: No se pudo obtener el código del responsable.");
+            }
+
+            int ultimoReciboIngreso = ObtenerUltimoReciboIngresoActivo(codResponsable);
+
+            int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
+            if (dd_almacen <= 0)
+            {
+                showaler("Seleccione un almacén válido");
+            }
+
+            return (lista,ultimoReciboIngreso, codResponsable, dd_almacen);
+            
+        }
+
+        private (List<ActivosDTO> listActivos, int codDpto, int codRes) obtenerDatosActivoD()
+        {
+            NA_ActivosDpto negocio = new NA_ActivosDpto();
+
+            List<ActivosDTO> lista = obtenerListActivos();
+
+            int codDpto = int.Parse(Session["SADcoddpto"].ToString());
+
+            int codResponsable = ObtenerCodigoResponsable();
+            if (codResponsable == 0)
+            {
+                showaler("Error: No se pudo obtener el codigo del responsable.");
+            }
+            return (lista, codDpto, codResponsable);
+        }
+
+        private bool RegistrarReciboIngresoActivosDpto((int coddpto, string codsimec, string nominmueble, string nroinmueble, int nrohabitaciones, string direccioninmueble, string dptoinmueble, int codres, string denominacion) dReciboIngreso)
+        {
+            try
+            {
+                NA_ActivosDpto negocio = new NA_ActivosDpto();
+                return negocio.post_reciboIngresoActivo(dReciboIngreso.coddpto, dReciboIngreso.codsimec, dReciboIngreso.nominmueble, dReciboIngreso.nroinmueble, dReciboIngreso.nrohabitaciones, dReciboIngreso.direccioninmueble, dReciboIngreso.dptoinmueble, dReciboIngreso.codres, dReciboIngreso.denominacion);
+            }
+            catch(Exception ex)
+            {
+                showaler($"Error al registrar el recibo ingreso de activos: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool RegistrarDetReciboIngresoActivoDpto((List<ActivosDTO> listActivos, int codRecibo, int codRes, int codAlmacen) dDetRecibo)
+        {
+            try
+            {
+                NA_ActivosDpto negocio = new NA_ActivosDpto();
+                foreach(var activos in dDetRecibo.listActivos)
+                {
+                    bool resultado = negocio.post_detalleReciboIngresoActivoDpto(dDetRecibo.codRecibo, activos.codigo, activos.cantidad, dDetRecibo.codRes, dDetRecibo.codAlmacen);
+                    if (!resultado)
+                    {
+                        showaler($"Error al insertar el activo con el codigo : {activos.codigo}");
+                        return false;
+                    }
+                }
+                return true;
+
+            } catch (Exception ex)
+            {
+                showaler($"Error al registrar el Detalle del recibo ingreso de activos: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool RegistrarActivosDpto((List<ActivosDTO> listActivos, int codDpto, int codRes)dActivosDpto)
+        {
+            try
+            {
+                NA_ActivosDpto negocio = new NA_ActivosDpto();
+                foreach(var activos in dActivosDpto.listActivos)
+                {
+                    bool resultado = negocio.insertar_activosDpto(dActivosDpto.codDpto, activos.codigo, activos.cantidad, dActivosDpto.codRes);
+                    if (!resultado)
+                    {
+                        showaler($"Error al insertar el activo con el codigo:{activos.codigo}");
+                        return false;
+                    }
+
+                }
+                return true;
+            } catch(Exception ex)
+            {
+                showaler($"Error al registrar los activos al departamento. {ex.Message}");
+                return false;
+            }
+        }
+
+
         private void guardarRegistro()
         {
-            try 
+            try
             {
+                validarDatos();
+
                 int codDpto = int.Parse(Session["SADcoddpto"].ToString());
-
                 string codSimec = Session["SADcodsimec"].ToString();
-
                 string nomInmueble = Session["SADnominmueble"].ToString();
-
                 string nroInmueble = Session["SADnroinmueble"].ToString();
-
                 int nroDormitorios = int.Parse(Session["SADnrodormitorios"].ToString());
-
                 string direccion = txt_Direccion.Text;
-
                 string ciudad = Session["SADciudad"].ToString();
-
                 string habitacion = txt_Habitacion.Text;
-
                 int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
-                if (dd_almacen <= 0)
-                {
-                    showaler("Seleccione un almacén válido");
-                }
-
                 List<ActivosDTO> listaActivos = obtenerListActivos();
-                if (listaActivos == null || listaActivos.Count == 0)
-                {
-                    showaler("Error : agrega al menos 1 activo a su lista.");
-                    return;
-                }
-
                 int codResponsable = ObtenerCodigoResponsable();
-                if(codResponsable == 0)
-                {
-                    showaler("Error: No se pudo obtener el código del solicitante.");
-                    return;
-                }
 
                 if (InsertarActivosADpto(listaActivos, codDpto, codResponsable))
                 {
-
-
-                    bool insertReciboIngresoActivoDpto = Insertar_ReciboIngresoActivoDpto(codDpto, codSimec, nomInmueble, nroInmueble,nroDormitorios, direccion, ciudad, codResponsable, habitacion );
+                    bool insertReciboIngresoActivoDpto = Insertar_ReciboIngresoActivoDpto(codDpto, codSimec, nomInmueble, nroInmueble, nroDormitorios, direccion, ciudad, codResponsable, habitacion);
                     if (insertReciboIngresoActivoDpto)
                     {
                         int ultimoReciboIngreso = ObtenerUltimoReciboIngresoActivo(codResponsable);
-                        
+
                         bool insertarDetalleReciboIngresoActivo = Insertar_detalleReciboIngresoActivoDpto(listaActivos, ultimoReciboIngreso, codResponsable, dd_almacen);
 
                         if (!insertarDetalleReciboIngresoActivo)
                         {
-                            showaler($"Error al insertar el detalleReciboIngreso con el codRecibo: {ultimoReciboIngreso}" );
+                            showaler($"Error al insertar el detalle del recibo Nro: {ultimoReciboIngreso}");
                             return;
                         }
                     }
@@ -377,27 +552,57 @@ namespace JyC_Exterior.Presentacion
                     showaler("El formulario se ha registrado correctamente.");
                     limpiarFormularioRegistro();
                     limpiarCamposActivo();
-
                 }
-
                 else
                 {
                     showaler("Hubo un problema al registrar los activos");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                showaler($"Error: {ex.Message}");
+                showaler($"Error al registrar. Datos incorrectos o incompletos: {ex.Message}");
+                return ;
             }
         }
+        // Validaciones
+        private void validarDatos()
+        {
+            string nomInmueble = Session["SADnominmueble"].ToString();
+            int codDpto = int.Parse(Session["SADcoddpto"].ToString());
+            string edificio = txt_edificio.Text;
+            int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
+            List<ActivosDTO> listaActivos = obtenerListActivos();
+            int codResponsable = ObtenerCodigoResponsable();
+
+            if (string.IsNullOrEmpty(edificio) || nomInmueble == null || string.IsNullOrEmpty(nomInmueble))
+            {
+                showaler("busque y seleccione un edificio valido.");
+                throw new Exception("Edificio no válido");
+            }
+            if(listaActivos == null || listaActivos.Count == 0)
+            {
+                showaler("Error: Agrega al menos 1 activo a su lista.");
+                throw new Exception("Lista de activos vacía");
+            }
+            if (codResponsable == 0)
+            {
+                showaler("Error: No se pudo obtener el código del Responsable.");
+                throw new Exception("Código de responsable no encontrado");
+            }
+            if (dd_almacen <= 0)
+            {
+                showaler("Seleccione un almacén válido.");
+                throw new Exception("Almacén no válido");
+            }
+        }
+
+        /* funcion insertar recibo */
         private bool Insertar_ReciboIngresoActivoDpto(int coddpto, string codSimec, string nomInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, int codres, string denominacion)
         {
             try
             {
                 NA_ActivosDpto negocio = new NA_ActivosDpto();
-
                 bool resultado = negocio.post_reciboIngresoActivo(coddpto, codSimec, nomInmueble, nroInmueble, nroHabitaciones, direccionInmueble, dptoInmueble, codres, denominacion);
-
                 if (!resultado)
                 {
                     showaler($"Error al crear el recibo del ingreso del departamento : {coddpto}");
@@ -410,8 +615,9 @@ namespace JyC_Exterior.Presentacion
                 showaler($"Error al insertar datos a reciboIngresoActivos: {ex.Message}");
                 return false;
             }
-
         }
+        
+        /* funcion insertar detalles recibo */
         private bool Insertar_detalleReciboIngresoActivoDpto(List<ActivosDTO> listActivos, int codRecibo, int codRes , int codAlmacen )
         {
             try
@@ -420,15 +626,13 @@ namespace JyC_Exterior.Presentacion
                 foreach(var activo in listActivos)
                 {
                     bool resultado = negocio.post_detalleReciboIngresoActivoDpto(codRecibo, activo.codigo, activo.cantidad, codRes, codAlmacen);
-
                     if (!resultado)
                     {
-                        showaler($"Error al insertar el activo con el codigo : {activo.codigo}");
+                        showaler($"Error al insertar el activo con el codRecibo : {activo.codigo}");
                         return false;
                     }
                 }
                 return true;
-
             }
             catch(Exception ex)
             {
@@ -436,6 +640,8 @@ namespace JyC_Exterior.Presentacion
                 return false;
             }
         }
+        
+        /* Obtener ultimo recibo de ingreso */
         private int ObtenerUltimoReciboIngresoActivo(int codRes)
         {
             try
@@ -450,6 +656,7 @@ namespace JyC_Exterior.Presentacion
             }
         }
        
+        /* funcion insertar activos dpto */
         private bool InsertarActivosADpto(List<ActivosDTO> listActivos, int codDpto, int codRes)
         {
             try
@@ -458,10 +665,9 @@ namespace JyC_Exterior.Presentacion
                 foreach(var activo in listActivos)
                 {
                     bool resultado = negocio.insertar_activosDpto(codDpto, activo.codigo, activo.cantidad, codRes);
-
                     if (!resultado)
                     {
-                        showaler($"Error al insertar el activo con codigo : {activo.codigo}");
+                        showaler($"Error al insertar el activo con codigoo : {activo.codigo}");
                         return false;
                     }
                 }
@@ -473,11 +679,13 @@ namespace JyC_Exterior.Presentacion
             }
         }
 
-
+        /* OBTENER lista de activos */
         private List<ActivosDTO> obtenerListActivos()
         {
             return Session["SactivosAdd"] as List<ActivosDTO>;
         }
+
+        /* Metodo obtener codigo */
         private int ObtenerCodigoResponsable()
         {
             try
@@ -493,12 +701,8 @@ namespace JyC_Exterior.Presentacion
                 return 0;
             }
         }
-        // BTN registrar formulario
-        protected void btn_registrarForm_Click(object sender, EventArgs e)
-        {
-            guardarRegistro();
-        }
 
+        /* METODO limpiar formulario */
         private void limpiarFormularioRegistro()
         {
             txt_edificio.Text = string.Empty;
@@ -530,7 +734,7 @@ namespace JyC_Exterior.Presentacion
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", script, true);
         }
 
-        // BTN Eliminar del GV
+        // BTN delete activo del GV
         protected void gv_activosDelete(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Eliminar")
@@ -552,11 +756,20 @@ namespace JyC_Exterior.Presentacion
             }
         }
 
+        // BTN limpiar campos
         protected void btn_limpiar_Click(object sender, EventArgs e)
         {
             limpiarCamposActivo();
             limpiarFormularioRegistro();
             MostrarActivos();
+        }
+
+        protected void btn_volverAtras_Click(object sender, EventArgs e)
+        {
+            limpiarCamposActivo();
+            limpiarFormularioRegistro();
+            limpiarCamposDpto();
+            Response.Redirect("FA_MenuPorArea.aspx");
         }
     }
 }
