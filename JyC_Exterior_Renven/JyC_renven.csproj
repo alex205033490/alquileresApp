@@ -351,7 +351,10 @@
     <Content Include="Presentacion\FA_Login.aspx" />
     <Content Include="Presentacion\FA_MenuPorArea.aspx" />
     <Content Include="Presentacion\FR_ActivosDpto.aspx" />
+    <Content Include="Presentacion\FR_AdmLimpiezaDpto.aspx" />
     <Content Include="Presentacion\FR_ModLimpiezaDep.aspx" />
+    <Content Include="Presentacion\FR_TraspasoAlmacen.aspx" />
+    <Content Include="Presentacion\Prueba.aspx" />
     <Content Include="Styles\login-box.css" />
     <Content Include="Styles\MenuPlantilla.css" />
     <Content Include="Styles\Style_MenuArea.css" />
@@ -479,6 +482,7 @@
     <Compile Include="Datos\DActualizacion.cs" />
     <Compile Include="Datos\DA_ActividadesPersonal.cs" />
     <Compile Include="Datos\DA_ActivosDpto.cs" />
+    <Compile Include="Datos\DA_AdmLimpiezaDpto.cs" />
     <Compile Include="Datos\DA_AgendaNegociacion.cs" />
     <Compile Include="Datos\DA_AgendaProyecto.cs" />
     <Compile Include="Datos\DA_AgendaTelefonica.cs" />
@@ -513,6 +517,7 @@
     <Compile Include="Datos\DA_R243.cs" />
     <Compile Include="Datos\DA_R244.cs" />
     <Compile Include="Datos\DA_ReciboPago.cs" />
+    <Compile Include="Datos\DA_RenvenTraspasoAlmacenes.cs" />
     <Compile Include="Datos\DA_Repuesto.cs" />
     <Compile Include="Datos\DA_Responsable.cs" />
     <Compile Include="Datos\DA_RutaCobrador.cs" />
@@ -555,6 +560,7 @@
     <Compile Include="Negocio\NActualizacion.cs" />
     <Compile Include="Negocio\NA_ActividadesPersonal.cs" />
     <Compile Include="Negocio\NA_ActivosDpto.cs" />
+    <Compile Include="Negocio\NA_AdmLimpiezaDpto.cs" />
     <Compile Include="Negocio\NA_AgendaNegociacion.cs" />
     <Compile Include="Negocio\NA_AgendaProyectos.cs" />
     <Compile Include="Negocio\NA_AgendaTelefonica.cs" />
@@ -591,6 +597,7 @@
     <Compile Include="Negocio\NA_R243.cs" />
     <Compile Include="Negocio\NA_R244.cs" />
     <Compile Include="Negocio\NA_ReciboPago.cs" />
+    <Compile Include="Negocio\NA_RenvenTraspasoAlmacen.cs" />
     <Compile Include="Negocio\NA_Reportes_Download.cs" />
     <Compile Include="Negocio\NA_Repuesto.cs" />
     <Compile Include="Negocio\NA_Responsables.cs" />
@@ -674,12 +681,33 @@
     <Compile Include="Presentacion\FR_ActivosDpto.aspx.designer.cs">
       <DependentUpon>FR_ActivosDpto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\FR_AdmLimpiezaDpto.aspx.cs">
+      <DependentUpon>FR_AdmLimpiezaDpto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FR_AdmLimpiezaDpto.aspx.designer.cs">
+      <DependentUpon>FR_AdmLimpiezaDpto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.cs">
       <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.designer.cs">
       <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FR_TraspasoAlmacen.aspx.cs">
+      <DependentUpon>FR_TraspasoAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FR_TraspasoAlmacen.aspx.designer.cs">
+      <DependentUpon>FR_TraspasoAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site_Master.Master.cs">

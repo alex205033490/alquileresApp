@@ -44,7 +44,7 @@ namespace JyC_Exterior.Datos
 
         internal DataSet get_listAlmacenes()
         {
-            string consulta = "SELECT al.codigo, al.nombre from tbalq_almacen al";
+            string consulta = "SELECT al.codigo, al.nombre, al.codSimec from tbalq_almacen al";
             return conexion.consultaMySql(consulta);
         }
 

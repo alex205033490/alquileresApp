@@ -116,7 +116,6 @@
 .CompletionlistItem {
     font-size: x-small;
 }
-
 .CompletionListMighlightedItem {
     background-color: black;
     color: White;
@@ -150,3 +149,27 @@
     height:300px;
     border: 2px solid black;
 }
+
+/*-------   FORMULARIO ADMI LIMPIEZA DPTO    -------*/
+
+
+.container-ADMlimpiezaDep {
+    padding: 8px; /* Espaciado interno para evitar que el contenido quede pegado al borde */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    border: 1px solid #ccc; /* Borde alrededor del formulario */
+    background-color: #86624385;
+}
+
+.gv_dptosAdmiLD {
+    overflow-x: scroll;
+    width: 100%;
+    background-color: white;
+    font-size: 10px;
+}
+
+.container_buscarDpto {
+    padding-bottom:5px;
+    
+
+}
+

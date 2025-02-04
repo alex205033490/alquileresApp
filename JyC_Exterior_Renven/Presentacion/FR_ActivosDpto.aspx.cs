@@ -345,6 +345,8 @@ namespace JyC_Exterior.Presentacion
                     var detRecibo = RegistrarDetReciboIngresoActivoDpto(datosDetFormulario);
                     if (detRecibo)
                     {
+                        // falta validacion si existe activo sumar 
+                        /*
                         var addActivoDpto = RegistrarActivosDpto(datosActivosDpto);
                         if (addActivoDpto)
                         {
@@ -358,6 +360,10 @@ namespace JyC_Exterior.Presentacion
                             showaler("Ha ocurro un erro al registrar los activos al departamento.");
                             return;
                         }
+                        */
+                        showaler("Se ha registrado la visita al departamento.");
+                        limpiarFormularioRegistro();
+                        limpiarCamposActivo();
                     }
                     else
                     {
@@ -528,9 +534,9 @@ namespace JyC_Exterior.Presentacion
                 int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
                 List<ActivosDTO> listaActivos = obtenerListActivos();
                 int codResponsable = ObtenerCodigoResponsable();
-
+                /*
                 if (InsertarActivosADpto(listaActivos, codDpto, codResponsable))
-                {
+                {*/
                     bool insertReciboIngresoActivoDpto = Insertar_ReciboIngresoActivoDpto(codDpto, codSimec, nomInmueble, nroInmueble, nroDormitorios, direccion, ciudad, codResponsable, habitacion);
                     if (insertReciboIngresoActivoDpto)
                     {
@@ -552,11 +558,11 @@ namespace JyC_Exterior.Presentacion
                     showaler("El formulario se ha registrado correctamente.");
                     limpiarFormularioRegistro();
                     limpiarCamposActivo();
-                }
+                /*}
                 else
                 {
                     showaler("Hubo un problema al registrar los activos");
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -628,7 +634,7 @@ namespace JyC_Exterior.Presentacion
                     bool resultado = negocio.post_detalleReciboIngresoActivoDpto(codRecibo, activo.codigo, activo.cantidad, codRes, codAlmacen);
                     if (!resultado)
                     {
-                        showaler($"Error al insertar el activo con el codRecibo : {activo.codigo}");
+                        showaler($"Error al insertar el activo con el codigo : {activo.codigo}");
                         return false;
                     }
                 }

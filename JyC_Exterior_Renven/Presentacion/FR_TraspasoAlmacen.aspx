@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site_Master.Master" AutoEventWireup="true" CodeBehind="FR_ActivosDpto.aspx.cs" Inherits="JyC_Exterior.Presentacion.FR_ActivosDpto" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site_Master.Master" AutoEventWireup="true" CodeBehind="FR_TraspasoAlmacen.aspx.cs" Inherits="JyC_Exterior.Presentacion.FR_TraspasoAlmacen" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>RENVEN</title>
@@ -22,6 +22,12 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
+
+
+
+
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
@@ -30,49 +36,23 @@
             <div class="form-activosDpto">
                 <div class="container-main">
                     <div class="title_principal">
-                        <h1 class="">ADMINISTRACIÓN DE ACTIVOS</h1>
+                        <h1 class="">Traspaso de activos</h1>
                     </div>
 
                     <div class="form_datosDpto mb-3">
-                        <h3>Datos del Departamento</h3>
+                        <h3>Datos del almacén</h3>
 
-                        <div class="item_Edificio col-12 mb-1">
-                            <p class="p_nombre mb-1">Edificio:</p>
-
-                            <asp:TextBox ID="txt_edificio" runat="server" CssClass="form-control" Style="font-size: 0.8rem;" AutoComplete="off" OnTextChanged="txt_edificio_TextChanged" AutoPostBack="true" placeholder="Ingrese el nombre de un edificio"></asp:TextBox>
-
-                            <div class="table-responsive list_dpto mt-1">
-                                
-                                <asp:GridView ID="gv_getDepartamentos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_getDepartamentos_SelectedIndexChanged">
-                                    <Columns>
-                                        <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
-                                        <asp:BoundField DataField="codigo" HeaderText="Codigo Dpto"/>
-                                        <asp:BoundField DataField="edificio" HeaderText="Edificio" HtmlEncode="false" />
-                                        <asp:BoundField DataField="denominacion" HeaderText="nro habitación" HtmlEncode="false" />
-                                        <asp:BoundField DataField="direccion" HeaderText="Dirección" HtmlEncode="false" />
-                                        <asp:BoundField DataField="ciudad" HeaderText="Ciudad" HtmlEncode="false" />
-                                        <asp:BoundField DataField="codSimec" HeaderText="cod Simec" HtmlEncode="false" />
-                                        <asp:BoundField DataField="nroInmueble" HeaderText="nro Inmueble" HtmlEncode="false" />
-                                        <asp:BoundField DataField="nrohabitaciones" HeaderText="nro dormitorios" />
-
-                                        </Columns>
-                                    </asp:GridView>
-
-                            </div>
+                        <div class="item_almacen col-12 mb-1">
+                            <p class="p_nombre mb-1">Almacén Origen:</p>
+                            <asp:DropDownList ID="dd_almacenOrigen" runat="server" Style="font-size: 0.7rem" CssClass="form-select" OnSelectedIndexChanged="dd_almacenO_SelectedIndexChanged">
+                               </asp:DropDownList>
                         </div>
 
-                        <div class="row">
-                            <div class="item_departamento col-5">
-                                <p class="p_nombre mb-1">Nro Habitación:</p>
-                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #738aa436; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
-                            </div>
-
-                            <div class="item_direccion col-7 fs-3">
-                                <p class="p_nombre mb-1">Dirección:</p>
-                                <asp:TextBox ID="txt_Direccion" Style="background-color: #738aa436; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
-                            </div>
+                        <div class="item_almacen col-12 mb-1">
+                            <p class="p_nombre mb-1">Almacén Destino:</p>
+                            <asp:DropDownList ID="dd_almacenDestino" runat="server" Style="font-size: 0.7rem" CssClass="form-select" OnSelectedIndexChanged="dd_almacenD_SelectedIndexChanged">
+                               </asp:DropDownList>
                         </div>
-
 
                     </div>
 
@@ -125,13 +105,8 @@
                                 </div>
                             </div>
                             <div class="row mb-2 d-flex align-items-center">
-                                <div class="item_almacen col-6">
-                                    <p class="p_nombre mb-1">Almacén:</p>
-                                    <asp:DropDownList ID="dd_listAlmacen" runat="server" Style="font-size: 0.7rem" CssClass="form-select">
-                                    </asp:DropDownList>
-                                </div>
-                                <div class="btn_addActivo col-6">
-                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 16px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
+                                <div class="btn_addActivo col-12">
+                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 16px; width:100%;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
                                 </div>
                             </div>
                         </asp:Panel>
@@ -161,9 +136,6 @@
             <asp:AsyncPostBackTrigger ControlID="btn_registrarForm" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
-
-
-
 
 
 </asp:Content>
