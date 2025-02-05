@@ -33,6 +33,11 @@
         </li>
 
         <li class="nav-item container-navItem">
+          <a class="nav-link" href="./FR_TraspasoAlmacen.aspx">Traspaso de activos</a>
+        </li>
+
+
+        <li class="nav-item container-navItem">
           <a class="nav-link" href="FA_Login.aspx">Salir</a>
         </li>
 

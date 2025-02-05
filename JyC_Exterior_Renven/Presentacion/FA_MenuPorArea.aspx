@@ -48,14 +48,15 @@
                     </a>
                     <p class="title_menu">Administración de activos</p>
                 </div>
-
+                <!--
                 <div class="col-5 portfolio-itemMenu" style="background-color:#9a9ea57a;">
                     <a href="./FR_AdmLimpiezaDpto.aspx" class="portfolio-link" data-toggle="modal">
                         <img src="../img/logoMueble.png" class="img-servicesMenu" alt=""/>
                     </a>
                     <p class="title_menu">Administración de visitas a departamentos</p>
                 </div>
-
+                -->
+                
                 <div class="col-5 portfolio-itemMenu" style="background-color:#9a9ea57a;">
                     <a href="./FR_TraspasoAlmacen.aspx" class="portfolio-link" data-toggle="modal">
                         <img src="../img/logoMueble.png" class="img-servicesMenu" alt=""/>

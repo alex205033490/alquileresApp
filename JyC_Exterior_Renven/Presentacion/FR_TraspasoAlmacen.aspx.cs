@@ -296,6 +296,12 @@ namespace JyC_Exterior.Presentacion
                 showaler("Seleccione un almacén destino válido.");
                 throw new Exception("Almacén no válido");
             }
+            if (dd_almacenDestino.SelectedIndex == dd_almacenOrigen.SelectedIndex)
+            {
+                showaler("El almacén de origen y destino deben ser diferentes.");
+                throw new Exception("Almacén origen y destino deben ser diferentes");
+            }
+
 
             if (listaActivos == null || listaActivos.Count == 0)
             {
@@ -407,7 +413,7 @@ namespace JyC_Exterior.Presentacion
 
                     if (insertarDetReciboTraspasoAlm)
                     {
-                        showaler($"Registro Insertado");
+                        showaler($"El traspaso se ha registrado exitosamente.");
                         LimpiarFormulario();
                         return;
                     }
