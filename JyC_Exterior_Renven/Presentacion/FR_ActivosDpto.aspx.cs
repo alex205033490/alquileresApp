@@ -329,133 +329,7 @@ namespace JyC_Exterior.Presentacion
         {
             guardarRegistro();
         }
-        private void guardarRegistro2()
-        {
-            try
-            {
-                validarDatos();
-                var datosFormulario = ObtenerDatosForm();
-                var datosDetFormulario = ObtenerDatosDetForm();
-                var datosActivosDpto = obtenerDatosActivoD();
-
-                var exito = RegistrarReciboIngresoActivosDpto(datosFormulario);
-
-                if (exito)
-                {
-                    var detRecibo = RegistrarDetReciboIngresoActivoDpto(datosDetFormulario);
-                    if (detRecibo)
-                    {
-                        // falta validacion si existe activo sumar 
-                        /*
-                        var addActivoDpto = RegistrarActivosDpto(datosActivosDpto);
-                        if (addActivoDpto)
-                        {
-                            showaler("Se ha registrado la visita al departamento.");
-                            limpiarFormularioRegistro();
-                            limpiarCamposActivo();
-
-                        }
-                        else
-                        {
-                            showaler("Ha ocurro un erro al registrar los activos al departamento.");
-                            return;
-                        }
-                        */
-                        showaler("Se ha registrado la visita al departamento.");
-                        limpiarFormularioRegistro();
-                        limpiarCamposActivo();
-                    }
-                    else
-                    {
-                        showaler("No se pudo registrar el formulario registro de activos");
-                        return;
-                    }
-                }
-                else
-                {
-                    showaler("No se pudo registrar el formulario recibo de ingreso.");
-                    return;
-                }
-
-            }
-            catch(Exception ex)
-            {
-                showaler($"Ha ocurrido un error inesperado: {ex.Message}");
-                return;
-            }
-
-        }
-        private (int codDpto, string codSimec, string nomInmueble, string nroInmueble, int nroHabitaciones, string direccionInmueble, string dptoInmueble, int codres, string denominacion) ObtenerDatosForm()
-        {
-            int codDpto = int.Parse(Session["SADcoddpto"].ToString());
-            string codSimec = Session["SADcodsimec"].ToString();
-            string nomInmueble = Session["SADnominmueble"].ToString();
-            string nroInmueble = Session["SADnroinmueble"].ToString();
-            int nroDormitorios = int.Parse(Session["SADnrodormitorios"].ToString());
-            string direccion = txt_Direccion.Text;
-            string ciudad = Session["SADciudad"].ToString();
-            string habitacion = txt_Habitacion.Text;
-
-            int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
-            if (dd_almacen <= 0)
-            {
-                showaler("Seleccione un almacén válido");
-            }
-            List<ActivosDTO> listActivos = obtenerListActivos();
-            if(listActivos == null || listActivos.Count == 0)
-            {
-                showaler("Error: agrega al menos 1 activo a su lista.");
-            }
-            int codResponsable = ObtenerCodigoResponsable();
-            if (codResponsable == 0)
-            {
-                showaler("No se pudo obtener el codigo del responsable.");
-            }
-
-            return (codDpto, codSimec, nomInmueble, nroInmueble, nroDormitorios, direccion, ciudad, codResponsable, habitacion);
-
-        }
-
-        private (List<ActivosDTO> listActivos, int codRecibo, int codRes, int codAlmacen) ObtenerDatosDetForm()
-        { 
-            NA_ActivosDpto negocio = new NA_ActivosDpto();
-
-            List<ActivosDTO> lista = obtenerListActivos();
-
-            int codResponsable = ObtenerCodigoResponsable();
-            if (codResponsable == 0)
-            {
-                showaler("Error: No se pudo obtener el código del responsable.");
-            }
-
-            int ultimoReciboIngreso = ObtenerUltimoReciboIngresoActivo(codResponsable);
-
-            int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
-            if (dd_almacen <= 0)
-            {
-                showaler("Seleccione un almacén válido");
-            }
-
-            return (lista,ultimoReciboIngreso, codResponsable, dd_almacen);
-            
-        }
-
-        private (List<ActivosDTO> listActivos, int codDpto, int codRes) obtenerDatosActivoD()
-        {
-            NA_ActivosDpto negocio = new NA_ActivosDpto();
-
-            List<ActivosDTO> lista = obtenerListActivos();
-
-            int codDpto = int.Parse(Session["SADcoddpto"].ToString());
-
-            int codResponsable = ObtenerCodigoResponsable();
-            if (codResponsable == 0)
-            {
-                showaler("Error: No se pudo obtener el codigo del responsable.");
-            }
-            return (lista, codDpto, codResponsable);
-        }
-
+   
         private bool RegistrarReciboIngresoActivosDpto((int coddpto, string codsimec, string nominmueble, string nroinmueble, int nrohabitaciones, string direccioninmueble, string dptoinmueble, int codres, string denominacion) dReciboIngreso)
         {
             try
@@ -534,9 +408,9 @@ namespace JyC_Exterior.Presentacion
                 int dd_almacen = int.Parse(dd_listAlmacen.SelectedValue);
                 List<ActivosDTO> listaActivos = obtenerListActivos();
                 int codResponsable = ObtenerCodigoResponsable();
-                /*
+
                 if (InsertarActivosADpto(listaActivos, codDpto, codResponsable))
-                {*/
+                {
                     bool insertReciboIngresoActivoDpto = Insertar_ReciboIngresoActivoDpto(codDpto, codSimec, nomInmueble, nroInmueble, nroDormitorios, direccion, ciudad, codResponsable, habitacion);
                     if (insertReciboIngresoActivoDpto)
                     {
@@ -558,11 +432,11 @@ namespace JyC_Exterior.Presentacion
                     showaler("El formulario se ha registrado correctamente.");
                     limpiarFormularioRegistro();
                     limpiarCamposActivo();
-                /*}
+                }
                 else
                 {
                     showaler("Hubo un problema al registrar los activos");
-                }*/
+                }
             }
             catch (Exception ex)
             {

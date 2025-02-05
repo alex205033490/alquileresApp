@@ -124,14 +124,14 @@
                                     <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row mb-2 d-flex align-items-center">
+                            <div class="row mb-2 d-flex align-items-end">
                                 <div class="item_almacen col-6">
                                     <p class="p_nombre mb-1">Almacén:</p>
                                     <asp:DropDownList ID="dd_listAlmacen" runat="server" Style="font-size: 0.7rem" CssClass="form-select">
                                     </asp:DropDownList>
                                 </div>
                                 <div class="btn_addActivo col-6">
-                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 16px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
+                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 15px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
                                 </div>
                             </div>
                         </asp:Panel>
