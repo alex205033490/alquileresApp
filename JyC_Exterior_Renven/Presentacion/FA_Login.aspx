@@ -38,9 +38,9 @@
                     <br />
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">						
-                        <asp:DropDownList class="input100" style="background-color:#2b71f73d;" ID="dd_loginDpto" runat="server" >
-                              <asp:ListItem>Prueba</asp:ListItem>                              
-                              <asp:ListItem>Renven</asp:ListItem>                              
+                        <asp:DropDownList class="input100" style="background-color:#2b71f73d;" ID="dd_loginDpto" runat="server" >                              
+								<asp:ListItem>Renven</asp:ListItem>                              
+								<asp:ListItem>Prueba</asp:ListItem>                              
                             </asp:DropDownList>
 						<span class="focus-input100"></span>
 					</div>
