@@ -37,7 +37,10 @@ namespace JyC_Exterior.Datos
         internal bool insert_activosDpto(int coddpto, int coditem, int cantidad, int codres)
         {
             string consulta = "INSERT INTO tbalq_detalleactivodpto(coddpto, coditem, fechagra, horagra, cantidad, codres) " +
-                " values ("+ coddpto + ", " + coditem + ", current_date(), current_time(), " + cantidad + ", " + codres + ");";
+                " values ("+ coddpto + ", " + coditem + ", current_date(), current_time(), " + cantidad + ", " + codres + ") " +
+                "ON DUPLICATE KEY UPDATE cantidad = cantidad + "+cantidad+" " +
+                ",fechagra = current_date() " +
+                ",horagra = current_time(); ";
 
             return conexion.ejecutarMySql(consulta);
         }
