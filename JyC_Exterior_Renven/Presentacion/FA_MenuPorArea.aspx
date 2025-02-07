@@ -48,18 +48,18 @@
                     </a>
                     <p class="title_menu">Administración de activos</p>
                 </div>
-                <!--
+                
                 <div class="col-5 portfolio-itemMenu" style="background-color:#9a9ea57a;">
                     <a href="./FR_AdmLimpiezaDpto.aspx" class="portfolio-link" data-toggle="modal">
-                        <img src="../img/logoMueble.png" class="img-servicesMenu" alt=""/>
+                        <img src="../img/logoLimpieza2.png" class="img-servicesMenu" alt=""/>
                     </a>
-                    <p class="title_menu">Administración de visitas a departamentos</p>
+                    <p class="title_menu">Gestión de limpieza y reposión de insumos</p>
                 </div>
-                -->
+                
                 
                 <div class="col-5 portfolio-itemMenu" style="background-color:#9a9ea57a;">
                     <a href="./FR_TraspasoAlmacen.aspx" class="portfolio-link" data-toggle="modal">
-                        <img src="../img/logoMueble.png" class="img-servicesMenu" alt=""/>
+                        <img src="../img/traspasoDpto.png" class="img-servicesMenu" alt=""/>
                     </a>
                     <p class="title_menu">Traspaso de activos</p>
                 </div>

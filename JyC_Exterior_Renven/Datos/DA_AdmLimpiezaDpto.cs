@@ -24,9 +24,10 @@ namespace JyC_Exterior.Datos
             return lista;
         }
 
-        internal bool update_EstadoRegistroDVisita(int codigo)
+        internal bool update_EstadoRegistroDVisita(List<int> codigo)
         {
-            string consulta = " UPDATE tbalq_limpiezadpto ld SET ld.estado = 0 WHERE ld.codigo like '%" + codigo + "%' ";
+            string codigosStr = string.Join(",", codigo);
+            string consulta = "UPDATE tbalq_limpiezadpto ld SET ld.estado = 0 WHERE ld.codigo = '"+codigosStr+"';";
             return conexion.ejecutarMySql(consulta);
         }
 

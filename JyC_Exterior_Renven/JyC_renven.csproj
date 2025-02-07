@@ -354,7 +354,6 @@
     <Content Include="Presentacion\FR_AdmLimpiezaDpto.aspx" />
     <Content Include="Presentacion\FR_ModLimpiezaDep.aspx" />
     <Content Include="Presentacion\FR_TraspasoAlmacen.aspx" />
-    <Content Include="Presentacion\Prueba.aspx" />
     <Content Include="Styles\login-box.css" />
     <Content Include="Styles\MenuPlantilla.css" />
     <Content Include="Styles\Style_MenuArea.css" />
@@ -701,13 +700,6 @@
     </Compile>
     <Compile Include="Presentacion\FR_TraspasoAlmacen.aspx.designer.cs">
       <DependentUpon>FR_TraspasoAlmacen.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Prueba.aspx.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Prueba.aspx.designer.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site_Master.Master.cs">

@@ -12,6 +12,15 @@ namespace JyC_Exterior.Datos
     {
         private conexionMySql conexion = new conexionMySql();
 
+        //get edificio
+        internal DataSet get_listEdificios(string edificio)
+        {
+            string consulta = "select e.codigo, e.dg_nombreinmueble from tb_equipo e " +
+                "where e.estado = 1 and e.dg_nombreinmueble LIKE '%" + edificio + "%' group by e.dg_nombreinmueble order by e.dg_nombreinmueble";
+            DataSet list = conexion.consultaMySql(consulta);
+            return list;
+
+        }
 
         // GET Despartamentos
         internal DataSet get_listDepartamentoInmueble(string dep)

@@ -24,13 +24,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container-ADMlimpiezaDep">
-                   
-        <h1> Administracion de visitas </h1>
+        
+        <div class="mb-3">
+            <h1>Gestión de limpieza y reposición de insumos</h1>
+        </div>
 
         <div class="container-datosdpto">
-            <div class="container_buscarDpto row">
+            <div class="container_buscarDpto d-flex align-items-end row">
                 <div class="col-6">
-                    <asp:Label runat="server"> Edificio</asp:Label>
+                    <asp:Label runat="server">Edificio: </asp:Label>
                     <asp:TextBox ID="txt_dpto" runat="server" CssClass="form-control" OnTextChanged="txt_dpto_TextChanged" AutoPostBack="true"> </asp:textbox>
                     <asp:AutoCompleteExtender ID="txt_dpto_AutoCompleteExtender" runat="server" 
                         TargetControlID="txt_dpto" CompletionSetCount="12" MinimumPrefixLength="1" 
@@ -52,7 +54,7 @@
         </div>
 
         <div ID="container-listRegistros" class="table-responsive">
-            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dptosAdmiLD">
+            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dptosAdmiLD" DataKeyNames="nro">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>

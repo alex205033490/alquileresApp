@@ -10,6 +10,8 @@ using jycboliviaASP.net.Negocio;
 using System.Configuration;
 using System.Globalization;
 using jycboliviaASP.net.Presentacion;
+using System.Web.Services;
+using System.Web.Script.Services;
 
 namespace JyC_Exterior.Presentacion
 {
@@ -46,6 +48,27 @@ namespace JyC_Exterior.Presentacion
 
             NA_DetallePermiso npermiso = new NA_DetallePermiso();
             return npermiso.tienePermisoResponsable(permiso, codUser);
+        }
+
+        // autocomplete edificios
+        [WebMethod]
+        [ScriptMethod]
+        public static string[] GetAutoCompletListEdificios(string prefixText, int count)
+        {
+            string edificio = prefixText;
+
+            NA_limpiezaDep negocio = new NA_limpiezaDep();
+            DataSet tuplas = negocio.get_mostrarEdificios(edificio);
+
+            string[] lista = new string[tuplas.Tables[0].Rows.Count];
+            int fin = tuplas.Tables[0].Rows.Count;
+            for (int i =0; i<fin; i++)
+            {
+                lista[i] = tuplas.Tables[0].Rows[i][1].ToString();
+            }
+            return lista;
+
+
         }
 
         // get mostrar departamentos 

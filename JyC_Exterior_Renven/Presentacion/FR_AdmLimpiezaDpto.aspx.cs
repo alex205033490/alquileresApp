@@ -19,14 +19,11 @@ namespace JyC_Exterior.Presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
             if (!IsPostBack)
             {
                 mostrarRegistrosDVisitas();
             }
         }
-
-
 
         private void mostrarRegistrosDVisitas()
         {
@@ -65,8 +62,6 @@ namespace JyC_Exterior.Presentacion
             }
 
             return lista;
-
-
         }
 
         protected void txt_dpto_TextChanged(object sender, EventArgs e)
@@ -86,19 +81,58 @@ namespace JyC_Exterior.Presentacion
             {
                 mostrarRegistrosDVisitas();
             }
-
-
-
         }
 
         protected void btn_buscarDpto_Click(object sender, EventArgs e)
         {
             mostrarRegistrosDVisitas();
         }
-
+        // btn Anular registros
         protected void btn_anular_Click(object sender, EventArgs e)
         {
+            NA_AdmLimpiezaDpto negocio = new NA_AdmLimpiezaDpto();
+            List<int> seleccionados = new List<int>();
 
+            foreach(GridViewRow row in gv_listRegistrosVisitas.Rows)
+            {
+                CheckBox chkAnular = (CheckBox)row.FindControl("chk_anularVisita");
+                
+                if (chkAnular != null && chkAnular.Checked)
+                {
+                    int nroRegistro = Convert.ToInt32(gv_listRegistrosVisitas.DataKeys[row.RowIndex].Value);
+                    seleccionados.Add(nroRegistro);
+                }
+            }
+
+            if (seleccionados.Count > 0)
+            {
+                bool exito = negocio.update_estadoRegistroDVisita(seleccionados);
+
+                if (exito)
+                {
+                    gv_listRegistrosVisitas.DataBind();
+                    showalert("El registro se ha anulado correctamente.");
+                    mostrarRegistrosDVisitas();
+                }
+                else
+                {
+                    showalert($"hubo un error al anular el registro. {seleccionados}");
+                }
+            }
+            else
+            {
+                showalert("Por favor, seleccione al menos un registro");
+            }
+
+        }
+        private void showalert(string mensaje)
+        {
+            string script = $"alert('{mensaje.Replace("'", "\\'")}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", script, true);
+        }
+        private void LimpiarForm()
+        {
+            txt_dpto.Text = string.Empty;
         }
     }
 }

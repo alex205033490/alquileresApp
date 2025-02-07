@@ -23,19 +23,31 @@
 
     <div class="form-limpiezaDep">
         <div class="container-main">
-           
-
+            <div class="mb-3">
+                <h1 class="">Limpieza De Departamentos y Reposición de Insumos</h1>
+            </div>
             <div class="form_datosDep">
-                <h3>Datos del Departamento</h3>
+                <h4>Datos del Departamento</h4>
                 <div class="row mb-2">
                     <div class="item_Edificio col-12">
                         <p class="p_nombre mb-1">Edificio:</p>
                         <asp:TextBox ID="txt_edificio" runat="server" Style="font-size: 12px" CssClass="form-control" AutoComplete="off" OnTextChanged="txt_edificio_TextChanged" AutoPostBack="true" placeholder="Ingrese el nombre de un edificio"></asp:TextBox>
+                        <asp:AutoCompleteExtender ID="txt_edificio_AutoCompleteExtender" runat="server" 
+                            TargetControlID="txt_edificio" CompletionSetCount="12" MinimumPrefixLength="1" 
+                            serviceMethod="GetAutoCompletListEdificios" UseContextKey="true" CompletionListCssClass="CompletionList" 
+                            CompletionListItemCssClass="CompletionlistItem" CompletionListHighlightedItemCssClass="CompletionListMighlightedItem"
+                            CompletionInterval="10">
+                        </asp:AutoCompleteExtender>
 
                         <div class="table-responsive list_dpto mt-1">
                             <asp:GridView ID="gv_getDepartamentos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_getDepartamentos_SelectedIndexChanged">
                                 <Columns>
-                                    <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
+                                    <asp:TemplateField >
+                                        <ItemTemplate>
+                                            <asp:Button ID="btn_seleccionardpto" runat="server" Text="Seleccionar" CommandName="Select" style="font-size:0.7rem;" CssClass="btn btn-success" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
                                     <asp:BoundField DataField="codDep" HeaderText="Codigo Dpto" HtmlEncode="false" />
                                     <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false" />
                                     <asp:BoundField DataField="nro_habitacion" HeaderText="Nro Habitación" HtmlEncode="false" />
@@ -91,7 +103,7 @@
 
             <div class="container_itemsRepo mt-4">
                 <div class="tittle_itemRepo">
-                    <h3>Lista de Insumos</h3>
+                    <h4>Lista de Insumos</h4>
                 </div>
 
 
