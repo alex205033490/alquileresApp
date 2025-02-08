@@ -29,9 +29,9 @@
         <ContentTemplate>
             <div class="form-activosDpto">
                 <div class="container-main">
-                    <div class="title_principal">
+                  <!--  <div class="title_principal">
                         <h1 class="">ADMINISTRACIÓN DE ACTIVOS</h1>
-                    </div>
+                    </div>  -->
 
                     <div class="form_datosDpto mb-3">
                         <h3>Datos del Departamento</h3>
