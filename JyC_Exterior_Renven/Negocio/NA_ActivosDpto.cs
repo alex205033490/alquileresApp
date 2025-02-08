@@ -57,5 +57,11 @@ namespace JyC_Exterior.Negocio
             else
                 return -1;
         }
+
+       internal DataSet get_edificio(string nombre)
+        {
+
+            return datosActivos.get_Edificio(nombre);
+        }
     }
 }

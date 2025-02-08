@@ -20,7 +20,10 @@ namespace JyC_Exterior.Negocio
         {
             return datosLD.update_EstadoRegistroDVisita(codigo);
         }
-
+        public DataSet get_detRegistroItems(int codigo)
+        {
+            return datosLD.get_detRegistroItems(codigo);
+        }
 
     }
 }

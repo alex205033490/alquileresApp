@@ -29,7 +29,6 @@
             <h1>Gestión de limpieza y reposición de insumos</h1>
         </div>
 
-        <div class="container-datosdpto">
             <div class="container_buscarDpto d-flex align-items-end row">
                 <div class="col-6">
                     <asp:Label runat="server">Edificio: </asp:Label>
@@ -50,8 +49,7 @@
                 </div>
 
             </div>
-            
-        </div>
+ 
 
         <div ID="container-listRegistros" class="table-responsive">
             <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dptosAdmiLD" DataKeyNames="nro">
@@ -61,6 +59,7 @@
                             <asp:CheckBox ID="chk_anularVisita" runat="server"/>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:CommandField ShowSelectButton="true" SelectText="Ver"/>
                     <asp:BoundField DataField="nro" HeaderText="Nro Registro" HtmlEncode="false"/>
                     <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false"/>
                     <asp:BoundField DataField="nroHabitacion" HeaderText="Nro Habitación" HtmlEncode="false"/>
@@ -74,8 +73,18 @@
             </asp:GridView>
         </div>
 
-        <div class="container-btns">
+        <div ID="container-listItems" class="table-responsive">
+            <asp:GridView ID="gv_listItemsVisita" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
+                <Columns>
+                    <asp:BoundField Datafield="codRegistro" HeaderText="Codigo Registro" HtmlEncode="false"/>
+                    <asp:BoundField Datafield="codItem" HeaderText="Codigo ITEM" HtmlEncode="false"/>
+                    <asp:BoundField Datafield="item" HeaderText="Item" HtmlEncode="false"/>
+                    <asp:BoundField Datafield="cantidad" HeaderText="Cantidad" HtmlEncode="false"/>
+                </Columns>
+
+            </asp:GridView>
         
+
         </div>
 
     </div>

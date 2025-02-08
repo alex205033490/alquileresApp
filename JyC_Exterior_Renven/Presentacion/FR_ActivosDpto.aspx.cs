@@ -85,6 +85,25 @@ namespace JyC_Exterior.Presentacion
                 limpiarCamposDpto();
             }
         }
+
+        // AUTOCOMPLETE EDIFICIO
+        [WebMethod]
+        [ScriptMethod]
+        public static string[] getLIstaEdificio(string prefixText, int count)
+        {
+            string nombre = prefixText;
+
+            NA_ActivosDpto negocio = new NA_ActivosDpto();
+            DataSet tuplas = negocio.get_edificio(nombre);
+
+            string[] lista = new string[tuplas.Tables[0].Rows.Count];
+            int fin = tuplas.Tables[0].Rows.Count;
+            for(int i = 0; i < fin; i++)
+            {
+                lista[i] = tuplas.Tables[0].Rows[i][1].ToString();
+            }
+            return lista;
+        }
         
         // Select dpto
         protected void gv_getDepartamentos_SelectedIndexChanged(object sender, EventArgs e)

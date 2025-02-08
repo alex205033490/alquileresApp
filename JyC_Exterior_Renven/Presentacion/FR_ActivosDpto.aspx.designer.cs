@@ -33,6 +33,15 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.TextBox txt_edificio;
 
         /// <summary>
+        /// Control txt_edificio_AutoCompleteExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender txt_edificio_AutoCompleteExtender;
+
+        /// <summary>
         /// Control gv_getDepartamentos.
         /// </summary>
         /// <remarks>
