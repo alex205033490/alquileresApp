@@ -27,7 +27,12 @@ namespace JyC_Exterior.Presentacion
 
         private void mostrarRegistrosDVisitas()
         {
-            string edificio = "";
+
+            string edificio = txt_dpto.Text;
+            if(edificio == null)
+            {
+                edificio = "";
+            }
 
             NA_AdmLimpiezaDpto negocio = new NA_AdmLimpiezaDpto();
             DataSet tuplas = negocio.get_ListRegistroDVisitas(edificio);
@@ -76,10 +81,12 @@ namespace JyC_Exterior.Presentacion
                 gv_listRegistrosVisitas.DataSource = tuplas;
                 gv_listRegistrosVisitas.DataBind();
                 gv_listRegistrosVisitas.Visible = true;
+                LimpiarGvDetalles();
             }
             else
             {
                 mostrarRegistrosDVisitas();
+                LimpiarGvDetalles();
             }
         }
 
@@ -110,6 +117,8 @@ namespace JyC_Exterior.Presentacion
 
                 if (exito)
                 {
+                    LimpiarForm();
+                    LimpiarGvDetalles();
                     gv_listRegistrosVisitas.DataBind();
                     showalert("El registro se ha anulado correctamente.");
                     mostrarRegistrosDVisitas();
@@ -133,6 +142,27 @@ namespace JyC_Exterior.Presentacion
         private void LimpiarForm()
         {
             txt_dpto.Text = string.Empty;
+        }
+
+        private void LimpiarGvDetalles()
+        {
+            gv_listItemsVisita.DataSource = null;
+            gv_listItemsVisita.DataBind();
+        }
+
+
+
+        protected void gv_listRegistrosVisitas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NA_AdmLimpiezaDpto negocio = new NA_AdmLimpiezaDpto();
+
+            int codigo = Convert.ToInt32(gv_listRegistrosVisitas.SelectedDataKey.Value);
+
+            DataSet detalles = negocio.get_detRegistroItems(codigo);
+
+            gv_listItemsVisita.DataSource = detalles;
+
+            gv_listItemsVisita.DataBind();
         }
     }
 }

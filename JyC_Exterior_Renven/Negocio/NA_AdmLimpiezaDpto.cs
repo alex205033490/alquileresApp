@@ -24,6 +24,5 @@ namespace JyC_Exterior.Negocio
         {
             return datosLD.get_detRegistroItems(codigo);
         }
-
     }
 }

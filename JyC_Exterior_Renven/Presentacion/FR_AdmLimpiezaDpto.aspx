@@ -49,10 +49,12 @@
                 </div>
 
             </div>
- 
-
+            <br />
+        <div class="tittle">
+            <h2>Lista de Registros </h2>
+        </div>
         <div ID="container-listRegistros" class="table-responsive">
-            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dptosAdmiLD" DataKeyNames="nro">
+            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dptosAdmiLD" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -72,20 +74,28 @@
                 </Columns>
             </asp:GridView>
         </div>
+        <asp:updatepanel ID="updatePanelGetItemsRegistro" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
 
-        <div ID="container-listItems" class="table-responsive">
-            <asp:GridView ID="gv_listItemsVisita" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
+
+        <div ID="container-listItems" class="table-responsive container-listItemsVisitaDpto">
+            <asp:GridView ID="gv_listItemsVisita" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_detRecibo">
                 <Columns>
-                    <asp:BoundField Datafield="codRegistro" HeaderText="Codigo Registro" HtmlEncode="false"/>
-                    <asp:BoundField Datafield="codItem" HeaderText="Codigo ITEM" HtmlEncode="false"/>
+                    <asp:BoundField Datafield="codRegistro" HeaderText="Nro Registro" HtmlEncode="false"/>
+                    <asp:BoundField Datafield="codItem" HeaderText="Codigo Item" HtmlEncode="false"/>
                     <asp:BoundField Datafield="item" HeaderText="Item" HtmlEncode="false"/>
                     <asp:BoundField Datafield="cantidad" HeaderText="Cantidad" HtmlEncode="false"/>
                 </Columns>
 
             </asp:GridView>
-        
-
         </div>
+
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="gv_listRegistrosVisitas" EventName="SelectedIndexChanged"></asp:AsyncPostBackTrigger>
+            </Triggers>
+        </asp:updatepanel>
+
 
     </div>
 </asp:Content>

@@ -167,9 +167,21 @@
     font-size: 10px;
 }
 
-.container_buscarDpto {
-    padding-bottom:5px;
-    
+.gv_detRecibo{
+    overflow-x:auto;
+    background-color:white;
+    font-size:9px;
+    height:150px;
+    width:80%;
+    display:block;
+}
 
+.container-listItemsVisitaDpto {
+    width: 80%;
+}
+
+
+.container_buscarDpto {
+    padding-bottom: 5px;
 }
 

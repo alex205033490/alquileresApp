@@ -475,7 +475,7 @@ namespace JyC_Exterior.Presentacion
                 return true;
             }catch (Exception ex)
             {
-                showaler($"Error al insertar datos a DetalleReciboTraspasoAlm");
+                showaler($"Error al insertar datos a DetalleReciboTraspasoAlm. {ex.Message}");
                 return false;
             }
 
