@@ -29,7 +29,7 @@
             <h1>Gestión de limpieza y reposición de insumos</h1>
         </div>
 
-            <div class="container_buscarDpto d-flex align-items-end row">
+            <div class="container_buscarDpto d-flex align-items-end row mb-2">
                 <div class="col-6">
                     <asp:Label runat="server">Edificio: </asp:Label>
                     <asp:TextBox ID="txt_dpto" runat="server" CssClass="form-control" OnTextChanged="txt_dpto_TextChanged" AutoPostBack="true"> </asp:textbox>
@@ -44,24 +44,34 @@
                 <div class="col-3">
                     <asp:Button ID="btn_buscarDpto" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btn_buscarDpto_Click" />
                 </div>
-                <div class="col-3">
-                    <asp:Button ID="btn_anular" runat="server" Text="Anular" CssClass="btn btn-danger" OnClick="btn_anular_Click" />
-                </div>
 
             </div>
+        <div class="container-btnLA row">
+                <div class="col-4">
+                    <asp:Button ID="btn_anular" runat="server" Text="Anular" CssClass="btn btn-danger" OnClick="btn_anular_Click" />
+                </div>
+            <div class="col-4">
+                <asp:Button ID="btn_limpiar" runat="server" Text="Limpiar Campos" CssClass="btn btn-dark" OnClick="btn_limpiar_Click" />
+            </div>
+
+        </div>
             <br />
         <div class="tittle">
             <h2>Lista de Registros </h2>
         </div>
         <div ID="container-listRegistros" class="table-responsive">
-            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dptosAdmiLD" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
+            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_ReciboVisitaDep" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:CheckBox ID="chk_anularVisita" runat="server"/>
+                            <asp:CheckBox ID="chk_anularVisita" runat="server" onClientClick="toggleRowColor(this, this.closest('tr'))"/>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowSelectButton="true" SelectText="Ver"/>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:button style="font-size:14px; padding:7px;" id="btn_Ver" runat="server" text="Ver" CssClass="btn btn-dark" CommandName="Select" OnClientClick="markRowAsSelected(this.closest('tr'))"></asp:button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="nro" HeaderText="Nro Registro" HtmlEncode="false"/>
                     <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false"/>
                     <asp:BoundField DataField="nroHabitacion" HeaderText="Nro Habitación" HtmlEncode="false"/>
@@ -84,9 +94,14 @@
                     <asp:BoundField Datafield="codRegistro" HeaderText="Nro Registro" HtmlEncode="false"/>
                     <asp:BoundField Datafield="codItem" HeaderText="Codigo Item" HtmlEncode="false"/>
                     <asp:BoundField Datafield="item" HeaderText="Item" HtmlEncode="false"/>
-                    <asp:BoundField Datafield="cantidad" HeaderText="Cantidad" HtmlEncode="false"/>
-                </Columns>
 
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:TextBox ID="txt_cantidad" runat="server" CssClass="form-control" Text='<%# Eval("cantidad") %>'></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                
             </asp:GridView>
         </div>
 
@@ -95,9 +110,14 @@
                 <asp:AsyncPostBackTrigger ControlID="gv_listRegistrosVisitas" EventName="SelectedIndexChanged"></asp:AsyncPostBackTrigger>
             </Triggers>
         </asp:updatepanel>
+        <div class="container-btnUpdate">
+            <asp:Button ID="btn_updateInsumos" CssClass="btn btn-info" runat="server" TEXT="Actualizar Registro" OnClick="btn_updateInsumos_Click" />
+
+        </div>
 
 
     </div>
+    <script type="text/javascript" src="../js/jsRenven.js"></script>
 </asp:Content>
 
 

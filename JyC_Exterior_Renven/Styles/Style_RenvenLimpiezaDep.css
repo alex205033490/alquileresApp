@@ -170,14 +170,23 @@
 .gv_detRecibo{
     overflow-x:auto;
     background-color:white;
-    font-size:9px;
+    font-size:10px;
     height:150px;
-    width:80%;
+    width:90%;
     display:block;
 }
 
+.gv_ReciboVisitaDep{
+    overflow-x:auto;
+    font-size:10px;
+    height:400px;
+    width:100%;
+    display:block;
+    background-color:white;
+}
+
 .container-listItemsVisitaDpto {
-    width: 80%;
+    width: 90%;
 }
 
 
@@ -185,3 +194,7 @@
     padding-bottom: 5px;
 }
 
+
+.selected-ver {
+    background-color: #0000004f;
+}

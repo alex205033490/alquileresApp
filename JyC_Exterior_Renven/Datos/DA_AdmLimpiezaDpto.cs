@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Globalization;
+using MySql.Data.MySqlClient;
 
 namespace JyC_Exterior.Datos
 {
@@ -40,5 +42,21 @@ namespace JyC_Exterior.Datos
             return list;
         }
 
+        internal bool update_cantInsumosRegistro(decimal cantidad, int codRes, int codRlimpieza, int codItem)
+        {
+            string consulta = "UPDATE tbalq_detallelimpiezadpto ld SET ld.cantidad = @cantidad, ld.codres = @codRes, " +
+                "ld.fechagra = current_date(), ld.horagra = current_time() WHERE ld.codrlimpieza = @codRlimpieza " +
+                "and ld.coditem = @codItem;";
+
+            using (MySqlCommand comand = new MySqlCommand(consulta))
+            {
+                comand.Parameters.AddWithValue("@cantidad", cantidad);
+                comand.Parameters.AddWithValue("@codRes", codRes);
+                comand.Parameters.AddWithValue("@codRlimpieza", codRlimpieza);
+                comand.Parameters.AddWithValue("@codItem", codItem);
+                
+                return conexion.ejecutarMysql2(comand);
+            }
+        }
     }
 }

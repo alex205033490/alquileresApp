@@ -269,6 +269,7 @@
     <Content Include="img\venta.png" />
     <Content Include="js\jsLimpiezaDpto.js" />
     <Content Include="js\jsPedido.js" />
+    <Content Include="js\jsRenven.js" />
     <Content Include="NegoPlantilla\Footer_Plantillanew.ascx" />
     <Content Include="NegoPlantilla\Header_planillanew.ascx" />
     <Content Include="NegoPlantilla\MenuPlantillaPrincipal.ascx" />

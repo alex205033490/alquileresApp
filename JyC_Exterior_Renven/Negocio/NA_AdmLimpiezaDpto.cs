@@ -24,5 +24,11 @@ namespace JyC_Exterior.Negocio
         {
             return datosLD.get_detRegistroItems(codigo);
         }
+
+        public bool ModificarDetCantInsumos(decimal cantidad, int codRes, int codRlimpieza, int codItem)
+        {
+            return datosLD.update_cantInsumosRegistro(cantidad, codRes, codRlimpieza, codItem);
+        }
+
     }
 }

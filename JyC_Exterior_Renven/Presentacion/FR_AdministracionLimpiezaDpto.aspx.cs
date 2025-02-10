@@ -10,6 +10,9 @@ using System.Configuration;
 using System.Data;
 using System.Web.Services;
 using System.Web.Script.Services;
+using AjaxControlToolkit;
+using System.Globalization;
+using jycboliviaASP.net.Negocio;
 
 
 namespace JyC_Exterior.Presentacion
@@ -134,21 +137,7 @@ namespace JyC_Exterior.Presentacion
             }
 
         }
-        private void showalert(string mensaje)
-        {
-            string script = $"alert('{mensaje.Replace("'", "\\'")}');";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", script, true);
-        }
-        private void LimpiarForm()
-        {
-            txt_dpto.Text = string.Empty;
-        }
 
-        private void LimpiarGvDetalles()
-        {
-            gv_listItemsVisita.DataSource = null;
-            gv_listItemsVisita.DataBind();
-        }
 
 
 
@@ -163,6 +152,104 @@ namespace JyC_Exterior.Presentacion
             gv_listItemsVisita.DataSource = detalles;
 
             gv_listItemsVisita.DataBind();
+        }
+
+        // UPDATE CANTIDA Reposicion insumos
+        protected void btn_updateInsumos_Click(object sender, EventArgs e)
+        {
+            NA_AdmLimpiezaDpto negocio = new NA_AdmLimpiezaDpto();
+
+            bool resultadoGeneral = true;
+
+            try
+            {
+                if (gv_listItemsVisita.Rows.Count == 0)
+                {
+                    showalert($"No actualizado. No hay registros para actualizar");
+                    return;
+                }
+                int codResponsable = obtenerCodigoResponsable();
+
+                foreach (GridViewRow row in gv_listItemsVisita.Rows)
+                {
+                    int codInsumo = Convert.ToInt32(row.Cells[1].Text);
+                    int codRegistro = Convert.ToInt32(row.Cells[0].Text);
+
+                    TextBox txtCantidad = (TextBox)row.FindControl("txt_cantidad");
+                    string cantidadTexto = txtCantidad.Text.Replace(",", ".");
+                    
+                    decimal nuevaCantidad;
+
+                    if(decimal.TryParse(cantidadTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out nuevaCantidad))
+                    {
+                        bool resultado = negocio.ModificarDetCantInsumos(nuevaCantidad, codResponsable, codRegistro, codInsumo);
+
+                        if (!resultado)
+                        {
+                            resultadoGeneral = false;
+                        }
+                    }
+                    else
+                    {
+                        showalert($"Cantidad inválida en el codigo Item: {codInsumo}.");
+                        return;
+                    }
+                }
+                if (resultadoGeneral)
+                {
+                    showalert("Actualización realizada con éxito");
+                } else
+                {
+                    showalert("Hubo un error al actualizar algunos registros.");
+                }
+            }
+            catch (FormatException)
+            {
+                showalert("Por favor, ingrese valores válidos.");
+
+            }
+            catch(Exception ex)
+            {
+                showalert($"Ocurrio un error inesperado: {ex.Message}");
+            }
+        }
+        private int obtenerCodigoResponsable()
+        {
+            try
+            {
+                NA_Responsables negocio = new NA_Responsables();
+                string usuarioAux = Session["NameUser"].ToString();
+                string passwordAux = Session["passworuser"].ToString();
+                return negocio.getCodUsuario(usuarioAux, passwordAux);
+            }
+            catch(Exception ex)
+            {
+                showalert($"Error al obtener el codigo del responsable: {ex.Message} ");
+                return 0;
+            }
+        }
+
+        // limpiar
+        private void LimpiarForm()
+        {
+            txt_dpto.Text = string.Empty;
+        }
+        private void LimpiarGvDetalles()
+        {
+            gv_listItemsVisita.DataSource = null;
+            gv_listItemsVisita.DataBind();
+        }
+        private void showalert(string mensaje)
+        {
+            string script = $"alert('{mensaje.Replace("'", "\\'")}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", script, true);
+        }
+
+        protected void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarForm();
+            LimpiarGvDetalles();
+            mostrarRegistrosDVisitas();
         }
     }
 }

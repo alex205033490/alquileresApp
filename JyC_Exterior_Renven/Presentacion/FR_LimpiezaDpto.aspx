@@ -24,7 +24,7 @@
     <div class="form-limpiezaDep">
         <div class="container-main">
             <div class="mb-3">
-                <h1 class="">Limpieza De Departamentos y Reposición de Insumos</h1>
+                <h1 class="">LIMPIEZA Y REPOSICIÓN DE INSUMOS</h1>
             </div>
             <div class="form_datosDep">
                 <h4>Datos del Departamento</h4>
