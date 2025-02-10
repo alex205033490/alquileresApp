@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site_Master.Master" AutoEventWireup="true" CodeBehind="FR_ModLimpiezaDep.aspx.cs" Inherits="JyC_Exterior.Presentacion.FR_ModLimpiezaDep" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site_Master.Master" AutoEventWireup="true" CodeBehind="FR_LimpiezaDpto.aspx.cs" Inherits="JyC_Exterior.Presentacion.FR_ModLimpiezaDep" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>RENVEN</title>

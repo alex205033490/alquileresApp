@@ -277,23 +277,24 @@ namespace JyC_Exterior.Presentacion
                     int codItem = Convert.ToInt32(row.Cells[0].Text);
 
                     TextBox txtCantidad = (TextBox)row.FindControl("txt_cantidadItem");
-                    string cantidad = "0";
 
-                    if(string.IsNullOrEmpty(txtCantidad.Text) || !decimal.TryParse(txtCantidad.Text, out decimal cantidadValor))
-                    {
-                        cantidad = "0";
-                    }
-                    else
+                    string cantidad = "0";
+                    decimal cantidadValor = 0;
+
+                    if(!string.IsNullOrEmpty(txtCantidad.Text) && decimal.TryParse(txtCantidad.Text, out cantidadValor))
                     {
                         cantidad = txtCantidad.Text;
                     }
 
-                    bool insertadoItems = InsertarInsumo(ultimaVisitaDptoID, codItem, cantidad);
-
-                    if (!insertadoItems)
+                    if (cantidadValor > 0)
                     {
-                        showaler("Error al insertar el insumo con codigo = " + codItem);
-                        return;
+                        bool insertadoItems = InsertarInsumo(ultimaVisitaDptoID, codItem, cantidad);
+
+                        if (!insertadoItems)
+                        {
+                            showaler("Error al insertar el insumo con codigo = " + codItem);
+                            return;
+                        }
                     }
                 }
                 showaler("Se ha registrado la visita al departamento");

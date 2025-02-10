@@ -351,8 +351,8 @@
     <Content Include="Presentacion\FA_Login.aspx" />
     <Content Include="Presentacion\FA_MenuPorArea.aspx" />
     <Content Include="Presentacion\FR_ActivosDpto.aspx" />
-    <Content Include="Presentacion\FR_AdmLimpiezaDpto.aspx" />
-    <Content Include="Presentacion\FR_ModLimpiezaDep.aspx" />
+    <Content Include="Presentacion\FR_AdministracionLimpiezaDpto.aspx" />
+    <Content Include="Presentacion\FR_LimpiezaDpto.aspx" />
     <Content Include="Presentacion\FR_TraspasoAlmacen.aspx" />
     <Content Include="Styles\login-box.css" />
     <Content Include="Styles\MenuPlantilla.css" />
@@ -680,19 +680,19 @@
     <Compile Include="Presentacion\FR_ActivosDpto.aspx.designer.cs">
       <DependentUpon>FR_ActivosDpto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\FR_AdmLimpiezaDpto.aspx.cs">
-      <DependentUpon>FR_AdmLimpiezaDpto.aspx</DependentUpon>
+    <Compile Include="Presentacion\FR_AdministracionLimpiezaDpto.aspx.cs">
+      <DependentUpon>FR_AdministracionLimpiezaDpto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\FR_AdmLimpiezaDpto.aspx.designer.cs">
-      <DependentUpon>FR_AdmLimpiezaDpto.aspx</DependentUpon>
+    <Compile Include="Presentacion\FR_AdministracionLimpiezaDpto.aspx.designer.cs">
+      <DependentUpon>FR_AdministracionLimpiezaDpto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.cs">
-      <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
+    <Compile Include="Presentacion\FR_LimpiezaDpto.aspx.cs">
+      <DependentUpon>FR_LimpiezaDpto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\FR_ModLimpiezaDep.aspx.designer.cs">
-      <DependentUpon>FR_ModLimpiezaDep.aspx</DependentUpon>
+    <Compile Include="Presentacion\FR_LimpiezaDpto.aspx.designer.cs">
+      <DependentUpon>FR_LimpiezaDpto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\FR_TraspasoAlmacen.aspx.cs">
       <DependentUpon>FR_TraspasoAlmacen.aspx</DependentUpon>
