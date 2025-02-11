@@ -25,12 +25,12 @@
 
     <div class="container-ADMlimpiezaDep">
         
-        <div class="mb-3">
+        <div class="mb-3 col-lg-10">
             <h1>Gestión de limpieza y reposición de insumos</h1>
         </div>
 
-            <div class="container_buscarDpto d-flex align-items-end row mb-2">
-                <div class="col-6">
+            <div class="container_buscarDpto d-flex align-items-end row mb-2 col-lg-10">
+                <div class="col-8 col-lg-4">
                     <asp:Label runat="server">Edificio: </asp:Label>
                     <asp:TextBox ID="txt_dpto" runat="server" CssClass="form-control" OnTextChanged="txt_dpto_TextChanged" AutoPostBack="true"> </asp:textbox>
                     <asp:AutoCompleteExtender ID="txt_dpto_AutoCompleteExtender" runat="server" 
@@ -39,27 +39,28 @@
                         CompletionListItemCssClass="CompletionlistItem" CompletionListHighlightedItemCssClass="CompletionListMighlightedItem"
                         CompletionInterval="10">
                     </asp:AutoCompleteExtender>
-
                 </div>
-                <div class="col-3">
+
+                <div class="col-3 col-lg-5">
                     <asp:Button ID="btn_buscarDpto" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btn_buscarDpto_Click" />
                 </div>
 
             </div>
-        <div class="container-btnLA row">
-                <div class="col-4">
-                    <asp:Button ID="btn_anular" runat="server" Text="Anular" CssClass="btn btn-danger" OnClick="btn_anular_Click" />
-                </div>
-            <div class="col-4">
+
+        <div class="container-btnLA row col-lg-10">
+            <div class="col-4 col-lg-2">
+                <asp:Button ID="btn_anular" runat="server" Text="Anular" CssClass="btn btn-danger" OnClick="btn_anular_Click" />
+            </div>
+            <div class="col-4 col-lg-2">
                 <asp:Button ID="btn_limpiar" runat="server" Text="Limpiar Campos" CssClass="btn btn-dark" OnClick="btn_limpiar_Click" />
             </div>
-
         </div>
+
             <br />
         <div class="tittle">
             <h2>Lista de Registros </h2>
         </div>
-        <div ID="container-listRegistros" class="table-responsive">
+        <div ID="container-listRegistros" class="table-responsive col-lg-9">
             <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_ReciboVisitaDep" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField>
@@ -88,7 +89,8 @@
         <ContentTemplate>
 
 
-        <div ID="container-listItems" class="table-responsive container-listItemsVisitaDpto">
+        <div ID="container-listItems" class="table-responsive container-listItemsVisitaDpto col-lg-5">
+           
             <asp:GridView ID="gv_listItemsVisita" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_detRecibo">
                 <Columns>
                     <asp:BoundField Datafield="codRegistro" HeaderText="Nro Registro" HtmlEncode="false"/>
@@ -97,12 +99,12 @@
 
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:TextBox ID="txt_cantidad" runat="server" CssClass="form-control" Text='<%# Eval("cantidad") %>'></asp:TextBox>
+                            <asp:TextBox ID="txt_cantidad" style="font-size:15px;" runat="server" CssClass="form-control" Text='<%# Eval("cantidad") %>'></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-                
             </asp:GridView>
+
         </div>
 
         </ContentTemplate>
@@ -110,11 +112,16 @@
                 <asp:AsyncPostBackTrigger ControlID="gv_listRegistrosVisitas" EventName="SelectedIndexChanged"></asp:AsyncPostBackTrigger>
             </Triggers>
         </asp:updatepanel>
-        <div class="container-btnUpdate">
-            <asp:Button ID="btn_updateInsumos" CssClass="btn btn-info" runat="server" TEXT="Actualizar Registro" OnClick="btn_updateInsumos_Click" />
 
+        <div class="container-btnUpdate row d-flex justify-content-between col-lg-10">
+            <div class="col-4">
+                <asp:Button ID="btn_updateInsumos" CssClass="btn btn-success" runat="server" TEXT="Actualizar Registro" OnClick="btn_updateInsumos_Click" />
+            </div>
+
+            <div class="col-3">
+                <asp:Button ID="btn_volver" runat="server" CssClass="btn btn-danger" Text="Salir"/>
+            </div>
         </div>
-
 
     </div>
     <script type="text/javascript" src="../js/jsRenven.js"></script>
