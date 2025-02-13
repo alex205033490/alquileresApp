@@ -53,7 +53,7 @@
                     <a href="./FR_AdministracionLimpiezaDpto.aspx" class="portfolio-link" data-toggle="modal">
                         <img src="../img/iconoADMvisita3.png" class="img-servicesMenu" alt=""/>
                     </a>
-                    <p class="title_menu">Gestión de limpieza y reposión de insumos</p>
+                    <p class="title_menu">Gestión de limpieza y reposión</p>
                 </div>
                 
                 

@@ -4,7 +4,7 @@
     <title>RENVEN</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="Shortcut Icon" href="../img/logoRenven1.png" />
+    <link rel="Shortcut Icon" href="../img/logoRenven3.png" />
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link href="../Styles/Style_RenvenLimpiezaDep.css" rel="stylesheet" type="text/css" />

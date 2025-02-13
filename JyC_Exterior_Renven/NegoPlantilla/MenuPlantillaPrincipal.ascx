@@ -25,12 +25,17 @@
         </li>
 
         <li class="nav-item container-navItem">
-            <a class="nav-link active" aria-current="page" href="./FR_ModLimpiezaDep.aspx">Limpieza de departamentos</a>
+            <a class="nav-link active" aria-current="page" href="./FR_ModLimpiezaDep.aspx">Servicio de limpieza</a>
         </li>
 
         <li class="nav-item container-navItem">
           <a class="nav-link" href="./FR_ActivosDpto.aspx">Administración de activos</a>
         </li>
+
+            <li class="nav-item container-navItem">
+                <a class="nav-link" href="./FR_AdministracionLimpiezaDpto">Gestión de limpieza y reposición</a>
+            </li>
+
 
         <li class="nav-item container-navItem">
           <a class="nav-link" href="./FR_TraspasoAlmacen.aspx">Traspaso de activos</a>

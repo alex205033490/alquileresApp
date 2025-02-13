@@ -135,7 +135,6 @@ namespace JyC_Exterior.Presentacion
             {
                 showalert("Por favor, seleccione al menos un registro");
             }
-
         }
 
 

@@ -63,14 +63,14 @@
         <div ID="container-listRegistros" class="table-responsive col-lg-9">
             <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_ReciboVisitaDep" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Anular">
                         <ItemTemplate>
                             <asp:CheckBox ID="chk_anularVisita" runat="server" onClientClick="toggleRowColor(this, this.closest('tr'))"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:button style="font-size:14px; padding:7px;" id="btn_Ver" runat="server" text="Ver" CssClass="btn btn-dark" CommandName="Select" OnClientClick="markRowAsSelected(this.closest('tr'))"></asp:button>
+                            <asp:button style="font-size:10px; padding:7px;" id="btn_Ver" runat="server" text="Seleccionar" CssClass="btn btn-dark" CommandName="Select" OnClientClick="markRowAsSelected(this.closest('tr'))"></asp:button>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="nro" HeaderText="Nro Registro" HtmlEncode="false"/>

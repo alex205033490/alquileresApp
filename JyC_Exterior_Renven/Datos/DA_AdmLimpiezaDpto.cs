@@ -29,7 +29,7 @@ namespace JyC_Exterior.Datos
         internal bool update_EstadoRegistroDVisita(List<int> codigo)
         {
             string codigosStr = string.Join(",", codigo);
-            string consulta = "UPDATE tbalq_limpiezadpto ld SET ld.estado = 0 WHERE ld.codigo = '" + codigosStr + "';";
+            string consulta = "UPDATE tbalq_limpiezadpto ld SET ld.estado = 0 WHERE ld.codigo IN ("+ codigosStr +");";
             return conexion.ejecutarMySql(consulta);
         }
 
