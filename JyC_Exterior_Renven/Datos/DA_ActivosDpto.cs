@@ -84,5 +84,13 @@ namespace JyC_Exterior.Datos
 
             return conexion.consultaMySql(consulta);
         }
+
+        internal DataSet get_Edificio(string edificio)
+        {
+            string consulta = "SELECT eq.codigo, eq.dg_nombreinmueble " +
+                "from tb_equipo eq where eq.estado=1 AND eq.dg_nombreinmueble like '%" + edificio+"%' group by eq.dg_nombreinmueble;";
+            DataSet lista = conexion.consultaMySql(consulta);
+            return lista;
+        }
     }
 }

@@ -99,6 +99,26 @@ namespace jycboliviaASP.net.Negocio
             }
         }
 
+        public Boolean ejecutarMysql2(MySqlCommand comando)
+        {
+            try
+            {
+                comando.Connection = MySqlConexion;
+                MySqlConexion.Open();
+                comando.ExecuteNonQuery();
+                MySqlConexion.Close();
+                return true;
 
+
+            }catch(Exception)
+            {
+                
+                return false;
+            }
+            finally
+            {
+                MySqlConexion.Close();
+            }
+        }
     }
 }

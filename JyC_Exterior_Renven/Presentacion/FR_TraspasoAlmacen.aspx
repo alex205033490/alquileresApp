@@ -22,14 +22,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
-
-
-
-
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
 
     <asp:UpdatePanel ID="updatePanel_listAddActivos" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
@@ -40,15 +33,17 @@
                     </div>  -->
 
                     <div class="form_datosDpto mb-3">
-                        <h3>Datos del almacén</h3>
+                        <div class="mb-3">
+                            <h3>Datos del almacén</h3>
+                        </div>
 
-                        <div class="item_almacen col-12 mb-1">
+                        <div class="item_almacen col-12 mb-2">
                             <p class="p_nombre mb-1">Almacén Origen:</p>
                             <asp:DropDownList ID="dd_almacenOrigen" runat="server" Style="font-size: 0.7rem" CssClass="form-select" OnSelectedIndexChanged="dd_almacenO_SelectedIndexChanged">
                                </asp:DropDownList>
                         </div>
 
-                        <div class="item_almacen col-12 mb-1">
+                        <div class="item_almacen col-12 mb-2">
                             <p class="p_nombre mb-1">Almacén Destino:</p>
                             <asp:DropDownList ID="dd_almacenDestino" runat="server" Style="font-size: 0.7rem" CssClass="form-select" OnSelectedIndexChanged="dd_almacenD_SelectedIndexChanged">
                                </asp:DropDownList>
@@ -82,7 +77,7 @@
 
 
                         <asp:Panel ID="Panel_addItem" runat="server" DefaultButton="btn_addActivo">
-                            <div class="row mb-1">
+                            <div class="row mb-2">
                                 
 
                                 <div class="item_nombre col-8">

@@ -19,7 +19,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </asp:Content>
 
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -29,23 +28,38 @@
         <ContentTemplate>
             <div class="form-activosDpto">
                 <div class="container-main">
-                  <!--  <div class="title_principal">
-                        <h1 class="">ADMINISTRACIÓN DE ACTIVOS</h1>
-                    </div>  -->
+
+                    <div class="title_principal">
+                        <h1 class="">GESTIÓN DE ACTIVOS POR DEPARTAMENTO</h1>
+                    </div>
+
 
                     <div class="form_datosDpto mb-3">
                         <h3>Datos del Departamento</h3>
 
-                        <div class="item_Edificio col-12 mb-1">
+                        <div class="item_Edificio col-12 mb-2">
                             <p class="p_nombre mb-1">Edificio:</p>
 
                             <asp:TextBox ID="txt_edificio" runat="server" CssClass="form-control" Style="font-size: 0.8rem;" AutoComplete="off" OnTextChanged="txt_edificio_TextChanged" AutoPostBack="true" placeholder="Ingrese el nombre de un edificio"></asp:TextBox>
+                            <asp:AutoCompleteExtender ID="txt_edificio_AutoCompleteExtender" runat="server"
+                                TargetControlID="txt_edificio"
+                                CompletionSetCount="12"
+                                MinimumPrefixLength="1" ServiceMethod="getLIstaEdificio"
+                                UseContextKey="True"
+                                CompletionListCssClass="CompletionList"
+                                CompletionListItemCssClass="CompletionlistItem"
+                                CompletionListHighlightedItemCssClass="CompletionListMighlightedItem" CompletionInterval="10">
+                            </asp:AutoCompleteExtender>
 
                             <div class="table-responsive list_dpto mt-1">
                                 
                                 <asp:GridView ID="gv_getDepartamentos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_getDepartamentos_SelectedIndexChanged">
                                     <Columns>
-                                        <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:Button style="font-size:10px;" ID="btnseleccionar_dpto" runat="server" Text="Seleccionar" CommandName="Select" CssClass="btn btn-success"/>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField DataField="codigo" HeaderText="Codigo Dpto"/>
                                         <asp:BoundField DataField="edificio" HeaderText="Edificio" HtmlEncode="false" />
                                         <asp:BoundField DataField="denominacion" HeaderText="nro habitación" HtmlEncode="false" />
@@ -64,12 +78,12 @@
                         <div class="row">
                             <div class="item_departamento col-5">
                                 <p class="p_nombre mb-1">Nro Habitación:</p>
-                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #738aa436; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
+                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #843e1117; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                             </div>
 
                             <div class="item_direccion col-7 fs-3">
                                 <p class="p_nombre mb-1">Dirección:</p>
-                                <asp:TextBox ID="txt_Direccion" Style="background-color: #738aa436; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+                                <asp:TextBox ID="txt_Direccion" Style="background-color: #843e1117; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
                             </div>
                         </div>
 
@@ -102,7 +116,7 @@
 
 
                         <asp:Panel ID="Panel_addItem" runat="server" DefaultButton="btn_addActivo">
-                            <div class="row mb-1">
+                            <div class="row mb-2">
                                 
 
                                 <div class="item_nombre col-8">
@@ -137,10 +151,14 @@
                         </asp:Panel>
 
 
-                        <div class="table-responsive container_listActivos mt-1">
+                        <div class="table-responsive container_listActivos mt-2">
                             <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                 <Columns>
-                                    <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnseleccionar_activo" style="font-size:12px;" runat="server" Text="Seleccionar" CommandName="select" CssClass="btn btn-success"/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="codigo" HeaderText="Codigo" HtmlEncode="false" />
                                     <asp:BoundField DataField="nombre" HeaderText="Activo" HtmlEncode="false" />
                                 </Columns>

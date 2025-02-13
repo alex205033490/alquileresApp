@@ -167,9 +167,58 @@
     font-size: 10px;
 }
 
-.container_buscarDpto {
-    padding-bottom:5px;
-    
-
+.gv_detRecibo{
+    overflow-x:auto;
+    background-color:white;
+    font-size:10px;
+    height:150px;
+    width:90%;
+    display:block;
 }
 
+.gv_ReciboVisitaDep{
+    overflow-x:auto;
+    font-size:10px;
+    height:400px;
+    width:100%;
+    display:block;
+    background-color:white;
+}
+
+.container-listItemsVisitaDpto {
+    width: 90%;
+}
+
+
+.container_buscarDpto {
+    padding-bottom: 5px;
+}
+
+
+.selected-ver {
+    background-color: #0000004f;
+}
+
+.btn-success:hover{
+    background-color:darkgreen;
+    box-shadow:0 6px 10px rgba(0,128, 0, 0.6);
+}
+
+.btn-danger:hover {
+    background-color: darkred;
+    box-shadow: 0 6px 10px rgba(255, 0, 0, 0.6);
+}
+
+.btn-dark:hover {
+    background-color: #333;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 481px){
+    .container-ADMlimpiezaDep{
+        padding:2rem;
+        margin:2rem;
+        border:1px solid black;
+        box-shadow:0 10px 10px rgba(0,0,0,0.6);
+    }
+}

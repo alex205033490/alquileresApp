@@ -16,11 +16,19 @@ namespace JyC_Exterior.Negocio
             return datosLD.get_ListRegistroDVisitas(edificio);
         }
 
-        internal bool update_estadoRegistroDVisita(int codigo)
+        internal bool update_estadoRegistroDVisita(List<int> codigo)
         {
             return datosLD.update_EstadoRegistroDVisita(codigo);
         }
+        public DataSet get_detRegistroItems(int codigo)
+        {
+            return datosLD.get_detRegistroItems(codigo);
+        }
 
+        public bool ModificarDetCantInsumos(decimal cantidad, int codRes, int codRlimpieza, int codItem)
+        {
+            return datosLD.update_cantInsumosRegistro(cantidad, codRes, codRlimpieza, codItem);
+        }
 
     }
 }

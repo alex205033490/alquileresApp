@@ -15,6 +15,10 @@ namespace JyC_Exterior.Negocio
         {
             return datosld.get_listDepartamentoInmueble(dep);
         }
+        public DataSet get_mostrarEdificios(string edificio)
+        {
+            return datosld.get_listEdificios(edificio);
+        }
 
         public DataSet get_mostrarItemRepo(int codigo)
         {
