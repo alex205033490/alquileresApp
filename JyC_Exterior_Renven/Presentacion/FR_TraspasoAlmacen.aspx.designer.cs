@@ -60,6 +60,24 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.Panel Panel_addItem;
 
         /// <summary>
+        /// Control txt_codActivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_codActivo;
+
+        /// <summary>
+        /// Control txt_cantidadActivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_cantidadActivo;
+
+        /// <summary>
         /// Control txt_activo.
         /// </summary>
         /// <remarks>
@@ -76,15 +94,6 @@ namespace JyC_Exterior.Presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender txt_activo_AutoCompleteExtender;
-
-        /// <summary>
-        /// Control txt_cantidadActivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_cantidadActivo;
 
         /// <summary>
         /// Control btn_addActivo.

@@ -110,11 +110,11 @@
     cursor: pointer;
     border: solid;
     border-width: 1px;
-    font-size: x-small;
+    font-size: medium;
     overflow: auto;
 }
 .CompletionlistItem {
-    font-size: x-small;
+    font-size: medium;
 }
 .CompletionListMighlightedItem {
     background-color: black;
@@ -222,3 +222,27 @@
         box-shadow:0 10px 10px rgba(0,0,0,0.6);
     }
 }
+
+/* TRASPASO DE ACTIVOS */
+
+.selected-row {
+    background-color: #28a745 !important; 
+    color: white; 
+}
+
+.container-addActivo{
+    background-color:#afafaf;
+    margin:1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

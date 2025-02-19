@@ -22,7 +22,24 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        function onItemSelectedItemActivo(sender, args) {
+            console.log("Item Selected");
+            var dataItem = args.get_value();
+            console.log("DataItem:", dataItem);
 
+            var parts = dataItem.split("|");
+
+            if (parts.length > 1) {
+                var codigo = parts[0];
+                var item = parts[1];
+
+                document.getElementById('<%= txt_activo.ClientID %>').value = item;
+                document.getElementById('<%= txt_codActivo.ClientID %>').value = codigo;
+            }
+
+        }
+    </script>
 
     <asp:UpdatePanel ID="updatePanel_listAddActivos" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
@@ -30,7 +47,7 @@
                 <div class="container-main">
 
                     <div class="title_principal">
-                        <h1 class="">GESTIÓN DE ACTIVOS POR DEPARTAMENTO</h1>
+                        <h1 class="">GESTIÓN DE ACTIVOS</h1>
                     </div>
 
 
@@ -114,40 +131,50 @@
 
                         </div>
 
-
                         <asp:Panel ID="Panel_addItem" runat="server" DefaultButton="btn_addActivo">
+                            
                             <div class="row mb-2">
+                                <div class="col-4">
+                                    <div class="item_cod mb-2">
+                                        <p class="p_nombre mb-1">Codigo Item</p>
+                                        <asp:TextBox ID="txt_codActivo" AutoComplete="off" runat="server" style="font-size:0.8rem;" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="item_cantidad mb-2">
+                                        <p class="p_nombre mb-1">Cantidad</p>
+                                        <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
+                                    </div>
+                                </div>
+
+                                <div class="col-8">
+                                    <div class="item_nombre col-12 mb-2">
+                                        <p class="mb-1">Item:</p>
+                                        <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" placeholder="Seleccione un item"></asp:TextBox>
+                                        <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
+                                            TargetControlID="txt_activo"
+                                            CompletionSetCount="12"
+                                            MinimumPrefixLength="1" ServiceMethod="GetlistActivos"
+                                            UseContextKey="True"
+                                            CompletionListCssClass="CompletionList"
+                                            CompletionListItemCssClass="CompletionlistItem"
+                                            CompletionListHighlightedItemCssClass="CompletionListMighlightedItem" CompletionInterval="10" 
+                                            OnClientItemSelected="onItemSelectedItemActivo">
+                                        </asp:AutoCompleteExtender>
+                                    </div>
+                                    <div class="item_almacen col-12 mb-2">
+                                        <p class="p_nombre mb-1">Almacén:</p>
+                                        <asp:DropDownList ID="dd_listAlmacen" runat="server" Style="font-size: 0.7rem" CssClass="form-select">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="">
+                                <div class="btn_addActivo col-12">
+                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark w-100" Style="font-size: 15px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
+                                </div>
+                                </div>
+                            </div>
+
                                 
 
-                                <div class="item_nombre col-8">
-                                    <p class="mb-1">Item:</p>
-                                    <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" placeholder="Busque y seleccione un item" OnTextChanged="txt_activo_TextChanged"></asp:TextBox>
-                                    <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
-                                        TargetControlID="txt_activo"
-                                        CompletionSetCount="12"
-                                        MinimumPrefixLength="1" ServiceMethod="GetlistActivos"
-                                        UseContextKey="True"
-                                        CompletionListCssClass="CompletionList"
-                                        CompletionListItemCssClass="CompletionlistItem"
-                                        CompletionListHighlightedItemCssClass="CompletionListMighlightedItem" CompletionInterval="10">
-                                    </asp:AutoCompleteExtender>
-                                </div>
-
-                                <div class="item_cantidad col-4">
-                                    <p class="p_nombre mb-1">Cantidad</p>
-                                    <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="row mb-2 d-flex align-items-end">
-                                <div class="item_almacen col-6">
-                                    <p class="p_nombre mb-1">Almacén:</p>
-                                    <asp:DropDownList ID="dd_listAlmacen" runat="server" Style="font-size: 0.7rem" CssClass="form-select">
-                                    </asp:DropDownList>
-                                </div>
-                                <div class="btn_addActivo col-6">
-                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 15px;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
-                                </div>
-                            </div>
                         </asp:Panel>
 
 
@@ -179,9 +206,6 @@
             <asp:AsyncPostBackTrigger ControlID="btn_registrarForm" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
-
-
-
 
 
 </asp:Content>

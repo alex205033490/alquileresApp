@@ -100,6 +100,7 @@ namespace JyC_Exterior.Presentacion
             int fin = tuplas.Tables[0].Rows.Count;
             for(int i = 0; i < fin; i++)
             {
+
                 lista[i] = tuplas.Tables[0].Rows[i][1].ToString();
             }
             return lista;
@@ -199,15 +200,16 @@ namespace JyC_Exterior.Presentacion
         public static string[] GetListActivos(string prefixText, int count)
         {
             string nombreActivo = prefixText;
-
             NA_ActivosDpto negocio = new NA_ActivosDpto();
             DataSet tuplas = negocio.get_buscarItem(nombreActivo);
 
             string[] lista = new string[tuplas.Tables[0].Rows.Count];
-            int fin = tuplas.Tables[0].Rows.Count;
-            for(int i = 0; i < fin; i++)
+
+            for (int i = 0; i < tuplas.Tables[0].Rows.Count; i++)
             {
-                lista[i] = tuplas.Tables[0].Rows[i][1].ToString();
+                string codigo = tuplas.Tables[0].Rows[i]["codigo"].ToString();
+                string item = tuplas.Tables[0].Rows[i]["nombre"].ToString();
+                lista[i] = $"{codigo}|{item}";
             }
             return lista;
         }
@@ -243,11 +245,8 @@ namespace JyC_Exterior.Presentacion
             string codigo = row.Cells[1].Text;
             string nombre = row.Cells[2].Text;
 
-            Session["SAcodItem"] = codigo;
-            Session["SAnombre"] = nombre;
             txt_activo.Text = nombre;
-
-
+            txt_codActivo.Text = codigo;
         }
         List<ActivosDTO> activos = new List<ActivosDTO>();
         public class ActivosDTO
@@ -269,11 +268,12 @@ namespace JyC_Exterior.Presentacion
         {
             try
             {
-                int codigo = int.Parse(Session["SAcodItem"].ToString());
-                string nombre = (Session["SAnombre"].ToString());
-                if (string.IsNullOrWhiteSpace(Session["SAcodItem"].ToString()) || string.IsNullOrWhiteSpace(Session["SAnombre"].ToString()))
+                int codigo = int.Parse(txt_codActivo.Text);
+                string nombre = txt_activo.Text;
+
+                if (string.IsNullOrWhiteSpace(txt_codActivo.Text) || string.IsNullOrWhiteSpace(txt_activo.Text))
                 {
-                    showaler("Debe buscar y seleccionar un activo válido.");
+                    showaler("Seleccione un Item válido.");
                     return null;
                 }
 
@@ -334,10 +334,8 @@ namespace JyC_Exterior.Presentacion
         private void limpiarCamposActivo()
         {
             txt_activo.Text = string.Empty;
+            txt_codActivo.Text = string.Empty;
             txt_cantidadActivo.Text = string.Empty;
-
-            Session.Remove("SAcodItem");
-            Session.Remove("SAnombre");
 
         }
 

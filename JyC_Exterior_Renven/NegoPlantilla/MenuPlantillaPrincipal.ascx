@@ -21,24 +21,24 @@
         <ul class="navbar-nav me-auto container-ul">
 
         <li class="nav-item container-navItem">
-          <a class="nav-link" href="./FA_MenuPorArea.aspx">Menú Principal</a>
+          <a class="nav-link" style="font-size:13px;" href="./FA_MenuPorArea.aspx">Menú Principal</a>
         </li>
 
         <li class="nav-item container-navItem">
-            <a class="nav-link active" aria-current="page" href="./FR_ModLimpiezaDep.aspx">Servicio de limpieza</a>
+            <a class="nav-link active" style="font-size:13px;" aria-current="page" href="./FR_ModLimpiezaDep.aspx">Servicio de limpieza</a>
         </li>
 
         <li class="nav-item container-navItem">
-          <a class="nav-link" href="./FR_ActivosDpto.aspx">Administración de activos</a>
+          <a class="nav-link" style="font-size:13px;" href="./FR_ActivosDpto.aspx">Administración de activos</a>
         </li>
 
             <li class="nav-item container-navItem">
-                <a class="nav-link" href="./FR_AdministracionLimpiezaDpto">Gestión de limpieza y reposición</a>
+                <a class="nav-link" style="font-size:13px;" href="./FR_AdministracionLimpiezaDpto.aspx">Gestión de limpieza y reposición</a>
             </li>
 
 
         <li class="nav-item container-navItem">
-          <a class="nav-link" href="./FR_TraspasoAlmacen.aspx">Traspaso de activos</a>
+          <a class="nav-link" style="font-size:13px;" href="./FR_TraspasoAlmacen.aspx">Traspaso de activos</a>
         </li>
 
 

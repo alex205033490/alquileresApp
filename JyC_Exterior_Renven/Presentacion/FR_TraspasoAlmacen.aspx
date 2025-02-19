@@ -23,6 +23,24 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        function onItemSelectedItemTraspasoAlm(sender, args) {
+            console.log("Item Selected");
+            var dataItem = args.get_value();
+            console.log("DataItem:", dataItem);
+
+            var parts = dataItem.split("|");
+
+            if (parts.length > 1) {
+                var codigo = parts[0];
+                var item = parts[1];
+
+                document.getElementById('<%= txt_activo.ClientID %>').value = item;
+                document.getElementById('<%= txt_codActivo.ClientID %>').value = codigo;
+            }
+        }
+    </script>
+
 
     <asp:UpdatePanel ID="updatePanel_listAddActivos" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
@@ -58,6 +76,7 @@
                         <h3>Lista de activos</h3>
                         <div class="container_activo">
 
+                            <!-- LISTA DE ACTIVOS AGREGADOS EN LA LISTA -->
                             <asp:GridView ID="gv_activos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnRowCommand="gv_activosDelete">
                                 <Columns>
 
@@ -77,40 +96,52 @@
 
 
                         <asp:Panel ID="Panel_addItem" runat="server" DefaultButton="btn_addActivo">
-                            <div class="row mb-2">
+                            <div class="row mb-2 container-addActivo">
                                 
-
-                                <div class="item_nombre col-8">
-                                    <p class="mb-1">Item:</p>
-                                    <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" placeholder="Busque y seleccione un item" OnTextChanged="txt_activo_TextChanged"></asp:TextBox>
-                                    <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
-                                        TargetControlID="txt_activo"
-                                        CompletionSetCount="12"
-                                        MinimumPrefixLength="1" ServiceMethod="GetlistActivos"
-                                        UseContextKey="True"
-                                        CompletionListCssClass="CompletionList"
-                                        CompletionListItemCssClass="CompletionlistItem"
-                                        CompletionListHighlightedItemCssClass="CompletionListMighlightedItem" CompletionInterval="10">
-                                    </asp:AutoCompleteExtender>
+                                <div class="col-4 mb-2">
+                                    <div class="item_codIActivo mb-2">
+                                        <p class="p_nombre mb-1">Codigo:</p>
+                                        <asp:TextBox ID="txt_codActivo" AutoComplete="off" runat="server" CssClass="form-control" Style="font-size:0.8rem;"></asp:TextBox>
+                                    </div>
+                                    <div class="item_cantidad">
+                                        <p class="p_nombre mb-1">Cantidad</p>
+                                        <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
+                                    </div>
                                 </div>
 
-                                <div class="item_cantidad col-4">
-                                    <p class="p_nombre mb-1">Cantidad</p>
-                                    <asp:TextBox ID="txt_cantidadActivo" type="number" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off"></asp:TextBox>
+                                <div class="col-8">
+                                    <div class="item_nombre col-12 mb-2">
+                                        <p class="p_nombre mb-1">Activo:</p>
+                                        <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" ></asp:TextBox>
+                                        <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
+                                            TargetControlID="txt_activo"
+                                            CompletionSetCount="12"
+                                            MinimumPrefixLength="1" ServiceMethod="GetListActivos"
+                                            UseContextKey="True"
+                                            CompletionListCssClass="CompletionList"
+                                            CompletionListItemCssClass="CompletionlistItem"
+                                            CompletionListHighlightedItemCssClass="CompletionListMighlightedItem" CompletionInterval="10"
+                                            OnClientItemSelected="onItemSelectedItemTraspasoAlm">
+                                        </asp:AutoCompleteExtender>
+                                    </div>
+                                    <div class="mt-4 w-100 col-8">
+                                            <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 16px; width:100%;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-2 d-flex align-items-center">
-                                <div class="btn_addActivo col-12">
-                                    <asp:Button ID="btn_addActivo" runat="server" CssClass="btn btn-dark " Style="font-size: 16px; width:100%;" Text="Agregar Activo" OnClick="btn_addActivo_Click" />
-                                </div>
+
+                                
                             </div>
                         </asp:Panel>
 
-
+                        <!-- GV LISTA DE ACTIVOS -->
                         <div class="table-responsive container_listActivos mt-1">
-                            <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
+                            <asp:GridView ID="gv_listActivos" runat="server" EnableViewState="true" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                 <Columns>
-                                    <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button id="btn_seleccionar" runat="server" style="font-size:12px;"  Text="Seleccionar" CssClass="btn btn-success" CommandName="select" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="codigo" HeaderText="Codigo" HtmlEncode="false" />
                                     <asp:BoundField DataField="nombre" HeaderText="Activo" HtmlEncode="false" />
                                 </Columns>
@@ -133,4 +164,5 @@
     </asp:UpdatePanel>
 
 
+    <!-- <script src="../js/js_RenvenTraspasoActivos.js" type="text/javascript"></script> -->
 </asp:Content>

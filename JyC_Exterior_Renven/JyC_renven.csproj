@@ -270,6 +270,7 @@
     <Content Include="js\jsLimpiezaDpto.js" />
     <Content Include="js\jsPedido.js" />
     <Content Include="js\jsRenven.js" />
+    <Content Include="js\js_RenvenTraspasoActivos.js" />
     <Content Include="NegoPlantilla\Footer_Plantillanew.ascx" />
     <Content Include="NegoPlantilla\Header_planillanew.ascx" />
     <Content Include="NegoPlantilla\MenuPlantillaPrincipal.ascx" />
@@ -714,7 +715,6 @@
   <ItemGroup>
     <Folder Include="Datos\App_LocalResources\" />
     <Folder Include="Images\images\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>

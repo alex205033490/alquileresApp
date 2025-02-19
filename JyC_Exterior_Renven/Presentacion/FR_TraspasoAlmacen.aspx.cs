@@ -143,6 +143,24 @@ namespace JyC_Exterior.Presentacion
         public static string[] GetListActivos(string prefixText, int count)
         {
             string nombreActivo = prefixText;
+            NA_ActivosDpto negocio = new NA_ActivosDpto();
+            DataSet tuplas = negocio.get_buscarItem(nombreActivo);
+
+            string[] lista = new string[tuplas.Tables[0].Rows.Count];
+
+            for (int i = 0; i < tuplas.Tables[0].Rows.Count; i++)
+            {
+                string codigo = tuplas.Tables[0].Rows[i]["codigo"].ToString();
+                string item = tuplas.Tables[0].Rows[i]["nombre"].ToString();
+                lista[i] = $"{codigo}|{item}";
+            }
+            return lista;
+        }
+
+        
+        /*public static string[] GetListActivos(string prefixText, int count)
+        {
+            string nombreActivo = prefixText;
 
             NA_ActivosDpto negocio = new NA_ActivosDpto();
             DataSet tuplas = negocio.get_buscarItem(nombreActivo);
@@ -154,9 +172,10 @@ namespace JyC_Exterior.Presentacion
                 lista[i] = tuplas.Tables[0].Rows[i][1].ToString();
             }
             return lista;
-        }
+        }*/
 
         // textbox busqueda activos
+        
         protected void txt_activo_TextChanged(object sender, EventArgs e)
         {
             string nombreActivo = txt_activo.Text.Trim();
@@ -176,6 +195,8 @@ namespace JyC_Exterior.Presentacion
                 gv_listActivos.DataBind();
             }
         }
+        
+
 
         //****************************  boton agregar activos al GV
         // Selecciona activo del GV
@@ -187,11 +208,8 @@ namespace JyC_Exterior.Presentacion
             string codigo = row.Cells[1].Text;
             string nombre = row.Cells[2].Text;
 
-            Session["SAcodItem"] = codigo;
-            Session["SAnombre"] = nombre;
+            txt_codActivo.Text = codigo;
             txt_activo.Text = nombre;
-
-
         }
         List<ActivosDTO> activos = new List<ActivosDTO>();
         public class ActivosDTO
@@ -213,11 +231,11 @@ namespace JyC_Exterior.Presentacion
         {
             try
             {
-                int codigo = int.Parse(Session["SAcodItem"].ToString());
-                string nombre = (Session["SAnombre"].ToString());
-                if (string.IsNullOrWhiteSpace(Session["SAcodItem"].ToString()) || string.IsNullOrWhiteSpace(Session["SAnombre"].ToString()))
+                int codigo = int.Parse(txt_codActivo.Text.Trim());
+                string nombre = (txt_activo.Text);
+                if (string.IsNullOrWhiteSpace(txt_codActivo.Text) || string.IsNullOrWhiteSpace(txt_activo.Text))
                 {
-                    showaler("Debe buscar y seleccionar un activo válido.");
+                    showaler("Seleciona un activo válido.");
                     return null;
                 }
 
@@ -237,7 +255,7 @@ namespace JyC_Exterior.Presentacion
             }
             catch (Exception ex)
             {
-                showaler($"Error busque y seleccione un activo válido: {ex.Message}");
+                showaler($"Error al insertar el activo: {ex.Message}");
                 return null;
             }
         }
@@ -277,11 +295,9 @@ namespace JyC_Exterior.Presentacion
         }
         private void limpiarCamposActivo()
         {
+            txt_codActivo.Text = string.Empty;
             txt_activo.Text = string.Empty;
             txt_cantidadActivo.Text = string.Empty;
-
-            Session.Remove("SAcodItem");
-            Session.Remove("SAnombre");
         }
 
         private List<ActivosDTO> obtenerListActivos()
