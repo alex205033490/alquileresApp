@@ -110,14 +110,14 @@
     cursor: pointer;
     border: solid;
     border-width: 1px;
-    font-size: medium;
+    font-size:medium;
     overflow: auto;
 }
 .CompletionlistItem {
     font-size: medium;
 }
 .CompletionListMighlightedItem {
-    background-color: black;
+    background-color:blue;
     color: White;
     /* color: Lime;
            padding: 3px 20px;
@@ -234,8 +234,6 @@
     background-color:#afafaf;
     margin:1px;
 }
-
-
 
 
 
