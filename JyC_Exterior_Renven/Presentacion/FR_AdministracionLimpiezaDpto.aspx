@@ -119,7 +119,7 @@
             </div>
 
             <div class="col-3">
-                <asp:Button ID="btn_volver" runat="server" CssClass="btn btn-danger" Text="Salir"/>
+                <asp:Button ID="btn_volver" runat="server" CssClass="btn btn-danger" Text="Salir" OnClick="btn_volver_Click" />
             </div>
         </div>
 

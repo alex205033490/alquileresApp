@@ -22,10 +22,28 @@ namespace JyC_Exterior.Presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            this.Title = Session["BaseDatos"].ToString();
+            if (tienePermisoDeIngreso(21) == false)
+            {
+                string ruta = ConfigurationManager.AppSettings["NombreCarpetaContenedora"];
+                Response.Redirect("FA_MenuPorArea.aspx");
+            }
+
             if (!IsPostBack)
             {
                 mostrarRegistrosDVisitas();
             }
+        }
+
+        private bool tienePermisoDeIngreso(int permiso)
+        {
+            NA_Responsables Nresp = new NA_Responsables();
+            string usuarioAux = Session["NameUser"].ToString();
+            string passwordAux = Session["passworuser"].ToString();
+            int codUser = Nresp.getCodUsuario(usuarioAux, passwordAux);
+
+            NA_DetallePermiso npermiso = new NA_DetallePermiso();
+            return npermiso.tienePermisoResponsable(permiso, codUser);
         }
 
         private void mostrarRegistrosDVisitas()
@@ -249,6 +267,14 @@ namespace JyC_Exterior.Presentacion
             LimpiarForm();
             LimpiarGvDetalles();
             mostrarRegistrosDVisitas();
+        }
+
+        protected void btn_volver_Click(object sender, EventArgs e)
+        {
+
+            LimpiarForm();
+            LimpiarGvDetalles();
+            Response.Redirect("FA_MenuPorArea.aspx");
         }
     }
 }

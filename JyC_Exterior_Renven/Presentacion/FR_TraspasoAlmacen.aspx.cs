@@ -23,7 +23,7 @@ namespace JyC_Exterior.Presentacion
             if (tienePermisoDeIngreso(20) == false)
             {
                 string ruta = ConfigurationManager.AppSettings["NombreCarpetaContenedora"];
-                Response.Redirect(ruta + "/Presentacion/FA_Login.aspx");
+                Response.Redirect("FA_MenuPorArea.aspx");
             }
 
             if (!IsPostBack)
