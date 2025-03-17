@@ -22,6 +22,40 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $(".table-sticky");
+
+            if (table.find("thead").length === 0) {
+                table.prepend("thead" + table.find("tr:first").html() + "</thead>");
+                table.find("tr:first").remove();
+            }
+        })
+
+        $(document).ready(function () {
+            function addCheckboxChangeListener() {                                                                      
+                var gridViewId = $(".container-listRegistros").data("clientid");
+
+                $("#" + gridViewId + " input[type='checkbox']").change(function () {
+                    var row = $(this).closest("tr");
+
+                    if ($(this).is(":checked")) {
+                        row.addClass("highlighted");
+                    } else {
+                        row.removeClass("highlighted");
+                    }
+                });
+            }
+            addCheckboxChangeListener();
+            Sys.Application.add_load(function () {
+                addCheckboxChangeListener();
+            });
+        });
+
+
+    </script>
+
 
     <div class="container-ADMlimpiezaDep">
         
@@ -60,8 +94,8 @@
         <div class="tittle">
             <h2>Lista de Registros </h2>
         </div>
-        <div ID="container-listRegistros" class="table-responsive col-lg-9">
-            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_ReciboVisitaDep" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
+        <div ID="container-listRegistros" class="table-responsive container-listRegistros col-lg-9" data-clientid="<%= gv_listRegistrosVisitas.ClientID %>"                                                                                                                                                                                                                                                                    >
+            <asp:GridView ID="gv_listRegistrosVisitas" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-sticky gv_listRegistrosVisitas gv_ReciboVisitaDep" DataKeyNames="nro" OnSelectedIndexChanged="gv_listRegistrosVisitas_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField HeaderText="Anular">
                         <ItemTemplate>
@@ -85,6 +119,7 @@
                 </Columns>
             </asp:GridView>
         </div>
+        <br />
         <asp:updatepanel ID="updatePanelGetItemsRegistro" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
 
@@ -97,8 +132,8 @@
                     <asp:BoundField Datafield="codItem" HeaderText="Codigo Item" HtmlEncode="false"/>
                     <asp:BoundField Datafield="item" HeaderText="Item" HtmlEncode="false"/>
 
-                    <asp:TemplateField>
-                        <ItemTemplate>
+                    <asp:TemplateField HeaderText="Cantidad">
+                        <ItemTemplate >
                             <asp:TextBox ID="txt_cantidad" style="font-size:15px;" runat="server" CssClass="form-control" Text='<%# Eval("cantidad") %>'></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>

@@ -37,8 +37,17 @@
                 document.getElementById('<%= txt_activo.ClientID %>').value = item;
                 document.getElementById('<%= txt_codActivo.ClientID %>').value = codigo;
             }
-
         }
+
+        $(document).ready(function () {
+            var table = $(".table-sticky");
+
+            if (table.find("thead").length === 0) {
+                table.prepend("<thead>") + table.find("tr:first").html() + "</thead>";
+                table.find("tr:first").remove();
+            }
+        })
+
     </script>
 
     <asp:UpdatePanel ID="updatePanel_listAddActivos" runat="server" UpdateMode="Conditional">
@@ -178,8 +187,9 @@
                         </asp:Panel>
 
 
-                        <div class="table-responsive container_listActivos mt-2">
-                            <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
+                        <div class="table-responsive container_listActivos mt-2" data-clientid="<%= gv_listActivos.ClientID %>"">
+                            <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-sticky table-striped gv_listActivos" 
+                                OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>

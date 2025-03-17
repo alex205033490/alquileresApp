@@ -39,6 +39,16 @@
                 document.getElementById('<%= txt_codActivo.ClientID %>').value = codigo;
             }
         }
+
+        $(document).ready(function () {
+            var table = $(".table-sticky");
+
+            if (table.find("thead").length === 0) {
+                table.propend("<thead>" + table.find("tr:first").html() + "</thead>");
+                table.find("tr:first").remove();
+            }
+        })
+
     </script>
 
 
@@ -135,7 +145,8 @@
 
                         <!-- GV LISTA DE ACTIVOS -->
                         <div class="table-responsive container_listActivos mt-1">
-                            <asp:GridView ID="gv_listActivos" runat="server" EnableViewState="true" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
+                            <asp:GridView ID="gv_listActivos" runat="server" EnableViewState="true" AutoGenerateColumns="false" 
+                                CssClass="table table-striped table-sticky gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
