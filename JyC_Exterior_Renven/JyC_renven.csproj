@@ -206,6 +206,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\main.css" />
     <Content Include="Images\naxsnax.png" />
+    <Content Include="Images\naxsnax2.png" />
     <Content Include="img\Actividades.png" />
     <Content Include="img\Actividad\actividad-icono-png-5-png-image-actividad-png-301_281.png" />
     <Content Include="img\Actividad\guiaTuristicaIcono.png" />
@@ -225,6 +226,9 @@
     <Content Include="img\Encuesta1.png" />
     <Content Include="img\Encuesta_R-220.png" />
     <Content Include="img\Encuesta_R220.jpg" />
+    <Content Include="img\iconoADMvisita.png" />
+    <Content Include="img\iconoADMvisita2.png" />
+    <Content Include="img\iconoADMvisita3.png" />
     <Content Include="img\icono_contactenos.png" />
     <Content Include="img\icono_JyC.ico" />
     <Content Include="img\imagenes_Opciones_Actividades.psd" />
@@ -266,6 +270,7 @@
     <Content Include="img\Proyecto.jpg" />
     <Content Include="img\Proyecto.png" />
     <Content Include="img\rh.png" />
+    <Content Include="img\traspasoDpto.png" />
     <Content Include="img\venta.png" />
     <Content Include="js\jsLimpiezaDpto.js" />
     <Content Include="js\jsPedido.js" />
@@ -556,6 +561,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_devolucionRepuesto.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_PedidoVenta.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_PedidoVenta.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\ConexionMySql.cs" />
     <Compile Include="Negocio\ImpresorRecibo.cs" />
     <Compile Include="Negocio\NActualizacion.cs" />
@@ -737,6 +747,17 @@
     <None Include="DS_devolucionRepuesto.xss">
       <DependentUpon>DS_devolucionRepuesto.xsd</DependentUpon>
     </None>
+    <Content Include="DS_PedidoVenta.xsc">
+      <DependentUpon>DS_PedidoVenta.xsd</DependentUpon>
+    </Content>
+    <None Include="DS_PedidoVenta.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_PedidoVenta.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DS_PedidoVenta.xss">
+      <DependentUpon>DS_PedidoVenta.xsd</DependentUpon>
+    </Content>
     <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <None Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
@@ -866,6 +887,138 @@
     <None Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <None Include="vendor\bootstrap\css\bootstrap.css.map" />
     <None Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_20191073579.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_20191073580.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_20191073581.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019560294.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019969518.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019969519.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019969761.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019969762.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019969763.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_2019969765.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_20224151653.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210690.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210691.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210692.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210693.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210694.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210695.pdf" />
+    <Content Include="Voucher\Prueba Santa Cruz\Voucher_Prueba Santa Cruz_202312210696.pdf" />
+    <Content Include="Voucher\prueba.pdf" />
+    <Content Include="Voucher\Prueba\prueba.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555787.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555788.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555789.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555790.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555791.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555792.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555793.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555794.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555795.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555796.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555798.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555799.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555800.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555801.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555802.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555803.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555804.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555805.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555806.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555807.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555808.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555811.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555812.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555824.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555825.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555826.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555827.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555828.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555829.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555830.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555831.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555832.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555833.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555834.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555835.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555836.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555837.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555838.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555839.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555840.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555841.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555842.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555843.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555844.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555845.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555846.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555847.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555848.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555849.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555850.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555851.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555852.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555858.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555861.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555862.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555863.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555864.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555870.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019555874.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019655876.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019655877.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019887444.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2019887446.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2020387437.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2020591344.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_2020591345.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20209103196.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20209103197.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20209103198.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20209103199.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20209103200.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20225206399.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20225206400.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20225206401.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20225206404.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20225206405.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20228159488.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20228159489.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171157.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171158.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171159.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171160.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171161.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171162.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171163.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_20231171164.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171190.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171191.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171192.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171193.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171194.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171195.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171199.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171200.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171201.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171202.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171203.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171204.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171205.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171206.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171207.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171208.pdf" />
+    <Content Include="Voucher\Prueba\Voucher_Prueba_202312171209.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555757.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555758.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555759.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555760.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555761.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555762.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555763.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555772.pdf" />
+    <Content Include="Voucher\Voucher_Prueba_2019555773.pdf" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reportes\Recibo_RutaCobrador_Paraguay.rdlc" />
