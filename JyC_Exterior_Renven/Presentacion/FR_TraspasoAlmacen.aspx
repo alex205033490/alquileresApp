@@ -24,6 +24,42 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
+        function disableCodActivo() {
+            const input = document.getElementById("txt_codActivo");
+
+            if (input) {
+                input.addEventListener("keydown", function (e) {
+                    e.preventDefault();
+                });
+
+                input.addEventListener("input", function () {
+                    input.value = "";
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", disableCodActivo);
+
+        var scrollPos = 0;
+        function saveScroll() {
+            var container = document.querySelector(".container_listActivos");
+            if (container) {
+                scrollPos = container.scrollTop;
+            }
+        }
+        function restoreScroll() {
+            var container = document.querySelector(".container_listActivos");
+            if (container) {
+                container.scrollTop = scrollPos;
+            }
+        }
+        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(function () {
+            saveScroll();
+        });
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            restoreScroll();
+            disableCodActivo();
+        });
+
         function onItemSelectedItemTraspasoAlm(sender, args) {
             console.log("Item Selected");
             var dataItem = args.get_value();
@@ -50,6 +86,18 @@
         })
 
     </script>
+    <style>
+        .tittle_TrasActivos{
+            background-color:#3362b345;
+            padding: 5px;
+            border:1px solid black;
+        }
+        
+        .form-select {
+            background-color: white !important;
+            box-shadow: 1px 0px 3px 0.1rem black !important;
+        }
+    </style>
 
 
     <asp:UpdatePanel ID="updatePanel_listAddActivos" runat="server" UpdateMode="Conditional">
@@ -61,8 +109,8 @@
                     </div>  -->
 
                     <div class="form_datosDpto mb-3">
-                        <div class="mb-3">
-                            <h3>Datos del almacén</h3>
+                        <div class="mb-3 tittle_TrasActivos">
+                            <h1>| TRASPASO DE ACTIVOS ENTRE ALMACENES |</h1>
                         </div>
 
                         <div class="item_almacen col-12 mb-2">
@@ -111,7 +159,7 @@
                                 <div class="col-4 mb-2">
                                     <div class="item_codIActivo mb-2">
                                         <p class="p_nombre mb-1">Codigo:</p>
-                                        <asp:TextBox ID="txt_codActivo" AutoComplete="off" runat="server" CssClass="form-control" Style="font-size:0.8rem;"></asp:TextBox>
+                                        <asp:TextBox ID="txt_codActivo" AutoComplete="off" ClientIDMode="Static" runat="server" CssClass="form-control" Style="font-size:0.8rem;"></asp:TextBox>
                                     </div>
                                     <div class="item_cantidad">
                                         <p class="p_nombre mb-1">Cantidad</p>
@@ -144,7 +192,7 @@
                         </asp:Panel>
 
                         <!-- GV LISTA DE ACTIVOS -->
-                        <div class="table-responsive container_listActivos mt-1">
+                        <div class="table-responsive container_listActivos mt-1" data-clientid="<%= gv_listActivos.ClientID %>">
                             <asp:GridView ID="gv_listActivos" runat="server" EnableViewState="true" AutoGenerateColumns="false" 
                                 CssClass="table table-striped table-sticky gv_dpto" OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                 <Columns>
@@ -165,6 +213,7 @@
                         <div class="col-12">
                             <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
                         </div>
+                        <br />
                     </div>
                 </div>
                         <br />

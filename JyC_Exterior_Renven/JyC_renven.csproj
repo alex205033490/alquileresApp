@@ -363,6 +363,7 @@
     <Content Include="Presentacion\FR_TraspasoAlmacen.aspx" />
     <Content Include="Styles\login-box.css" />
     <Content Include="Styles\MenuPlantilla.css" />
+    <Content Include="Styles\Style_GestionLimpiezaReposicion.css" />
     <Content Include="Styles\Style_MenuArea.css" />
     <Content Include="Styles\payment.css" />
     <Content Include="Styles\Styles_GEncargadoPago.css" />

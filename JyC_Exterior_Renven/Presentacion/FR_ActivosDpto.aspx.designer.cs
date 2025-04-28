@@ -150,6 +150,15 @@ namespace JyC_Exterior.Presentacion
         protected global::System.Web.UI.WebControls.GridView gv_listActivos;
 
         /// <summary>
+        /// Control btn_registrarForm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarForm;
+
+        /// <summary>
         /// Control btn_limpiar.
         /// </summary>
         /// <remarks>
@@ -166,14 +175,5 @@ namespace JyC_Exterior.Presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_volverAtras;
-
-        /// <summary>
-        /// Control btn_registrarForm.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarForm;
     }
 }

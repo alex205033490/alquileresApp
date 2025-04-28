@@ -22,7 +22,44 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script>
+    <script type="text/javascript">
+        function disableCodActivo() {
+            const input = document.getElementById("txt_codActivo");
+
+            if (input) {
+                input.addEventListener("keydown", function (e) {
+                    e.preventDefault();
+                });
+
+                input.addEventListener("input", function () {
+                    input.value = "";
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", disableCodActivo);
+
+
+        var scrollPos = 0;
+        function saveScroll() {
+            var container = document.querySelector(".container_listActivos");
+            if (container) {
+                scrollPos = container.scrollTop;
+            }
+        }
+        function restoreScroll() {
+            var container = document.querySelector(".container_listActivos");
+            if (container){
+                container.scrollTop = scrollPos;
+            }
+        }
+        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(function () {
+            saveScroll();
+        });
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            restoreScroll();
+            disableCodActivo();
+        })
+
         function onItemSelectedItemActivo(sender, args) {
             console.log("Item Selected");
             var dataItem = args.get_value();
@@ -46,7 +83,8 @@
                 table.prepend("<thead>") + table.find("tr:first").html() + "</thead>";
                 table.find("tr:first").remove();
             }
-        })
+        });
+
 
     </script>
 
@@ -56,12 +94,12 @@
                 <div class="container-main">
 
                     <div class="title_principal">
-                        <h1 class="">GESTIÓN DE ACTIVOS</h1>
+                        <h1 class="">| GESTIÓN DE ACTIVOS |</h1>
                     </div>
 
 
                     <div class="form_datosDpto mb-3">
-                        <h3>Datos del Departamento</h3>
+                        <h4>Datos del Departamento</h4>
 
                         <div class="item_Edificio col-12 mb-2">
                             <p class="p_nombre mb-1">Edificio:</p>
@@ -104,12 +142,12 @@
                         <div class="row">
                             <div class="item_departamento col-5">
                                 <p class="p_nombre mb-1">Nro Habitación:</p>
-                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #843e1117; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
+                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #7a757580; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                             </div>
 
                             <div class="item_direccion col-7 fs-3">
                                 <p class="p_nombre mb-1">Dirección:</p>
-                                <asp:TextBox ID="txt_Direccion" Style="background-color: #843e1117; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+                                <asp:TextBox ID="txt_Direccion" Style="background-color: #7a757580; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
                             </div>
                         </div>
 
@@ -120,7 +158,7 @@
 
 
                     <div class="form_datosActivo">
-                        <h3>Lista de activos</h3>
+                        <h4>Lista de activos</h4>
                         <div class="container_activo">
 
                             <asp:GridView ID="gv_activos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped gv_dpto" OnRowCommand="gv_activosDelete">
@@ -145,8 +183,8 @@
                             <div class="row mb-2">
                                 <div class="col-4">
                                     <div class="item_cod mb-2">
-                                        <p class="p_nombre mb-1">Codigo Item</p>
-                                        <asp:TextBox ID="txt_codActivo" AutoComplete="off" runat="server" style="font-size:0.8rem;" CssClass="form-control"></asp:TextBox>
+                                        <p class="p_nombre mb-1">Codigo activo</p>
+                                        <asp:TextBox ID="txt_codActivo" ClientIDMode="Static" AutoComplete="off" runat="server" style="font-size:0.8rem;" CssClass="form-control txt_codActivo"></asp:TextBox>
                                     </div>
                                     <div class="item_cantidad mb-2">
                                         <p class="p_nombre mb-1">Cantidad</p>
@@ -156,7 +194,7 @@
 
                                 <div class="col-8">
                                     <div class="item_nombre col-12 mb-2">
-                                        <p class="mb-1">Item:</p>
+                                        <p class="mb-1">Activo:</p>
                                         <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" placeholder="Seleccione un item"></asp:TextBox>
                                         <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
                                             TargetControlID="txt_activo"
@@ -182,12 +220,9 @@
                                 </div>
                             </div>
 
-                                
-
                         </asp:Panel>
 
-
-                        <div class="table-responsive container_listActivos mt-2" data-clientid="<%= gv_listActivos.ClientID %>"">
+                        <div class="table-responsive container_listActivos mt-2 mb-2" data-clientid="<%= gv_listActivos.ClientID %>"">
                             <asp:GridView ID="gv_listActivos" runat="server" AutoGenerateColumns="false" CssClass="table table-sticky table-striped gv_listActivos" 
                                 OnSelectedIndexChanged="gv_listActivos_SelectedIndexChanged">
                                 <Columns>
@@ -201,17 +236,20 @@
                                 </Columns>
                             </asp:GridView>
                         </div>
+                        <div class="col-12">
+                            <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
+                        </div>
                         <div class="container_BTNs mt-2 mb-3">
                             <asp:Button ID="btn_limpiar" runat="server" CssClass="btn btn-secondary col-5 " Style="font-size: 15px;" Text="Limpiar Formulario" OnClick="btn_limpiar_Click" />
                             <asp:Button ID="btn_volverAtras" runat="server" CssClass="btn btn-danger col-5" Style="font-size: 15px;" Text="Volver Atras" OnClick="btn_volverAtras_Click" />
-                        </div>
-                        <div class="col-12">
-                            <asp:Button ID="btn_registrarForm" runat="server" Text="REGISTRAR FORMULARIO" CssClass="btn btn-success col-12" OnClick="btn_registrarForm_Click" />
                         </div>
                     </div>
                 </div>
                         <br />
         </ContentTemplate>
+        <Triggers>
+        <asp:AsyncPostBackTrigger ControlID="gv_listActivos" EventName="SelectedIndexChanged" />
+        </Triggers>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="btn_registrarForm" EventName="Click" />
         </Triggers>

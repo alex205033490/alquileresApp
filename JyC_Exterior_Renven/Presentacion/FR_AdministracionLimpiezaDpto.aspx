@@ -52,15 +52,27 @@
                 addCheckboxChangeListener();
             });
         });
-
-
     </script>
+    <style>
+        .table-sticky th{
+            text-align: center !important;
+            background-color: #5c5c67 !important;
+        }
+        .table-sticky td{
+            font-size: 0.7rem !important;
+        }
+        .tittle_GLRInsumos{
+            background-color: #3362b345;
+            padding: 5px;
+            border: 1px solid black;
+        }
 
 
+    </style>
     <div class="container-ADMlimpiezaDep">
         
-        <div class="mb-3 col-lg-10">
-            <h1>Gestión de limpieza y reposición de insumos</h1>
+        <div class="mb-3 col-lg-10 tittle_GLRInsumos">
+            <h1>| Gestión de limpieza y reposición de insumos |</h1>
         </div>
 
             <div class="container_buscarDpto d-flex align-items-end row mb-2 col-lg-10">
@@ -104,7 +116,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:button style="font-size:10px; padding:7px;" id="btn_Ver" runat="server" text="Seleccionar" CssClass="btn btn-dark" CommandName="Select" OnClientClick="markRowAsSelected(this.closest('tr'))"></asp:button>
+                            <asp:button style="font-size:10px; padding:7px;" id="btn_Ver" runat="server" text="seleccionar" CssClass="btn btn-dark" CommandName="Select" OnClientClick="markRowAsSelected(this.closest('tr'))"></asp:button>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="nro" HeaderText="Nro Registro" HtmlEncode="false"/>
@@ -157,7 +169,7 @@
                 <asp:Button ID="btn_volver" runat="server" CssClass="btn btn-danger" Text="Salir" OnClick="btn_volver_Click" />
             </div>
         </div>
-
+        <br />
     </div>
     <script type="text/javascript" src="../js/jsRenven.js"></script>
 </asp:Content>
