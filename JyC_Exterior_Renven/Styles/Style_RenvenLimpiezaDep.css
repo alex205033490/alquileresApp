@@ -35,23 +35,29 @@
 /*  TITULO DEL FORMULARIO */
 .title_principal h1 {
     font-family: 'Arial', sans-serif; /* Tipo de letra simple y moderna */
-    font-size: 2em; /* Tamaño de la fuente */
+    font-size: 1.7em; /* Tamaño de la fuente */
     color: #000000; /* Color oscuro para el texto */
     text-align: center; /* Alineación centrada */
-    padding: 20px 0; /* Espaciado arriba y abajo del título */
     position: relative; /* Necesario para posicionar las líneas */
 }
 
 /* Mejorar el espacio alrededor del título */
 .title_principal {
     margin: 15px 0;     
-    
+    background-color: #3362b345;
+    border: 1px solid black;
+    padding: 5px;
 }
 
 .p_nombre{
     font-size: 0.9rem;
 }
 
+.tittle_LRInsumos {
+    background-color: #3362b345;
+    border: 1px solid black;
+    padding: 5px;
+}
 
 /*  GV INSUMOS REPOSICION   */
 .listItemsRepo {
@@ -176,6 +182,10 @@
     background-color: blue !important;
     padding: 5px;
     color:white !important;
+}
+.table-sticky td{
+    background-color: #ffffff !important;
+    font-size: 0.8rem;
 }
 
 /*-------------   FORMULARIO ADMI LIMPIEZA DPTO    -------------*/

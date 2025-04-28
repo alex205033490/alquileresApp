@@ -23,8 +23,8 @@
 
     <div class="form-limpiezaDep">
         <div class="container-main">
-            <div class="mb-3">
-                <h1 class="">LIMPIEZA Y REPOSICIÓN DE INSUMOS</h1>
+            <div class="mb-3 tittle_LRInsumos">
+                <h1 class="">| LIMPIEZA Y REPOSICIÓN DE INSUMOS |</h1>
             </div>
             <div class="form_datosDep">
                 <h4>Datos del Departamento</h4>
@@ -135,7 +135,7 @@
             </div>
 
             <div class="container_btn container_BTNs">
-                <asp:Button ID="btn_registrarLimpdep" runat="server" Text="Registrar Reposición" CssClass="btn btn-success col-5" style="font-size:0.8rem;" OnClick="btn_registrarLimpdep_Click" />
+                <asp:Button ID="btn_registrarLimpdep" runat="server" Text="Registrar Reposición" CssClass="btn btn-success col-6" style="font-size:1rem;" OnClick="btn_registrarLimpdep_Click" />
                 <asp:Button ID="btn_volverAtras" runat="server" Text="Volver Atras" CssClass="btn btn-danger col-4" OnClick="btn_volverAtras_Click" />
             </div>
             <br />
