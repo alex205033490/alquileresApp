@@ -108,11 +108,8 @@ namespace jycboliviaASP.net.Negocio
                 comando.ExecuteNonQuery();
                 MySqlConexion.Close();
                 return true;
-
-
             }catch(Exception)
             {
-                
                 return false;
             }
             finally

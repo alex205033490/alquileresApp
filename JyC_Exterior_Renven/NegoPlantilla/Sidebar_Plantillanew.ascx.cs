@@ -15,7 +15,7 @@ namespace jycboliviaASP.net.NegocioPlantilla
         {
             if (!IsPostBack)
             {
-                negarTodo();
+                //negarTodo();
                 armarMenuSistema();
             }
         }
@@ -23,7 +23,7 @@ namespace jycboliviaASP.net.NegocioPlantilla
 
         public void negarTodo()
         {
-
+            
             mn_gestionarFormularios.Visible = false;
             mn_gestionarPermisos.Visible = false;
             mn_gestionarResponsable.Visible = false;
@@ -64,6 +64,7 @@ namespace jycboliviaASP.net.NegocioPlantilla
             mn_Insumos.Visible = false;
             mn_InsumosCompuesto.Visible = false;
             mn_consultaRecetaInsumo.Visible = false;
+            
         }
 
 

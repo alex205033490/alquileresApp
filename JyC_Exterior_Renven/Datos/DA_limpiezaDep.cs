@@ -26,7 +26,7 @@ namespace JyC_Exterior.Datos
         internal DataSet get_listDepartamentoInmueble(string dep)
         {
             string consulta = " select eq.codigo as codDep, eq.dg_nombreinmueble as Edificio, eq.dg_numeroinmueble as nroInmueble," +
-                " eq.dg_nrodormitorios as nroDormitorios, eq.dg_direccion as direccionDep, eq.dg_departamentociudad as ciudad, " +
+                " eq.dg_nrodormitorios as nroDormitorios, eq.dg_direccion as direccionDep, eq.dg_tipoinmueble as tipoinmueble, eq.dg_departamentociudad as ciudad, " +
                 "eq.dg_codigovarsimec as codSimec, eq.dg_denominacion as nro_habitacion from tb_equipo eq where eq.estado=1 and eq.dg_nombreinmueble like '%" + dep + "%' ";
 
             DataSet lista = conexion.consultaMySql(consulta);
@@ -36,7 +36,8 @@ namespace JyC_Exterior.Datos
         internal DataSet get_itemReposicionDep(int codigo)
         {
             string consulta = " Select it.codigo, nombre from tbalq_item it inner join tbalq_detallelistcategoria" +
-                " dlc on it.codigo = dlc.codItem where dlc.codCategoria = "+codigo+"  AND it.estado = 1 AND dlc.estado = 1; ";
+                " dlc on it.codigo = dlc.codItem where dlc.codCategoria = "+codigo+"  AND it.estado = 1 AND dlc.estado = 1 " +
+                "order by nombre asc; ";
 
             DataSet lista = conexion.consultaMySql(consulta);
             return lista;

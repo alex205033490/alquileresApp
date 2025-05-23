@@ -51,6 +51,8 @@
 
 .p_nombre{
     font-size: 0.9rem;
+    color: red;
+    font-family: cursive;
 }
 
 .tittle_LRInsumos {
@@ -102,7 +104,7 @@
     border-color: transparent !important; 
 }
 /*----  border:focus txt  */
-.form-control:focus, .form-select {
+.form-control:focus {
     box-shadow: -1px 0px 7px 0.2rem rgb(0 0 0 / 85%) !important;
 }
 .gv_dpto tr th {
@@ -282,7 +284,10 @@
     margin:1px;
 }
 
-
+.form_datosDep {
+    box-shadow: 2px 2px 6px 3px #27275869;
+    padding: 2px 10px 2px 10px;
+}
 
 
 
