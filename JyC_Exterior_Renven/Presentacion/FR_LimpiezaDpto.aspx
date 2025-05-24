@@ -23,14 +23,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <style>
-        .txt_info{
-            background-color: transparent;
-            border: 0px;
-            font-size: 11px;
-        }
-    </style>
-
     <div class="form-limpiezaDep">
         <div class="container-main">
             <div class="mb-3 tittle_LRInsumos">
