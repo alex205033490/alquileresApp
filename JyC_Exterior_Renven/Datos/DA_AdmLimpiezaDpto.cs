@@ -37,7 +37,8 @@ namespace JyC_Exterior.Datos
         {
             string consulta = "SELECT ld.codigo as 'codRegistro', i.codigo as 'codItem', i.nombre as 'item', dld.cantidad " +
                 "from tbalq_limpiezadpto ld INNER JOIN tbalq_detallelimpiezadpto dld ON ld.codigo = dld.codrlimpieza " +
-                "LEFT JOIN tbalq_item i ON dld.coditem = i.codigo WHERE ld.estado=1 AND i.estado=1 AND dld.cantidad > 0 AND ld.codigo = " + codigo + ";";
+                "LEFT JOIN tbalq_item i ON dld.coditem = i.codigo WHERE ld.estado=1 AND i.estado=1 AND dld.cantidad > 0 AND ld.codigo = " + codigo + " " +
+                "order by i.nombre asc;";
             DataSet list = conexion.consultaMySql(consulta);
             return list;
         }

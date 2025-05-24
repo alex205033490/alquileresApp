@@ -115,11 +115,12 @@ namespace JyC_Exterior.Presentacion
             string codDpto = row.Cells[1].Text;
             string nomEdificio = row.Cells[2].Text;
             string denominacion = row.Cells[3].Text;
-            string direccion = row.Cells[4].Text;
-            string ciudad = row.Cells[5].Text;
-            string codSimec = row.Cells[6].Text;
-            string nroInmueble = row.Cells[7].Text;
-            string nroDormitorios = row.Cells[8].Text;
+            string tipo = row.Cells[4].Text;
+            string direccion = row.Cells[5].Text;
+            string ciudad = row.Cells[6].Text;
+            string codSimec = row.Cells[7].Text;
+            string nroInmueble = row.Cells[8].Text;
+            string nroDormitorios = row.Cells[9].Text;
             
             if ((nroInmueble) == "&nbsp;")
             {
@@ -146,6 +147,7 @@ namespace JyC_Exterior.Presentacion
             txt_edificio.Text = nomEdificio;
             Session["SADnominmueble"] = nomEdificio;
             txt_Habitacion.Text = denominacion;
+            txt_tipo.Text = tipo;
             txt_Direccion.Text = direccion;
             Session["SADciudad"] = ciudad;
             Session["SADcodsimec"] = codSimec;
@@ -167,9 +169,10 @@ namespace JyC_Exterior.Presentacion
             Session.Remove("SADnroinmueble");
             Session.Remove("SADnrodormitorios");
 
-            txt_Habitacion.Text = "";
-            txt_edificio.Text = "";
-            txt_Direccion.Text = "";
+            txt_Habitacion.Text = string.Empty;
+            txt_edificio.Text = string.Empty;
+            txt_Direccion.Text = string.Empty;
+            txt_tipo.Text = string.Empty;
         }
 
         /*************************     ACTIVOS     *********************/
@@ -602,6 +605,7 @@ namespace JyC_Exterior.Presentacion
         /* METODO limpiar formulario */
         private void limpiarFormularioRegistro()
         {
+            limpiarCamposDpto();
             txt_edificio.Text = string.Empty;
             Session.Remove("SADnominmueble");
             Session.Remove("SADcoddpto");

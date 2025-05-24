@@ -98,7 +98,7 @@
                     </div>
 
 
-                    <div class="form_datosDpto mb-3">
+                    <div class="form_datosDpto mb-1">
                         <h4>Datos del Departamento</h4>
 
                         <div class="item_Edificio col-12 mb-2">
@@ -126,12 +126,13 @@
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="codigo" HeaderText="Codigo Dpto"/>
                                         <asp:BoundField DataField="edificio" HeaderText="Edificio" HtmlEncode="false" />
-                                        <asp:BoundField DataField="denominacion" HeaderText="nro habitación" HtmlEncode="false" />
+                                        <asp:BoundField DataField="denominacion" HeaderText="Nro habitación" HtmlEncode="false" />
+                                        <asp:BoundField DataField="tipo" HeaderText="Tipo" HtmlEncode="false" />
                                         <asp:BoundField DataField="direccion" HeaderText="Dirección" HtmlEncode="false" />
                                         <asp:BoundField DataField="ciudad" HeaderText="Ciudad" HtmlEncode="false" />
-                                        <asp:BoundField DataField="codSimec" HeaderText="cod Simec" HtmlEncode="false" />
-                                        <asp:BoundField DataField="nroInmueble" HeaderText="nro Inmueble" HtmlEncode="false" />
-                                        <asp:BoundField DataField="nrohabitaciones" HeaderText="nro dormitorios" />
+                                        <asp:BoundField DataField="codSimec" HeaderText="Cod Simec" HtmlEncode="false" />
+                                        <asp:BoundField DataField="nroInmueble" HeaderText="Nro Inmueble" HtmlEncode="false" />
+                                        <asp:BoundField DataField="nrohabitaciones" HeaderText="Nro dormitorios" />
 
                                         </Columns>
                                     </asp:GridView>
@@ -140,15 +141,21 @@
                         </div>
 
                         <div class="row">
-                            <div class="item_departamento col-5">
+                            <div class="item_departamento col-3">
                                 <p class="p_nombre mb-1">Nro Habitación:</p>
-                                <asp:TextBox ID="txt_Habitacion" runat="server" Style="background-color: #7a757580; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
+                                <asp:TextBox ID="txt_Habitacion" runat="server" CssClass="txt_info form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                             </div>
 
-                            <div class="item_direccion col-7 fs-3">
+                            <div class="item_direccion col-5">
                                 <p class="p_nombre mb-1">Dirección:</p>
-                                <asp:TextBox ID="txt_Direccion" Style="background-color: #7a757580; font-size: 0.6rem; height: 3.5rem;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+                                <asp:TextBox ID="txt_Direccion" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_info txt_infoMultiline" AutoComplete="off"></asp:TextBox>
                             </div>
+
+                            <div class="item_tipo col-4">
+                                <p class="p_nombre mb-1">Tipo:</p>
+                                <asp:TextBox ID="txt_tipo" runat="server" CssClass="txt_info form-control" AutoComplete="off" ReadOnly="true" ></asp:TextBox>
+                            </div>
+
                         </div>
 
 
@@ -182,9 +189,9 @@
                             
                             <div class="row mb-2">
                                 <div class="col-4">
-                                    <div class="item_cod mb-2">
-                                        <p class="p_nombre mb-1">Codigo activo</p>
-                                        <asp:TextBox ID="txt_codActivo" ClientIDMode="Static" AutoComplete="off" runat="server" style="font-size:0.8rem;" CssClass="form-control txt_codActivo"></asp:TextBox>
+                                    <div class="item_cod mb-3">
+                                        <p class="p_nombre mb-1">Codigo</p>
+                                        <asp:TextBox ID="txt_codActivo" ClientIDMode="Static" AutoComplete="off" runat="server" style="font-size:0.8rem;" CssClass="form-control txt_codActivo txt_info"></asp:TextBox>
                                     </div>
                                     <div class="item_cantidad mb-2">
                                         <p class="p_nombre mb-1">Cantidad</p>
@@ -194,7 +201,7 @@
 
                                 <div class="col-8">
                                     <div class="item_nombre col-12 mb-2">
-                                        <p class="mb-1">Activo:</p>
+                                        <p class="p_nombre mb-1">Activo:</p>
                                         <asp:TextBox ID="txt_activo" runat="server" Style="font-size: 0.8rem;" CssClass="form-control" AutoComplete="off" AutoPostBack="true" placeholder="Seleccione un item"></asp:TextBox>
                                         <asp:AutoCompleteExtender ID="txt_activo_AutoCompleteExtender" runat="server"
                                             TargetControlID="txt_activo"

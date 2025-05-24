@@ -17,6 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </asp:Content>
 
+
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -26,7 +28,7 @@
             <div class="mb-3 tittle_LRInsumos">
                 <h1 class="">| LIMPIEZA Y REPOSICIÓN DE INSUMOS |</h1>
             </div>
-            <div class="form_datosDep">
+            <div class="form_datosDep mb-2">
                 <h4>Datos del Departamento</h4>
                 <div class="row mb-2">
                     <div class="item_Edificio col-12">
@@ -44,13 +46,14 @@
                                 <Columns>
                                     <asp:TemplateField >
                                         <ItemTemplate>
-                                            <asp:Button ID="btn_seleccionardpto" runat="server" Text="Seleccionar" CommandName="Select" style="font-size:0.7rem;" CssClass="btn btn-success" />
+                                            <asp:Button ID="btn_seleccionardpto" runat="server" Text="Select" CommandName="Select" style="font-size:0.7rem;" CssClass="btn btn-success" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:BoundField DataField="codDep" HeaderText="Codigo Dpto" HtmlEncode="false" />
                                     <asp:BoundField DataField="Edificio" HeaderText="Edificio" HtmlEncode="false" />
-                                    <asp:BoundField DataField="nro_habitacion" HeaderText="Nro Habitación" HtmlEncode="false" />
+                                    <asp:BoundField DataField="nro_habitacion" HeaderText="Denominación" HtmlEncode="false" />
+                                    <asp:BoundField DataField="tipoinmueble" HeaderText="Tipo" HtmlEncode="false"/>
                                     <asp:BoundField DataField="direccionDep" HeaderText="Dirección" HtmlEncode="false" />
                                     <asp:BoundField DataField="nroInmueble" HeaderText="Numero Inmueble" HtmlEncode="false" />
                                     <asp:BoundField DataField="codSimec" HeaderText="Codigo Simec" HtmlEncode="false" />
@@ -63,23 +66,27 @@
                 </div>
 
                 <div class="row mb-2 container_ddpto">
-                    <div class="item_departamento col-6">
-                        <p class="p_nombre mb-1">Cod Departamento:</p>
-                        <asp:TextBox ID="txt_codDepartamento" style="background-color: #204d773b;" runat="server" CssClass="form-control" AutoComplete="off" ReadOnly="True"></asp:TextBox>
+                    <div class="item_departamento col-3">
+                        <p class="p_nombre mb-1">Codigo:</p>
+                        <asp:TextBox ID="txt_codDepartamento" runat="server" CssClass="form-control txt_info" AutoComplete="off" ReadOnly="True"></asp:TextBox>
                     </div>
-                    <div class="item_nroHabitaciones col-6 mb-2">
-                        <p class="p_nombre mb-1">Nro de Habitación:</p>
-                        <asp:TextBox ID="txt_nroHabitacion" runat="server" style="background-color: #204d773b; font-size:0.8rem;" CssClass="form-control" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
+                    <div class="item_nroHabitaciones col-4 mb-2">
+                        <p class="p_nombre mb-1">Habitación:</p>
+                        <asp:TextBox ID="txt_nroHabitacion" runat="server"  CssClass="form-control txt_info" AutoComplete="off" ReadOnly="true" HtmlEncode="false"></asp:TextBox>
+                    </div>
+                    <div class="item_tipoHabitacion col-5 mb-2">
+                        <p class="p_nombre item_tipoHabitacion mb-1">Tipo:</p>
+                        <asp:TextBox id="txt_tipoinmueble" runat="server" CssClass="form-control txt_info" autoComplete="off" ReadOnly="true" htmlEncode="false"></asp:TextBox>
                     </div>
 
 
                     <div class="item_direccion col-7 mb-1">
                         <p class="p_nombre mb-1">Dirección:</p>
-                        <asp:TextBox ID="txt_Direccion" Style="font-size: 0.6rem; height: 3.5rem; background-color: #204d773b;" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass="form-control txt_dir" AutoComplete="off"></asp:TextBox>
+                        <asp:TextBox ID="txt_Direccion" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="4" Wrap="true" CssClass=" txt_info form-control txt_dir" AutoComplete="off"></asp:TextBox>
                     </div>
                     <div class="item_depInmueble col-5">
                         <p class="p_nombre mb-1">Ciudad:</p>
-                        <asp:TextBox ID="txt_Ciudad" runat="server" style="font-size:13px; background-color: #204d773b;" CssClass="form-control" AutoComplete="off" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox ID="txt_Ciudad" runat="server" CssClass="form-control txt_info" AutoComplete="off" ReadOnly="true"></asp:TextBox>
 
                     </div>
                 </div>

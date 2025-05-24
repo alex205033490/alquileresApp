@@ -100,11 +100,12 @@ namespace JyC_Exterior.Presentacion
             string codDep = row.Cells[1].Text;
             string edificio = row.Cells[2].Text;
             string nroHabitacion = row.Cells[3].Text;
-            string direccionDep = row.Cells[4].Text;
-            string nroInmueble = row.Cells[5].Text;
-            string codSimec = row.Cells[6].Text;
-            string nroDormitorios = row.Cells[7].Text;
-            string ciudad = row.Cells[8].Text;
+            string tipoInmueble = row.Cells[4].Text;
+            string direccionDep = row.Cells[5].Text;
+            string nroInmueble = row.Cells[6].Text;
+            string codSimec = row.Cells[7].Text;
+            string nroDormitorios = row.Cells[8].Text;
+            string ciudad = row.Cells[9].Text;
 
             if(nroHabitacion == "&nbsp;")
             {
@@ -137,6 +138,8 @@ namespace JyC_Exterior.Presentacion
             txt_Direccion.Text = direccionDep;
 
             txt_Ciudad.Text = ciudad;
+
+            txt_tipoinmueble.Text = tipoInmueble;
 
             Session["SLDcodSimec"] = codSimec;
 
@@ -297,7 +300,7 @@ namespace JyC_Exterior.Presentacion
                         }
                     }
                 }
-                showaler("Se ha registrado la visita al departamento");
+                showaler("Se ha registrado el formulario. OK");
             }
             catch(Exception ex)
             {
@@ -463,6 +466,7 @@ namespace JyC_Exterior.Presentacion
             txt_Ciudad.Text = "";
             dd_tipoLimpieza.SelectedIndex = 0;
             txt_observacion.Text = "";
+            txt_tipoinmueble.Text = string.Empty;
 
             Session.Remove("SLDedificio");
             Session.Remove("SLDnroInmueble");

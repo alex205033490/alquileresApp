@@ -14,7 +14,7 @@ namespace JyC_Exterior.Datos
         internal DataSet get_listDpto(string dep)
         {
             string consulta = "SELECT eq.codigo, eq.dg_nombreinmueble as edificio, " +
-                " eq.dg_direccion as direccion, eq.dg_denominacion as denominacion, eq.dg_codigovarsimec as codSimec, " +
+                " eq.dg_direccion as direccion, eq.dg_denominacion as denominacion, dg_tipoinmueble as tipo, eq.dg_codigovarsimec as codSimec, " +
                 "eq.dg_numeroinmueble as nroInmueble, eq.dg_nrodormitorios as nrohabitaciones, " +
                 "eq.dg_departamentociudad as ciudad FROM tb_equipo eq where eq.estado = 1 AND " +
                 " eq.dg_nombreinmueble like '%" + dep + "%' ";
